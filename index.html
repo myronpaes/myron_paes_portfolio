@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Myron Paes | Product Management & Data Science</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        /* Font set to Calibri as requested */
+        font-family: "Calibri", "Candara", "Segoe UI", "Optima", Arial,
+          sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #fff;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #000;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #000;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 120px 2rem 60px;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 2rem;
+        display: block;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        /* UPDATED: Lighter Sage/Olive Green Gradient */
+        background: linear-gradient(135deg, #558b2f 0%, #33691e 100%);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .subtitle {
+        font-size: 1.3rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
+
+      .bio {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+
+      .location {
+        color: #888;
+        margin-bottom: 2rem;
+      }
+
+      /* Tags */
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+
+      .tag {
+        background: #f0f0f0;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.95rem;
+        color: #555;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .tag:hover {
+        /* UPDATED: Light Professional Green */
+        background: #558b2f;
+        color: white;
+      }
+
+      /* CTA Buttons */
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+      }
+
+      .btn {
+        padding: 0.8rem 1.8rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background: #000;
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background: #333;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        border: 2px solid #000;
+        color: #000;
+        background: transparent;
+      }
+
+      .btn-secondary:hover {
+        background: #000;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      /* Content Section */
+      .content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .section {
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+      }
+
+      /* Accomplishments */
+      .accomplishment {
+        margin-bottom: 2rem;
+        padding-left: 2rem;
+        position: relative;
+      }
+
+      .accomplishment::before {
+        content: "🏆";
+        position: absolute;
+        left: 0;
+        font-size: 1.5rem;
+      }
+
+      .accomplishment h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .accomplishment p {
+        color: #666;
+        line-height: 1.7;
+        font-size: 1.05rem;
+      }
+
+      /* Timeline */
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #e0e0e0;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -2.4rem;
+        top: 0.4rem;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        /* UPDATED: Light Professional Green */
+        background: #558b2f;
+      }
+
+      .timeline-title {
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        font-size: 1.1rem;
+      }
+
+      .timeline-meta {
+        color: #888;
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-description {
+        color: #666;
+        font-size: 1.05rem;
+      }
+
+      /* Projects Grid */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .project-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 1.5rem;
+        transition: all 0.3s;
+        cursor: pointer;
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        background: #fff;
+      }
+
+      .project-card:hover {
+        /* UPDATED: Light Green Border */
+        border-color: #558b2f;
+        /* UPDATED: Light Green Shadow */
+        box-shadow: 0 4px 20px rgba(85, 139, 47, 0.15);
+        transform: translateY(-4px);
+      }
+
+      .project-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .project-card .project-date {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .project-card p {
+        color: #666;
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .skill-category {
+        padding: 1.5rem;
+        background: #f8f8f8;
+        border-radius: 8px;
+      }
+
+      .skill-category h3 {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+        /* UPDATED: Light Professional Green */
+        color: #558b2f;
+      }
+
+      .skill-category ul {
+        list-style: none;
+      }
+
+      .skill-category li {
+        padding: 0.4rem 0;
+        color: #666;
+        font-size: 1.05rem;
+      }
+
+      .skill-category li::before {
+        content: "→ ";
+        /* UPDATED: Light Professional Green */
+        color: #558b2f;
+      }
+
+      /* Footer */
+      footer {
+        background: #f8f8f8;
+        padding: 2rem;
+        text-align: center;
+        margin-top: 4rem;
+        color: #666;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .hero {
+          padding: 100px 1rem 40px;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline {
+          padding-left: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="logo">Myron Paes</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero">
+      <img src="headshot.jpg" alt="Myron Paes" class="profile-img" />
+
+      <h1>Myron Paes</h1>
+      <p class="subtitle">Product Manager | Data Scientist</p>
+      <p class="bio">
+        Pursuing a dual undergraduate degree in Data Science and Business at
+        NJIT, I aim to develop proficiency in Product Management methodologies
+        while acting upon my lifelong passions in business, analytics, and
+        communication. I dream of an endeavor that marries critical analysis
+        with technical communication prowess.
+      </p>
+      <p class="location">📍 Marlton, NJ</p>
+
+      <div class="tags">
+        <a href="#" class="tag">Product Management</a>
+        <a href="#" class="tag">Data Science</a>
+        <a href="#" class="tag">Research Writing</a>
+        <a href="#" class="tag">Marketing</a>
+        <a href="#" class="tag">Business Intelligence</a>
+      </div>
+
+      <div class="cta-buttons">
+        <a href="mailto:myronpaes@gmail.com" class="btn btn-primary"
+          >Contact Me</a
+        >
+        <a
+          href="https://linkedin.com/in/myron-paes/"
+          target="_blank"
+          class="btn btn-secondary"
+          >View LinkedIn</a
+        >
+      </div>
+    </section>
+
+    <div class="content">
+      <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <p
+          style="
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.05rem;
+          "
+        >
+          Hi! My name is Myron Paes, and I am a sophomore undergraduate student
+          studying Data Science and Business at New Jersey Institute of
+          Technology. Presently, I'm leading product development at tapyoca
+          Music in Newark, New Jersey, where I'm managing the development of
+          innovative financial tracking software solutions for independent music
+          artists.
+        </p>
+
+        <p
+          style="
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+          "
+        >
+          As an aspiring Product Marketing Manager, my studies are focused
+          primarily on product marketing, data analysis methodologies, and
+          technical writing, all facets of my professional repertoire which
+          enable me to perform!
+        </p>
+
+        <p
+          style="
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+          "
+        >
+          I'm committed to excellence and continuous improvement. I thrive on
+          challenges and deliver high-quality results through data-driven
+          decision making and agile methodologies. Here are some of my key
+          accomplishments:
+        </p>
+
+        <div class="accomplishment">
+          <h3>Music Artist Financial Tracking Platform at Tapyoca Music</h3>
+          <p>
+            Leading product development for a novel subsidiary focused on artist
+            financial tracking. Graduated from NSF I-Corps cohort, conducting 40
+            customer discovery sessions and establishing an Asana framework that
+            augmented work efficiency for a startup team of 25.
+          </p>
+        </div>
+
+        <div class="accomplishment">
+          <h3>Oracle ERP System Optimization at Virtua Health</h3>
+          <p>
+            Analyzed over 1000 client tickets to identify key pain points,
+            informing future IT reforms. Optimized ID database by vacating 9000
+            previously null/invalid cells and resolving ID creation bottleneck.
+          </p>
+        </div>
+
+        <div class="accomplishment">
+          <h3>Legal Digitization Initiative at NJ Courts</h3>
+          <p>
+            Efficiently digitized over 5000 legal cases (the entirety of NJ
+            Vicinage 15's inventory) utilizing proprietary software. Classified
+            over 1000 legal portfolios, determining disposal status based on
+            categorical statute of limitations.
+          </p>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <h2 class="section-title">Featured Projects</h2>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>Open Innovation Research</h3>
+            <p class="project-date">Sep 2025 - Present</p>
+            <p>
+              Conducted comprehensive literature reviews regarding practical
+              applications of corporate Open Innovation initiatives. Listed as
+              official coauthor on three distinctive research projects (pending
+              peer review).
+            </p>
+          </div>
+
+          <a href="catan_report.pdf" target="_blank" class="project-card">
+            <h3>Catan Data Analysis 🔗</h3>
+            <p class="project-date">Sep 2025 - Dec 2025</p>
+            <p>
+              Machine Learning project analyzing statistically-optimal
+              settlement placements in Settlers of Catan. Employed Logistic
+              Regression, KNN, Random Forests, Feature Engineering, and Greedy
+              Attribute Selection. <br /><em
+                >(Click to view full PDF report)</em
+              >
+            </p>
+          </a>
+
+          <a
+            href="crimson_care_business_plan.pdf"
+            target="_blank"
+            class="project-card"
+          >
+            <h3>Crimson Care 🔗</h3>
+            <p class="project-date">Sep 2024 - Dec 2024</p>
+            <p>
+              Collaboratively crafted a full-scale business model and
+              facilitated logistical calculations for the proposed induction of
+              a menstrual care startup. Aimed towards resolving rural Period
+              Poverty in India, an affliction affecting over 20% of its female
+              rural population.
+              <br /><em>(Click to view Business Plan)</em>
+            </p>
+          </a>
+
+          <a href="#" class="project-card">
+            <h3>Sensory Stress Jacket 🔗</h3>
+            <p class="project-date">Sep 2023 - Jun 2024</p>
+            <p>
+              Engineered an innovative vibratory jacket prototype to mitigate
+              overstimulation in neurodivergent individuals. Modeled a full
+              business plan including 20 customer interviews, value
+              propositions, and MVP completion.
+              <br /><em>(Video coming soon)</em>
+            </p>
+          </a>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <h2 class="section-title">Professional Journey</h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-title">
+              Lead Product Manager at Tapyoca Music
+            </div>
+            <div class="timeline-meta">March 2025 - Present · Newark, NJ</div>
+            <div class="timeline-description">
+              Leading entrepreneurial initiative on novel subsidiary product for
+              music artist financial tracking. Graduated NSF I-Corps cohort,
+              conducted 40 customer discovery sessions, and established Asana
+              framework for team of 25.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">IT Intern at Virtua Health</div>
+            <div class="timeline-meta">May 2025 - Sept 2025 · Marlton, NJ</div>
+            <div class="timeline-description">
+              Analyzed 1000+ client tickets to identify Oracle ERP pain points.
+              Optimized ID database, vacating 9000 null/invalid cells and
+              resolving ID creation bottleneck.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Operations Intern at NJ Courts</div>
+            <div class="timeline-meta">May 2025 - Sept 2025 · Marlton, NJ</div>
+            <div class="timeline-description">
+              Digitized 5000+ legal cases for NJ Vicinage 15. Classified 1000+
+              legal portfolios based on statute of limitations for disposal
+              status determination.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <h2 class="section-title">Skills & Expertise</h2>
+
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Data Science & Analytics</h3>
+            <ul>
+              <li>Applied Statistics</li>
+              <li>A/B Testing</li>
+              <li>User Segmentation</li>
+              <li>Sentiment Analysis</li>
+              <li>Machine Learning</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Technical Skills</h3>
+            <ul>
+              <li>Python (NumPy, Pandas, Scikit, PyTorch)</li>
+              <li>Java & C++</li>
+              <li>Excel & Data Visualization</li>
+              <li>SQL & Databases</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Product Management</h3>
+            <ul>
+              <li>Agile & Scrum</li>
+              <li>Asana & Jira</li>
+              <li>Figma Design</li>
+              <li>Google Analytics</li>
+              <li>Customer Discovery</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Academic Background</h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-title">
+              B.S. in Data Science & B.S. in Business (Marketing)
+            </div>
+            <div class="timeline-meta">
+              Expected 2028 · New Jersey Institute of Technology
+            </div>
+            <div class="timeline-description">
+              Dual Degree Program. Full-ride Merit Scholarship via Albert Dorman
+              Honors College. Enrolled in accelerated BS/MS program. Focusing on
+              the intersection of business strategy and technical
+              implementation.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Leadership & Activities</h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-title">
+              Secretary & Peer Entrepreneur-In-Residence
+            </div>
+            <div class="timeline-meta">
+              Apr 2025 - Present · Entrepreneurs Society, NJIT
+            </div>
+            <div class="timeline-description">
+              Leading networking initiatives and event organization. Lead
+              bookkeeper tracking attendance and student outreach for 400+
+              members.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Eagle Scout, Senior Patrol Leader</div>
+            <div class="timeline-meta">
+              Oct 2016 - Oct 2024 · Boy Scouts of America
+            </div>
+            <div class="timeline-description">
+              Earned Eagle Scout Rank with 36 merit badges and 1 Eagle Palm. Led
+              camping trips and mentored younger scouts. Final Eagle project
+              involved building a storage shed for local church.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section"
+        style="
+          text-align: center;
+          padding: 3rem 2rem;
+          background: #f8f8f8;
+          border-radius: 12px;
+        "
+      >
+        <h2 class="section-title">Let's Connect</h2>
+        <p
+          style="
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.05rem;
+          "
+        >
+          Explore my projects and experience to see my work in action; feel free
+          to contact me to discuss potential collaborations or to learn more
+          about my skills and experience!
+        </p>
+        <div class="cta-buttons">
+          <a href="mailto:myronpaes@gmail.com" class="btn btn-primary"
+            >Email Me</a
+          >
+          <a
+            href="https://linkedin.com/in/myron-paes/"
+            target="_blank"
+            class="btn btn-secondary"
+            >LinkedIn</a
+          >
+          <a href="tel:+18566319836" class="btn btn-secondary">Call Me</a>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Myron Paes. All rights reserved.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem"></p>
+    </footer>
+  </body>
+</html>
