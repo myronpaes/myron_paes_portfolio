@@ -12,12 +12,12 @@
       }
 
       body {
-        /* Font set to Calibri as requested */
         font-family: "Calibri", "Candara", "Segoe UI", "Optima", Arial,
           sans-serif;
         line-height: 1.6;
         color: #333;
         background: #fff;
+        overflow-x: hidden; /* Prevents scrollbar flash during animation */
       }
 
       /* Navigation */
@@ -33,6 +33,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        /* Animation for Nav */
+        animation: fadeDown 0.8s ease-out forwards;
       }
 
       .logo {
@@ -67,6 +69,36 @@
         text-align: center;
       }
 
+      /* Hero Animation Classes */
+      .hero-anim {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.8s ease-out forwards;
+      }
+
+      /* Stagger delays for hero elements */
+      .hero-anim:nth-child(1) {
+        animation-delay: 0.2s;
+      } /* Image */
+      .hero-anim:nth-child(2) {
+        animation-delay: 0.3s;
+      } /* H1 */
+      .hero-anim:nth-child(3) {
+        animation-delay: 0.4s;
+      } /* Subtitle */
+      .hero-anim:nth-child(4) {
+        animation-delay: 0.5s;
+      } /* Bio */
+      .hero-anim:nth-child(5) {
+        animation-delay: 0.6s;
+      } /* Location */
+      .hero-anim:nth-child(6) {
+        animation-delay: 0.7s;
+      } /* Tags */
+      .hero-anim:nth-child(7) {
+        animation-delay: 0.8s;
+      } /* Buttons */
+
       .profile-img {
         width: 180px;
         height: 180px;
@@ -75,7 +107,6 @@
         margin: 0 auto 2rem;
         display: block;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        /* UPDATED: Lighter Sage/Olive Green Gradient */
         background: linear-gradient(135deg, #558b2f 0%, #33691e 100%);
       }
 
@@ -123,9 +154,9 @@
       }
 
       .tag:hover {
-        /* UPDATED: Light Professional Green */
         background: #558b2f;
         color: white;
+        transform: scale(1.05); /* Added slight pop */
       }
 
       /* CTA Buttons */
@@ -154,6 +185,7 @@
       .btn-primary:hover {
         background: #333;
         transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Added shadow */
       }
 
       .btn-secondary {
@@ -166,6 +198,7 @@
         background: #000;
         color: #fff;
         transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Added shadow */
       }
 
       /* Content Section */
@@ -239,8 +272,13 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        /* UPDATED: Light Professional Green */
         background: #558b2f;
+        transition: transform 0.3s ease;
+      }
+
+      /* Subtle hover effect for timeline dots */
+      .timeline-item:hover::before {
+        transform: scale(1.4);
       }
 
       .timeline-title {
@@ -272,7 +310,7 @@
         border: 1px solid #e0e0e0;
         border-radius: 8px;
         padding: 1.5rem;
-        transition: all 0.3s;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy hover */
         cursor: pointer;
         display: block;
         text-decoration: none;
@@ -281,11 +319,9 @@
       }
 
       .project-card:hover {
-        /* UPDATED: Light Green Border */
         border-color: #558b2f;
-        /* UPDATED: Light Green Shadow */
-        box-shadow: 0 4px 20px rgba(85, 139, 47, 0.15);
-        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(85, 139, 47, 0.15);
+        transform: translateY(-6px);
       }
 
       .project-card h3 {
@@ -317,12 +353,17 @@
         padding: 1.5rem;
         background: #f8f8f8;
         border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .skill-category:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       }
 
       .skill-category h3 {
         font-size: 1.15rem;
         margin-bottom: 1rem;
-        /* UPDATED: Light Professional Green */
         color: #558b2f;
       }
 
@@ -338,7 +379,6 @@
 
       .skill-category li::before {
         content: "→ ";
-        /* UPDATED: Light Professional Green */
         color: #558b2f;
       }
 
@@ -378,6 +418,57 @@
           padding-left: 1.5rem;
         }
       }
+
+      /* --- ANIMATION KEYFRAMES & UTILITIES --- */
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* The 'reveal' class is added to HTML elements we want to animate on scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+      }
+
+      /* JavaScript adds this class when element comes into view */
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger delays for grid items to appear one by one */
+      .delay-100 {
+        transition-delay: 0.1s;
+      }
+      .delay-200 {
+        transition-delay: 0.2s;
+      }
+      .delay-300 {
+        transition-delay: 0.3s;
+      }
+      .delay-400 {
+        transition-delay: 0.4s;
+      }
     </style>
   </head>
   <body>
@@ -388,24 +479,32 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li>
+          <a
+            href="Myron Paes Professional Resume (1_9_25).pdf"
+            target="_blank"
+            style="font-weight: 600"
+            >Resume</a
+          >
+        </li>
       </ul>
     </nav>
 
     <section class="hero">
-      <img src="headshot.jpg" alt="Myron Paes" class="profile-img" />
+      <img src="headshot.jpg" alt="Myron Paes" class="profile-img hero-anim" />
 
-      <h1>Myron Paes</h1>
-      <p class="subtitle">Product Manager | Data Scientist</p>
-      <p class="bio">
+      <h1 class="hero-anim">Myron Paes</h1>
+      <p class="subtitle hero-anim">Product Manager | Data Scientist</p>
+      <p class="bio hero-anim">
         Pursuing a dual undergraduate degree in Data Science and Business at
         NJIT, I aim to develop proficiency in Product Management methodologies
         while acting upon my lifelong passions in business, analytics, and
         communication. I dream of an endeavor that marries critical analysis
         with technical communication prowess.
       </p>
-      <p class="location">📍 Marlton, NJ</p>
+      <p class="location hero-anim">📍 Marlton, NJ</p>
 
-      <div class="tags">
+      <div class="tags hero-anim">
         <a href="#" class="tag">Product Management</a>
         <a href="#" class="tag">Data Science</a>
         <a href="#" class="tag">Research Writing</a>
@@ -413,7 +512,7 @@
         <a href="#" class="tag">Business Intelligence</a>
       </div>
 
-      <div class="cta-buttons">
+      <div class="cta-buttons hero-anim">
         <a href="mailto:myronpaes@gmail.com" class="btn btn-primary"
           >Contact Me</a
         >
@@ -428,52 +527,54 @@
 
     <div class="content">
       <section id="about" class="section">
-        <h2 class="section-title">About Me</h2>
-        <p
-          style="
-            margin-bottom: 1.5rem;
-            color: #555;
-            line-height: 1.7;
-            font-size: 1.05rem;
-          "
-        >
-          Hi! My name is Myron Paes, and I am a sophomore undergraduate student
-          studying Data Science and Business at New Jersey Institute of
-          Technology. Presently, I'm leading product development at tapyoca
-          Music in Newark, New Jersey, where I'm managing the development of
-          innovative financial tracking software solutions for independent music
-          artists.
-        </p>
+        <h2 class="section-title reveal">About Me</h2>
+        <div class="reveal">
+          <p
+            style="
+              margin-bottom: 1.5rem;
+              color: #555;
+              line-height: 1.7;
+              font-size: 1.05rem;
+            "
+          >
+            Hi! My name is Myron Paes, and I am a sophomore undergraduate
+            student studying Data Science and Business at New Jersey Institute
+            of Technology. Presently, I'm leading product development at Tapyoca
+            Music in Newark, New Jersey, where I'm managing the development of
+            innovative financial tracking software solutions for independent
+            music artists.
+          </p>
+          <p
+            style="
+              color: #555;
+              line-height: 1.7;
+              margin-bottom: 2rem;
+              font-size: 1.05rem;
+            "
+          >
+            As an aspiring Product Marketing Manager, my studies are focused
+            primarily on product marketing, data analysis methodologies, and
+            technical writing, all facets of my professional repertoire which
+            enable me to perform!
+          </p>
+          <p
+            style="
+              color: #555;
+              line-height: 1.7;
+              margin-bottom: 2rem;
+              font-size: 1.05rem;
+            "
+          >
+            I am committed to sustained excellence and improvement, whether that
+            be in the classroom, the office, or the home. Delivering
+            high-quality results through data-driven decision making and agile
+            management methodologies is critical to a manager, and my studies
+            (both technical and entrepreneurial) at NJIT foster my ability to
+            fulfill such an objective! Here are some of my key accomplishments:
+          </p>
+        </div>
 
-        <p
-          style="
-            color: #555;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
-          "
-        >
-          As an aspiring Product Marketing Manager, my studies are focused
-          primarily on product marketing, data analysis methodologies, and
-          technical writing, all facets of my professional repertoire which
-          enable me to perform!
-        </p>
-
-        <p
-          style="
-            color: #555;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
-          "
-        >
-          I'm committed to excellence and continuous improvement. I thrive on
-          challenges and deliver high-quality results through data-driven
-          decision making and agile methodologies. Here are some of my key
-          accomplishments:
-        </p>
-
-        <div class="accomplishment">
+        <div class="accomplishment reveal">
           <h3>Music Artist Financial Tracking Platform at Tapyoca Music</h3>
           <p>
             Leading product development for a novel subsidiary focused on artist
@@ -483,7 +584,7 @@
           </p>
         </div>
 
-        <div class="accomplishment">
+        <div class="accomplishment reveal">
           <h3>Oracle ERP System Optimization at Virtua Health</h3>
           <p>
             Analyzed over 1000 client tickets to identify key pain points,
@@ -492,7 +593,7 @@
           </p>
         </div>
 
-        <div class="accomplishment">
+        <div class="accomplishment reveal">
           <h3>Legal Digitization Initiative at NJ Courts</h3>
           <p>
             Efficiently digitized over 5000 legal cases (the entirety of NJ
@@ -504,10 +605,10 @@
       </section>
 
       <section id="projects" class="section">
-        <h2 class="section-title">Featured Projects</h2>
+        <h2 class="section-title reveal">Featured Projects</h2>
 
         <div class="projects-grid">
-          <div class="project-card">
+          <div class="project-card reveal">
             <h3>Open Innovation Research</h3>
             <p class="project-date">Sep 2025 - Present</p>
             <p>
@@ -518,7 +619,11 @@
             </p>
           </div>
 
-          <a href="catan_report.pdf" target="_blank" class="project-card">
+          <a
+            href="catan_report.pdf"
+            target="_blank"
+            class="project-card reveal delay-100"
+          >
             <h3>Catan Data Analysis 🔗</h3>
             <p class="project-date">Sep 2025 - Dec 2025</p>
             <p>
@@ -534,7 +639,7 @@
           <a
             href="crimson_care_business_plan.pdf"
             target="_blank"
-            class="project-card"
+            class="project-card reveal delay-200"
           >
             <h3>Crimson Care 🔗</h3>
             <p class="project-date">Sep 2024 - Dec 2024</p>
@@ -548,7 +653,7 @@
             </p>
           </a>
 
-          <a href="#" class="project-card">
+          <a href="#" class="project-card reveal delay-300">
             <h3>Sensory Stress Jacket 🔗</h3>
             <p class="project-date">Sep 2023 - Jun 2024</p>
             <p>
@@ -563,10 +668,10 @@
       </section>
 
       <section id="experience" class="section">
-        <h2 class="section-title">Professional Journey</h2>
+        <h2 class="section-title reveal">Professional Journey</h2>
 
         <div class="timeline">
-          <div class="timeline-item">
+          <div class="timeline-item reveal">
             <div class="timeline-title">
               Lead Product Manager at Tapyoca Music
             </div>
@@ -579,7 +684,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item reveal">
             <div class="timeline-title">IT Intern at Virtua Health</div>
             <div class="timeline-meta">May 2025 - Sept 2025 · Marlton, NJ</div>
             <div class="timeline-description">
@@ -589,7 +694,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item reveal">
             <div class="timeline-title">Operations Intern at NJ Courts</div>
             <div class="timeline-meta">May 2025 - Sept 2025 · Marlton, NJ</div>
             <div class="timeline-description">
@@ -602,10 +707,10 @@
       </section>
 
       <section id="skills" class="section">
-        <h2 class="section-title">Skills & Expertise</h2>
+        <h2 class="section-title reveal">Skills & Expertise</h2>
 
         <div class="skills-grid">
-          <div class="skill-category">
+          <div class="skill-category reveal">
             <h3>Data Science & Analytics</h3>
             <ul>
               <li>Applied Statistics</li>
@@ -616,7 +721,7 @@
             </ul>
           </div>
 
-          <div class="skill-category">
+          <div class="skill-category reveal delay-100">
             <h3>Technical Skills</h3>
             <ul>
               <li>Python (NumPy, Pandas, Scikit, PyTorch)</li>
@@ -626,7 +731,7 @@
             </ul>
           </div>
 
-          <div class="skill-category">
+          <div class="skill-category reveal delay-200">
             <h3>Product Management</h3>
             <ul>
               <li>Agile & Scrum</li>
@@ -640,10 +745,10 @@
       </section>
 
       <section class="section">
-        <h2 class="section-title">Academic Background</h2>
+        <h2 class="section-title reveal">Academic Background</h2>
 
         <div class="timeline">
-          <div class="timeline-item">
+          <div class="timeline-item reveal">
             <div class="timeline-title">
               B.S. in Data Science & B.S. in Business (Marketing)
             </div>
@@ -661,10 +766,10 @@
       </section>
 
       <section class="section">
-        <h2 class="section-title">Leadership & Activities</h2>
+        <h2 class="section-title reveal">Leadership & Activities</h2>
 
         <div class="timeline">
-          <div class="timeline-item">
+          <div class="timeline-item reveal">
             <div class="timeline-title">
               Secretary & Peer Entrepreneur-In-Residence
             </div>
@@ -678,7 +783,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item reveal">
             <div class="timeline-title">Eagle Scout, Senior Patrol Leader</div>
             <div class="timeline-meta">
               Oct 2016 - Oct 2024 · Boy Scouts of America
@@ -693,7 +798,7 @@
       </section>
 
       <section
-        class="section"
+        class="section reveal"
         style="
           text-align: center;
           padding: 3rem 2rem;
@@ -733,7 +838,35 @@
 
     <footer>
       <p>&copy; 2026 Myron Paes. All rights reserved.</p>
-      <p style="margin-top: 0.5rem; font-size: 0.9rem"></p>
     </footer>
+
+    <script>
+      // This script detects when elements with the 'reveal' class enter the screen
+      document.addEventListener("DOMContentLoaded", function () {
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Add the class that triggers the CSS animation
+                entry.target.classList.add("active");
+                // Stop observing once animated (so it doesn't replay)
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            root: null,
+            threshold: 0.15, // Trigger when 15% of the element is visible
+            rootMargin: "0px 0px -50px 0px", // Offset slightly so it triggers before bottom
+          }
+        );
+
+        revealElements.forEach((el) => {
+          revealObserver.observe(el);
+        });
+      });
+    </script>
   </body>
 </html>
