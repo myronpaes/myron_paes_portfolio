@@ -21,6 +21,12 @@
         --text-secondary: #555;
       }
 
+      /* ADDED: Smooth Scroll & Fixed Header Offset */
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px; /* Prevents fixed nav from covering titles */
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -1015,7 +1021,6 @@
 
           caption.appendChild(captionText);
 
-          // *** SELF-HEALING LOGIC with Fallback ***
           // If pic1.jpg fails, try pic1.jpeg. If that fails, hide it.
           img.onerror = function () {
             if (img.src.endsWith(".jpg")) {
@@ -1030,7 +1035,6 @@
           item.appendChild(caption);
           galleryContainer.appendChild(item);
 
-          // Observe this new item for scroll animation
           revealObserver.observe(item);
         });
       });
