@@ -608,7 +608,11 @@
     </nav>
 
     <section class="hero">
-      <img src="headshot.jpg" alt="Myron Paes" class="profile-img hero-anim" />
+      <img
+        src="pics/headshot.jpg"
+        alt="Myron Paes"
+        class="profile-img hero-anim"
+      />
       <h1 class="hero-anim">Myron Paes</h1>
       <p class="subtitle hero-anim">Product Manager | Data Scientist</p>
       <p class="bio hero-anim">
@@ -922,7 +926,7 @@
     </footer>
 
     <script>
-      // 1. SCROLL ANIMATION
+      //Scroll Animation
       document.addEventListener("DOMContentLoaded", function () {
         const revealElements = document.querySelectorAll(".reveal");
         const revealObserver = new IntersectionObserver(
@@ -940,7 +944,9 @@
           revealObserver.observe(el);
         });
 
-        // 2. DYNAMIC GALLERY WITH CAPTIONS
+        const imgFolder = "pics/";
+
+        //Dynamic Photo Gallery
         const galleryData = [
           {
             file: "pic1.jpg",
@@ -972,18 +978,18 @@
         const galleryContainer = document.getElementById("gallery-container");
 
         galleryData.forEach((data, index) => {
-          // Create the card div
+          //Create card div
           const item = document.createElement("div");
           item.className = "gallery-item reveal";
           item.style.transitionDelay = index * 0.1 + "s";
 
-          // Create the image element
+          //Create image element
           const img = document.createElement("img");
-          img.src = data.file;
+          img.src = imgFolder + data.file;
           img.className = "gallery-img";
           img.alt = data.text;
 
-          // Create the caption overlay
+          //Create caption overlay
           const caption = document.createElement("div");
           caption.className = "caption-overlay";
 
@@ -993,7 +999,7 @@
 
           caption.appendChild(captionText);
 
-          // *** SELF-HEALING LOGIC ***
+          //Self-healing logic for image formats
           img.onerror = function () {
             if (img.src.endsWith(".jpg")) {
               img.src = img.src.replace(".jpg", ".jpeg");
@@ -1002,7 +1008,7 @@
             }
           };
 
-          // Assemble
+          //Assemble
           item.appendChild(img);
           item.appendChild(caption);
           galleryContainer.appendChild(item);
