@@ -347,7 +347,8 @@
       /* Skills Section */
       .skills-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        /* UPDATED: 2 Columns = 2 Rows for 4 items */
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
       }
 
@@ -496,7 +497,7 @@
         }
       }
 
-      /* Mobile fix: On very small screens, avoid text cutoff */
+      /* Mobile fix */
       @media (max-width: 480px) {
         .typing-text {
           white-space: normal;
@@ -542,6 +543,12 @@
         }
         .timeline {
           padding-left: 1.5rem;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .skills-grid {
+          grid-template-columns: 1fr; /* Stack on mobile */
         }
       }
 
@@ -641,7 +648,7 @@
           >View LinkedIn</a
         >
         <a
-          href="Myron Paes Professional Resume.pdf"
+          href="Myron Paes Professional Resume (1_9_25).pdf"
           target="_blank"
           class="btn btn-secondary"
           >View Resume</a
@@ -679,7 +686,7 @@
             As an aspiring Product Marketing Manager, my studies are focused
             primarily on product marketing, data analysis methodologies, and
             technical writing, all facets of my professional repertoire which
-            enable me to perform!
+            enable me to work efficiently!
           </p>
           <p
             style="
@@ -734,8 +741,8 @@
             </h3>
             <p style="margin-bottom: 1.5rem; color: var(--text-secondary)">
               I maintain a robust portfolio of engineered solutions and business
-              plans, ranging from machine learning models for Catan to
-              neurodivergent accessibility tools.
+              concepts, ranging all the way from machine learning models for
+              Catan to neurodivergent accessibility tools!
             </p>
             <a href="projects.html" class="btn btn-primary"
               >View Project Portfolio &rarr;</a
@@ -749,22 +756,26 @@
         <div class="timeline">
           <div class="timeline-item reveal">
             <div class="timeline-title">
-              Lead Product Manager at Tapyoca Music
+              Lead Product Marketing Manager at Tapyoca Music
             </div>
             <div class="timeline-meta">March 2025 - Present · Newark, NJ</div>
             <div class="timeline-description">
-              Leading entrepreneurial initiative on novel subsidiary product for
-              music artist financial tracking. Graduated NSF I-Corps cohort,
-              conducted 40 customer discovery sessions, and established Asana
-              framework for team of 25.
+              Entrepreneurial lead on novel subsidiary product: Creator Copilot
+              (independent filmmaker accounting software suite). Graduate of
+              Summer 2025 Northeastern NSF I-Corps cohort, conducting 40
+              customer discovery sessions. Spearheaded client outreach
+              initiatives to maximize conversion and retention for hundreds of
+              potential customers. Established intuitive Jira task delegation
+              framework, augmenting work efficiency for a startup team of 25.
             </div>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-title">IT Intern at Virtua Health</div>
             <div class="timeline-meta">May 2025 - Sept 2025 · Marlton, NJ</div>
             <div class="timeline-description">
-              Analyzed 1000+ client tickets to identify Oracle ERP pain points.
-              Optimized ID database, vacating 9000 null/invalid cells and
+              Analyzed over 1000 client tickets to identify key pain points in
+              Oracle ERP system, informing future IT reforms. Optimized ID
+              database, vacating 9000 previously null/invalid cells and
               resolving ID creation bottleneck.
             </div>
           </div>
@@ -772,9 +783,10 @@
             <div class="timeline-title">Operations Intern at NJ Courts</div>
             <div class="timeline-meta">May 2025 - Sept 2025 · Marlton, NJ</div>
             <div class="timeline-description">
-              Digitized 5000+ legal cases for NJ Vicinage 15. Classified 1000+
-              legal portfolios based on statute of limitations for disposal
-              status determination.
+              Efficiently digitized over 5000 legal cases (the entirety of NJ
+              Vicinage 15's inventory) utilizing proprietary vicinage software.
+              Classified over 1000 legal portfolios, determining disposal status
+              based on categorical statute of limitations.
             </div>
           </div>
         </div>
@@ -784,32 +796,39 @@
         <span class="section-title reveal">04 — Skills</span>
         <div class="skills-grid">
           <div class="skill-category reveal">
-            <h3>Data Science & Analytics</h3>
+            <h3>Product Tools & Methodologies</h3>
             <ul>
-              <li>Applied Statistics</li>
-              <li>A/B Testing</li>
-              <li>User Segmentation</li>
-              <li>Sentiment Analysis</li>
-              <li>Machine Learning</li>
+              <li>Agile & Scrum</li>
+              <li>Waterfall</li>
+              <li>Asana & Jira</li>
+              <li>Figma Design</li>
+              <li>Google Keywords</li>
             </ul>
           </div>
           <div class="skill-category reveal delay-100">
+            <h3>Advanced Marketing Practices</h3>
+            <ul>
+              <li>A/B Testing</li>
+              <li>Positioning</li>
+              <li>User Segmentation</li>
+              <li>Sentiment Analysis</li>
+            </ul>
+          </div>
+          <div class="skill-category reveal delay-200">
             <h3>Technical Skills</h3>
             <ul>
               <li>Python (NumPy, Pandas, Scikit, PyTorch)</li>
               <li>Java & C++</li>
               <li>Excel & Data Visualization</li>
-              <li>SQL & Databases</li>
             </ul>
           </div>
-          <div class="skill-category reveal delay-200">
-            <h3>Product Management</h3>
+          <div class="skill-category reveal delay-300">
+            <h3>Advanced Statistical Methods</h3>
             <ul>
-              <li>Agile & Scrum</li>
-              <li>Asana & Jira</li>
-              <li>Figma Design</li>
-              <li>Google Analytics</li>
-              <li>Customer Discovery</li>
+              <li>Applied Statistics</li>
+              <li>ANOVA</li>
+              <li>Neyman-Pearson Lemma Test</li>
+              <li>Chi-Squared Test</li>
             </ul>
           </div>
         </div>
@@ -926,7 +945,7 @@
     </footer>
 
     <script>
-      //Scroll Animation
+      // 1. SCROLL ANIMATION
       document.addEventListener("DOMContentLoaded", function () {
         const revealElements = document.querySelectorAll(".reveal");
         const revealObserver = new IntersectionObserver(
@@ -944,9 +963,8 @@
           revealObserver.observe(el);
         });
 
+        // 2. DYNAMIC GALLERY WITH CAPTIONS
         const imgFolder = "pics/";
-
-        //Dynamic Photo Gallery
         const galleryData = [
           {
             file: "pic1.jpg",
@@ -978,18 +996,18 @@
         const galleryContainer = document.getElementById("gallery-container");
 
         galleryData.forEach((data, index) => {
-          //Create card div
+          // Create the card div
           const item = document.createElement("div");
           item.className = "gallery-item reveal";
           item.style.transitionDelay = index * 0.1 + "s";
 
-          //Create image element
+          // Create the image element
           const img = document.createElement("img");
           img.src = imgFolder + data.file;
           img.className = "gallery-img";
           img.alt = data.text;
 
-          //Create caption overlay
+          // Create the caption overlay
           const caption = document.createElement("div");
           caption.className = "caption-overlay";
 
@@ -999,7 +1017,7 @@
 
           caption.appendChild(captionText);
 
-          //Self-healing logic for image formats
+          // *** SELF-HEALING LOGIC ***
           img.onerror = function () {
             if (img.src.endsWith(".jpg")) {
               img.src = img.src.replace(".jpg", ".jpeg");
@@ -1008,7 +1026,7 @@
             }
           };
 
-          //Assemble
+          // Assemble
           item.appendChild(img);
           item.appendChild(caption);
           galleryContainer.appendChild(item);

@@ -330,38 +330,36 @@
 
     <script>
       // 1. DATA SOURCE
-      // relevanceOrder: Lower number = higher relevance
-      // dateObj: Used for date sorting
       const projectsData = [
-        {
-          title: "Open Innovation Research",
-          dateDisplay: "Sep 2025 - Present",
-          dateObj: new Date("2025-09-01"),
-          relevanceOrder: 1,
-          description:
-            "Conducted comprehensive literature reviews regarding practical applications of corporate Open Innovation initiatives. Listed as official coauthor on three distinctive research projects (pending peer review).",
-          link: null, // No link for this one
-          linkText: null,
-        },
         {
           title: "Catan Data Analysis",
           dateDisplay: "Sep 2025 - Dec 2025",
-          dateObj: new Date("2025-09-02"), // Same month, but I'll make it technically 'later' or 'earlier' if needed for specific sort, or just rely on month.
-          relevanceOrder: 2,
+          dateObj: new Date("2025-09-02"),
+          relevanceOrder: 1,
           description:
-            "Machine Learning project analyzing statistically-optimal settlement placements in Settlers of Catan. Employed Logistic Regression, KNN, Random Forests, Feature Engineering, and Greedy Attribute Selection.",
+            "Machine Learning project analyzing statistically-optimal settlement placements in the classic Settlers of Catan board game. Employed Logistic Regression, KNN, Random Forests, Feature Engineering, and Greedy Attribute Selection to generate insights.",
           link: "catan_report.pdf",
           linkText: "View Full PDF Report",
         },
         {
-          title: "Crimson Care",
-          dateDisplay: "Sep 2024 - Dec 2024",
-          dateObj: new Date("2024-09-01"),
+          title: "Robinhood Sentiment Analysis",
+          dateDisplay: "Sep 2025 - Dec 2025",
+          dateObj: new Date("2025-09-01"),
+          relevanceOrder: 2,
+          description:
+            "Comprehensive Sentiment Analysis (via X) Presentation on Robinhood operations during the 2020 Gamestop controversy. Conveyed actionable insights from RAKE Analysis and Topic Model interpretation to present to Robinhood management.",
+          link: "Robinhood Sentiment Analysis.pdf", // Ensure this file exists in your folder!
+          linkText: "View Presentation",
+        },
+        {
+          title: "ReMatter",
+          dateDisplay: "Jan 2026 - Present",
+          dateObj: new Date("2026-01-01"),
           relevanceOrder: 3,
           description:
-            "Collaboratively crafted a full-scale business model and facilitated logistical calculations for the proposed induction of a menstrual care startup. Aimed towards resolving rural Period Poverty in India.",
-          link: "crimson_care_business_plan.pdf",
-          linkText: "View Business Plan",
+            "Cofounder and COO of burgeoning AI-enabled Waste-to-Energy initiative. Graduate of Northeastern I-Corps Propelus Program (Spring 2026).",
+          link: "#", // Placeholder
+          linkText: null,
         },
         {
           title: "Sensory Stress Jacket",
@@ -372,6 +370,26 @@
             "Engineered an innovative vibratory jacket prototype to mitigate overstimulation in neurodivergent individuals. Modeled a full business plan including 20 customer interviews, value propositions, and MVP completion.",
           link: "#",
           linkText: "Video coming soon",
+        },
+        {
+          title: "Open Innovation Research",
+          dateDisplay: "Sep 2025 - Present",
+          dateObj: new Date("2025-09-03"), // Slightly later date to order it above/below Catan if sorted by date
+          relevanceOrder: 5,
+          description:
+            "Conducted comprehensive statistical analyses and literature reviews regarding corporate Open Innovation initiatives. Listed as official coauthor on three distinctive research projects (all of which are currently pending peer review).",
+          link: null,
+          linkText: null,
+        },
+        {
+          title: "Crimson Care",
+          dateDisplay: "Sep 2024 - Dec 2024",
+          dateObj: new Date("2024-09-01"),
+          relevanceOrder: 6,
+          description:
+            "Collaboratively crafted a full-scale business model and facilitated logistical calculations for the proposed induction of a menstrual care startup. Aimed towards resolving rural Period Poverty in India.",
+          link: "crimson_care_business_plan.pdf",
+          linkText: "View Business Plan",
         },
       ];
 
@@ -427,7 +445,11 @@
                   <div class="project-date">${project.dateDisplay}</div>
                 </div>
                 <p class="project-desc">${project.description}</p>
-                ${project.linkText ? `<span style="font-size:0.9rem; color:var(--text-secondary); margin-top:1rem; display:block; font-style:italic;">(${project.linkText})</span>` : ""}
+                ${
+                  project.linkText
+                    ? `<span style="font-size:0.9rem; color:var(--text-secondary); margin-top:1rem; display:block; font-style:italic;">(${project.linkText})</span>`
+                    : ""
+                }
               </div>
             `;
           }
