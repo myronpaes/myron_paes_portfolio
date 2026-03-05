@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Myron Paes | Product Manager</title>
+    <title>Myron Paes | Product Management & Data Science</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -347,7 +347,6 @@
       /* Skills Section */
       .skills-grid {
         display: grid;
-        /* UPDATED: 2 Columns = 2 Rows for 4 items */
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
       }
@@ -391,67 +390,104 @@
         font-weight: bold;
       }
 
-      /* --- GALLERY STYLES --- */
-      .gallery-grid {
-        column-count: 3;
-        column-gap: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .gallery-item {
-        break-inside: avoid;
-        margin-bottom: 1.5rem;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        background: #eee;
+      /* --- GALLERY TEASER STYLES --- */
+      .gallery-teaser-container {
         position: relative;
-        animation: fadeIn 0.5s ease;
+        max-width: 500px;
+        margin: 2rem auto;
+        display: block;
+        cursor: pointer;
+        text-decoration: none;
       }
 
-      .gallery-img {
+      .gt-main {
+        position: relative;
+        z-index: 3;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .gt-main img {
         width: 100%;
         height: auto;
         display: block;
-        transition: transform 0.5s ease;
       }
 
-      .caption-overlay {
+      .gt-overlay {
         position: absolute;
-        bottom: 0;
+        top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(26, 26, 26, 0.85);
-        color: #fff;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0);
         display: flex;
         align-items: center;
         justify-content: center;
-        text-align: center;
-        padding: 1.5rem;
+        transition: background 0.4s ease;
+      }
+
+      /* UPDATED: Text is now enclosed in a solid box */
+      .gt-text {
+        color: #fff;
+        background: rgba(26, 26, 26, 0.9); /* Dark box background */
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px; /* Rounded box corners */
+        font-size: 1.15rem;
+        font-weight: 700;
         opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Pop off the image */
+        border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle inner border */
       }
 
-      .gallery-item:hover .caption-overlay {
-        opacity: 1;
+      .gt-side {
+        position: absolute;
+        top: 50%;
+        width: 70%;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
 
-      .gallery-item:hover .gallery-img {
+      .gt-left {
+        left: 0;
+        transform: translateY(-50%) scale(0.8) translateX(20%);
+      }
+
+      .gt-right {
+        right: 0;
+        transform: translateY(-50%) scale(0.8) translateX(-20%);
+      }
+
+      /* Hover Effects */
+      .gallery-teaser-container:hover .gt-main {
         transform: scale(1.05);
       }
-
-      .caption-text {
-        font-size: 1rem;
-        font-weight: 500;
-        transform: translateY(20px);
-        transition: transform 0.3s ease;
+      .gallery-teaser-container:hover .gt-overlay {
+        background: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* Slightly lighter overall darkening now that text has a box */
       }
-
-      .gallery-item:hover .caption-text {
+      .gallery-teaser-container:hover .gt-text {
+        opacity: 1;
         transform: translateY(0);
+      }
+      .gallery-teaser-container:hover .gt-left {
+        opacity: 0.8;
+        transform: translateY(-50%) scale(0.85) translateX(-35%) rotate(-6deg);
+      }
+      .gallery-teaser-container:hover .gt-right {
+        opacity: 0.8;
+        transform: translateY(-50%) scale(0.85) translateX(35%) rotate(6deg);
       }
 
       /* --- TYPING ANIMATION STYLES --- */
@@ -518,12 +554,6 @@
       }
 
       /* Responsive */
-      @media (max-width: 900px) {
-        .gallery-grid {
-          column-count: 2;
-        }
-      }
-
       @media (max-width: 768px) {
         nav {
           flex-direction: column;
@@ -538,11 +568,20 @@
         .hero {
           padding: 100px 1rem 40px;
         }
-        .gallery-grid {
-          column-count: 1;
+        .projects-grid {
+          grid-template-columns: 1fr;
         }
         .timeline {
           padding-left: 1.5rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .gallery-teaser-container:hover .gt-left {
+          transform: translateY(-50%) scale(0.85) translateX(-20%) rotate(-6deg);
+        }
+        .gallery-teaser-container:hover .gt-right {
+          transform: translateY(-50%) scale(0.85) translateX(20%) rotate(6deg);
         }
       }
 
@@ -610,7 +649,7 @@
         <li><a href="projects.html">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
       </ul>
     </nav>
 
@@ -862,7 +901,7 @@
             <div class="timeline-description">
               Varsity Cross Country/Track, Varsity Chess Team Member, Project
               Lead the Way, Aeronautics Club President, Future Business Leaders
-              of America
+              of America.
             </div>
           </div>
         </div>
@@ -899,8 +938,15 @@
       </section>
 
       <section id="gallery" class="section">
-        <h2 class="section-title reveal">07 — Gallery</h2>
-        <div class="gallery-grid" id="gallery-container"></div>
+        <span class="section-title reveal">07 — Gallery</span>
+        <div class="reveal">
+          <a
+            href="gallery.html"
+            class="gallery-teaser-container"
+            id="teaser-container"
+          >
+          </a>
+        </div>
       </section>
 
       <section
@@ -950,7 +996,7 @@
     </footer>
 
     <script>
-      // 1. SCROLL ANIMATION
+      // SCROLL ANIMATION
       document.addEventListener("DOMContentLoaded", function () {
         const revealElements = document.querySelectorAll(".reveal");
         const revealObserver = new IntersectionObserver(
@@ -968,7 +1014,10 @@
           revealObserver.observe(el);
         });
 
-        // 2. DYNAMIC GALLERY WITH CAPTIONS
+        // DYNAMIC GALLERY TEASER POPULATION
+        // ---------------------------------------------------------
+        // ADD NEW PHOTOS HERE: The teaser will automatically pull the LAST 3 items.
+        // ---------------------------------------------------------
         const imgFolder = "pics/";
         const galleryData = [
           {
@@ -998,46 +1047,63 @@
           },
         ];
 
-        const galleryContainer = document.getElementById("gallery-container");
+        // Grab the last 3 elements and reverse them so index 0 = newest, 1 = 2nd newest, 2 = 3rd newest
+        const recentImages = galleryData.slice(-3).reverse();
 
-        galleryData.forEach((data, index) => {
-          // Create the card div
-          const item = document.createElement("div");
-          item.className = "gallery-item reveal";
-          item.style.transitionDelay = index * 0.1 + "s";
+        const teaserContainer = document.getElementById("teaser-container");
 
-          // Create the image element
-          const img = document.createElement("img");
-          img.src = imgFolder + data.file;
-          img.className = "gallery-img";
-          img.alt = data.text;
-
-          // Create the caption overlay
-          const caption = document.createElement("div");
-          caption.className = "caption-overlay";
-
-          const captionText = document.createElement("p");
-          captionText.className = "caption-text";
-          captionText.innerText = data.text;
-
-          caption.appendChild(captionText);
-
-          // *** SELF-HEALING LOGIC ***
-          img.onerror = function () {
-            if (img.src.endsWith(".jpg")) {
-              img.src = img.src.replace(".jpg", ".jpeg");
+        // Helper function for self-healing images
+        function applyErrorFallback(imgEl) {
+          imgEl.onerror = function () {
+            if (imgEl.src.endsWith(".jpg")) {
+              imgEl.src = imgEl.src.replace(".jpg", ".jpeg");
+            } else if (imgEl.src.endsWith(".jpeg")) {
+              imgEl.src = imgEl.src.replace(".jpeg", ".jpg");
             } else {
-              item.style.display = "none";
+              imgEl.style.display = "none";
             }
           };
+        }
 
-          // Assemble
-          item.appendChild(img);
-          item.appendChild(caption);
-          galleryContainer.appendChild(item);
+        if (recentImages.length >= 3) {
+          // Build Left Side Image (2nd Newest)
+          const imgLeft = document.createElement("img");
+          imgLeft.src = imgFolder + recentImages[1].file;
+          imgLeft.className = "gt-side gt-left";
+          imgLeft.alt = "Recent Image 1";
+          applyErrorFallback(imgLeft);
 
-          revealObserver.observe(item);
-        });
+          // Build Right Side Image (3rd Newest)
+          const imgRight = document.createElement("img");
+          imgRight.src = imgFolder + recentImages[2].file;
+          imgRight.className = "gt-side gt-right";
+          imgRight.alt = "Recent Image 2";
+          applyErrorFallback(imgRight);
+
+          // Build Main Center Image (Newest)
+          const divMain = document.createElement("div");
+          divMain.className = "gt-main";
+
+          const imgMain = document.createElement("img");
+          imgMain.src = imgFolder + recentImages[0].file;
+          imgMain.alt = "Most Recent Gallery Addition";
+          applyErrorFallback(imgMain);
+
+          const divOverlay = document.createElement("div");
+          divOverlay.className = "gt-overlay";
+          const spanText = document.createElement("span");
+          spanText.className = "gt-text";
+          spanText.innerText = "View Photo Gallery!";
+
+          divOverlay.appendChild(spanText);
+          divMain.appendChild(imgMain);
+          divMain.appendChild(divOverlay);
+
+          // Append all to container
+          teaserContainer.appendChild(imgLeft);
+          teaserContainer.appendChild(imgRight);
+          teaserContainer.appendChild(divMain);
+        }
       });
     </script>
   </body>

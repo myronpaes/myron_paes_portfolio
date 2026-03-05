@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Myron Paes | Image Gallery</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* --- VARIABLES & RESET --- */
+      :root {
+        --font-main: "Merriweather", Georgia, "Times New Roman", serif;
+        --accent: #558b2f; /* Olive Green */
+        --text-main: #1a1a1a;
+        --text-secondary: #555;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-main);
+        line-height: 1.8;
+        color: var(--text-main);
+        background: #fff;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(240, 240, 240, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        animation: fadeDown 0.8s ease-out forwards;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+        font-weight: 900;
+        color: #000;
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 400;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      /* Hero Section - Mini Version for Subpage */
+      .hero {
+        padding: 150px 2rem 60px;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+        font-weight: 900;
+        letter-spacing: -1px;
+      }
+
+      .hero .subtitle {
+        font-size: 1.4rem;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        font-weight: 300;
+        font-style: italic;
+      }
+
+      /* Content Section */
+      .content {
+        max-width: 1100px; /* Slightly wider for the masonry grid */
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .section {
+        margin-bottom: 5rem;
+        padding-bottom: 2rem;
+      }
+
+      /* --- GALLERY STYLES --- */
+      .gallery-grid {
+        column-count: 3;
+        column-gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .gallery-item {
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        background: #eee;
+        position: relative;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .gallery-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .caption-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(26, 26, 26, 0.85);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      /* Hover Effect for Caption */
+      .gallery-item:hover .caption-overlay {
+        opacity: 1;
+      }
+
+      .gallery-item:hover .gallery-img {
+        transform: scale(1.05);
+      }
+
+      .caption-text {
+        font-size: 1rem;
+        font-weight: 500;
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover .caption-text {
+        transform: translateY(0);
+      }
+
+      /* Footer */
+      footer {
+        background: #fdfdfd;
+        border-top: 1px solid #e0e0e0;
+        padding: 4rem 0;
+        text-align: center;
+        margin-top: 4rem;
+        color: var(--text-secondary);
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .gallery-grid {
+          column-count: 2;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        .nav-links {
+          gap: 1rem;
+        }
+        .hero {
+          padding: 120px 1rem 20px;
+        }
+        .gallery-grid {
+          column-count: 1;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo">Myron Paes</a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="gallery.html" style="color: var(--accent)">Gallery</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero">
+      <h1>Image Gallery</h1>
+      <p class="subtitle">
+        A visual journey of my projects, leadership, and experiences.
+      </p>
+    </section>
+
+    <div class="content">
+      <section id="gallery" class="section">
+        <div class="gallery-grid" id="gallery-container"></div>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Myron Paes. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // 1. SCROLL ANIMATION
+      document.addEventListener("DOMContentLoaded", function () {
+        const revealElements = document.querySelectorAll(".reveal");
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { root: null, threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
+        );
+        revealElements.forEach((el) => {
+          revealObserver.observe(el);
+        });
+
+        // 2. DYNAMIC GALLERY WITH CAPTIONS
+        const imgFolder = "pics/";
+        const galleryData = [
+          {
+            file: "pic1.jpg",
+            text: "Winning 3rd prize with Tapyoca at UPitch NJ 2025",
+          },
+          {
+            file: "pic2.jpeg",
+            text: "Presenting at NJIT's Spring 2024 Honors Interdisciplinary Research Forum",
+          },
+          {
+            file: "pic3.jpeg",
+            text: "Exhibiting Sensory Stress at Cherokee High School's Project Lead the Way CAPSTONE conference",
+          },
+          {
+            file: "pic4.jpeg",
+            text: "My 2024 research on Standardized Testing Results and Primary School Expenditure",
+          },
+          { file: "pic5.jpeg", text: "Speaking at my Eagle Scout Ceremony" },
+          {
+            file: "pic6.jpeg",
+            text: "Moving into NJIT with my brother Keith (pictured right)",
+          },
+          {
+            file: "pic7.jpg",
+            text: "Displaying menstrual care startup Crimson Care at NJIT's Fall 2024 Honors Interdisciplinary Research Forum",
+          },
+        ];
+
+        const galleryContainer = document.getElementById("gallery-container");
+
+        galleryData.forEach((data, index) => {
+          // Create the card div
+          const item = document.createElement("div");
+          item.className = "gallery-item reveal";
+          item.style.transitionDelay = index * 0.1 + "s";
+
+          // Create the image element
+          const img = document.createElement("img");
+          img.src = imgFolder + data.file;
+          img.className = "gallery-img";
+          img.alt = data.text;
+
+          // Create the caption overlay
+          const caption = document.createElement("div");
+          caption.className = "caption-overlay";
+
+          const captionText = document.createElement("p");
+          captionText.className = "caption-text";
+          captionText.innerText = data.text;
+
+          caption.appendChild(captionText);
+
+          // *** SELF-HEALING LOGIC with Fallback ***
+          img.onerror = function () {
+            if (img.src.endsWith(".jpg")) {
+              img.src = img.src.replace(".jpg", ".jpeg");
+            } else {
+              item.style.display = "none";
+            }
+          };
+
+          // Assemble
+          item.appendChild(img);
+          item.appendChild(caption);
+          galleryContainer.appendChild(item);
+
+          revealObserver.observe(item);
+        });
+      });
+    </script>
+  </body>
+</html>
