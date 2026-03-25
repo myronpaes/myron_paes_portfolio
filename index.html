@@ -408,8 +408,8 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         opacity: 1;
-        min-height: 280px; /* NEW: Skeleton box height prevents popping layout shifts */
-        background-color: #f0f0f0; /* NEW: Pleasant gray background while loading */
+        aspect-ratio: 4 / 3; /* UPDATED: Skeletons properly scale & maintain shape */
+        background-color: #f0f0f0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -417,11 +417,12 @@
 
       .gt-main img {
         width: 100%;
-        height: auto;
+        height: 100%; /* UPDATED: Fill container */
+        object-fit: cover; /* UPDATED: Uniform crop without stretching */
         display: block;
         opacity: 0;
-        transition: opacity 0.8s ease; /* ENHANCED: Smoother, longer fade-in */
-        color: transparent; /* NEW: Hides ugly broken alt text before loading */
+        transition: opacity 0.8s ease;
+        color: transparent;
       }
 
       .gt-main img.image-loaded {
@@ -429,7 +430,7 @@
       }
 
       .gallery-img.image-loaded {
-        opacity: 1;
+        opacity: 1; /* Triggers when the image finishes downloading */
       }
 
       .gt-overlay {
@@ -464,6 +465,8 @@
         position: absolute;
         top: 50%;
         width: 70%;
+        aspect-ratio: 4 / 3; /* UPDATED: Matches main image ratio */
+        object-fit: cover; /* UPDATED: Uniform crop without stretching */
         border-radius: 12px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         z-index: 1;
@@ -513,7 +516,7 @@
       .typing-text {
         overflow: hidden;
         white-space: nowrap;
-        border-right: 3px solid var(--accent);
+        border-right: 3px solid var(--accent); /* The Cursor */
         width: 0;
         margin: 0 auto 1rem;
         font-weight: 800;
@@ -521,11 +524,12 @@
         max-width: fit-content;
       }
 
+      /* The animation triggers when the parent .reveal has the .active class */
       .reveal.active .typing-text {
         animation:
           typing 2.5s steps(22, end) forwards,
           blink-caret 0.75s step-end infinite;
-        animation-delay: 0.3s;
+        animation-delay: 0.3s; /* Brief pause before typing starts */
       }
 
       @keyframes typing {
@@ -601,7 +605,7 @@
 
       @media (max-width: 500px) {
         .skills-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr; /* Stack on mobile */
         }
       }
 
@@ -1032,18 +1036,22 @@
 
         // DYNAMIC GALLERY TEASER POPULATION
         const imgFolder = "pics/";
+
+        // Notice we no longer define galleryData here.
+        // It is automatically pulled from gallery-data.js!
+
+        // Grab the last 3 elements and reverse them so index 0 = newest
         const recentImages = galleryData.slice(-3).reverse();
+
         const teaserContainer = document.getElementById("teaser-container");
 
-        // UPDATED: Now handles .webp files gracefully!
+        // Helper function for self-healing images
         function applyErrorFallback(imgEl) {
           imgEl.onerror = function () {
-            if (imgEl.src.endsWith(".webp")) {
-              imgEl.src = imgEl.src.replace(".webp", ".jpg");
-            } else if (imgEl.src.endsWith(".jpg")) {
+            if (imgEl.src.endsWith(".jpg")) {
               imgEl.src = imgEl.src.replace(".jpg", ".jpeg");
             } else if (imgEl.src.endsWith(".jpeg")) {
-              imgEl.src = imgEl.src.replace(".jpeg", ".png");
+              imgEl.src = imgEl.src.replace(".jpeg", ".jpg");
             } else {
               imgEl.style.display = "none";
             }
@@ -1051,46 +1059,41 @@
         }
 
         if (recentImages.length >= 3) {
-          // 1. Build Left Side Image
+          // Build Left Side Image (2nd Newest)
           const imgLeft = document.createElement("img");
+          imgLeft.src = imgFolder + recentImages[1].file;
           imgLeft.className = "gt-side gt-left";
           imgLeft.alt = "Recent Image 1";
-          imgLeft.loading = "lazy";
-          imgLeft.decoding = "async";
+          imgLeft.loading = "lazy"; // NEW
+          imgLeft.decoding = "async"; // NEW
           applyErrorFallback(imgLeft);
-          // Set src LAST to avoid cached-race conditions
-          imgLeft.src = imgFolder + recentImages[1].file;
 
-          // 2. Build Right Side Image
+          // Build Right Side Image (3rd Newest)
           const imgRight = document.createElement("img");
+          imgRight.src = imgFolder + recentImages[2].file;
           imgRight.className = "gt-side gt-right";
           imgRight.alt = "Recent Image 2";
-          imgRight.loading = "lazy";
-          imgRight.decoding = "async";
+          imgRight.loading = "lazy"; // NEW
+          imgRight.decoding = "async"; // NEW
           applyErrorFallback(imgRight);
-          imgRight.src = imgFolder + recentImages[2].file;
 
-          // 3. Build Main Center Image
+          // Build Main Center Image (Newest)
           const divMain = document.createElement("div");
           divMain.className = "gt-main";
 
           const imgMain = document.createElement("img");
+          imgMain.src = imgFolder + recentImages[0].file;
           imgMain.alt = "Most Recent Gallery Addition";
-          imgMain.loading = "lazy";
-          imgMain.decoding = "async";
+          imgMain.loading = "lazy"; // NEW
+          imgMain.decoding = "async"; // NEW
 
-          // ENHANCED FIX: Force the browser to wait before applying the fade class
+          // NEW: Wait for the main image to download, then apply the fade-in class
           imgMain.onload = function () {
-            setTimeout(() => {
-              imgMain.classList.add("image-loaded");
-            }, 50); // 50ms is enough for the CSS DOM to register opacity:0
+            imgMain.classList.add("image-loaded");
           };
 
           applyErrorFallback(imgMain);
-          // Set src LAST so onload has time to attach!
-          imgMain.src = imgFolder + recentImages[0].file;
 
-          // Add the text overlay
           const divOverlay = document.createElement("div");
           divOverlay.className = "gt-overlay";
           const spanText = document.createElement("span");
