@@ -407,12 +407,29 @@
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        opacity: 1;
+        min-height: 280px; /* NEW: Skeleton box height prevents popping layout shifts */
+        background-color: #f0f0f0; /* NEW: Pleasant gray background while loading */
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .gt-main img {
         width: 100%;
         height: auto;
         display: block;
+        opacity: 0;
+        transition: opacity 0.8s ease; /* ENHANCED: Smoother, longer fade-in */
+        color: transparent; /* NEW: Hides ugly broken alt text before loading */
+      }
+
+      .gt-main img.image-loaded {
+        opacity: 1;
+      }
+
+      .gallery-img.image-loaded {
+        opacity: 1;
       }
 
       .gt-overlay {
@@ -428,20 +445,19 @@
         transition: background 0.4s ease;
       }
 
-      /* UPDATED: Text is now enclosed in a solid box */
       .gt-text {
         color: #fff;
-        background: rgba(26, 26, 26, 0.9); /* Dark box background */
+        background: rgba(26, 26, 26, 0.9);
         padding: 0.8rem 1.5rem;
-        border-radius: 8px; /* Rounded box corners */
+        border-radius: 8px;
         font-size: 1.15rem;
         font-weight: 700;
         opacity: 0;
         transform: translateY(20px);
         transition: all 0.4s ease;
         text-align: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Pop off the image */
-        border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle inner border */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.15);
       }
 
       .gt-side {
@@ -453,6 +469,10 @@
         z-index: 1;
         opacity: 0;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .gt-side.image-loaded {
+        opacity: 1;
       }
 
       .gt-left {
@@ -470,12 +490,7 @@
         transform: scale(1.05);
       }
       .gallery-teaser-container:hover .gt-overlay {
-        background: rgba(
-          0,
-          0,
-          0,
-          0.5
-        ); /* Slightly lighter overall darkening now that text has a box */
+        background: rgba(0, 0, 0, 0.5);
       }
       .gallery-teaser-container:hover .gt-text {
         opacity: 1;
@@ -498,7 +513,7 @@
       .typing-text {
         overflow: hidden;
         white-space: nowrap;
-        border-right: 3px solid var(--accent); /* The Cursor */
+        border-right: 3px solid var(--accent);
         width: 0;
         margin: 0 auto 1rem;
         font-weight: 800;
@@ -506,12 +521,11 @@
         max-width: fit-content;
       }
 
-      /* The animation triggers when the parent .reveal has the .active class */
       .reveal.active .typing-text {
         animation:
           typing 2.5s steps(22, end) forwards,
           blink-caret 0.75s step-end infinite;
-        animation-delay: 0.3s; /* Brief pause before typing starts */
+        animation-delay: 0.3s;
       }
 
       @keyframes typing {
@@ -587,7 +601,7 @@
 
       @media (max-width: 500px) {
         .skills-grid {
-          grid-template-columns: 1fr; /* Stack on mobile */
+          grid-template-columns: 1fr;
         }
       }
 
@@ -995,6 +1009,8 @@
       <p>&copy; 2026 Myron Paes. All rights reserved.</p>
     </footer>
 
+    <script src="gallery-data.js"></script>
+
     <script>
       // SCROLL ANIMATION
       document.addEventListener("DOMContentLoaded", function () {
@@ -1015,50 +1031,19 @@
         });
 
         // DYNAMIC GALLERY TEASER POPULATION
-        // ---------------------------------------------------------
-        // ADD NEW PHOTOS HERE: The teaser will automatically pull the LAST 3 items.
-        // ---------------------------------------------------------
         const imgFolder = "pics/";
-        const galleryData = [
-          {
-            file: "pic1.jpg",
-            text: "Winning 3rd prize with Tapyoca at UPitch NJ 2025",
-          },
-          {
-            file: "pic2.jpeg",
-            text: "Presenting at NJIT's Spring 2024 Honors Interdisciplinary Research Forum",
-          },
-          {
-            file: "pic3.jpeg",
-            text: "Exhibiting Sensory Stress at Cherokee High School's Project Lead the Way CAPSTONE conference",
-          },
-          {
-            file: "pic4.jpeg",
-            text: "My 2024 research on Standardized Testing Results and Primary School Expenditure",
-          },
-          { file: "pic5.jpeg", text: "Speaking at my Eagle Scout Ceremony" },
-          {
-            file: "pic6.jpeg",
-            text: "Moving into NJIT with my brother Keith (pictured right)",
-          },
-          {
-            file: "pic7.jpg",
-            text: "Displaying menstrual care startup Crimson Care at NJIT's Fall 2024 Honors Interdisciplinary Research Forum",
-          },
-        ];
-
-        // Grab the last 3 elements and reverse them so index 0 = newest, 1 = 2nd newest, 2 = 3rd newest
         const recentImages = galleryData.slice(-3).reverse();
-
         const teaserContainer = document.getElementById("teaser-container");
 
-        // Helper function for self-healing images
+        // UPDATED: Now handles .webp files gracefully!
         function applyErrorFallback(imgEl) {
           imgEl.onerror = function () {
-            if (imgEl.src.endsWith(".jpg")) {
+            if (imgEl.src.endsWith(".webp")) {
+              imgEl.src = imgEl.src.replace(".webp", ".jpg");
+            } else if (imgEl.src.endsWith(".jpg")) {
               imgEl.src = imgEl.src.replace(".jpg", ".jpeg");
             } else if (imgEl.src.endsWith(".jpeg")) {
-              imgEl.src = imgEl.src.replace(".jpeg", ".jpg");
+              imgEl.src = imgEl.src.replace(".jpeg", ".png");
             } else {
               imgEl.style.display = "none";
             }
@@ -1066,29 +1051,46 @@
         }
 
         if (recentImages.length >= 3) {
-          // Build Left Side Image (2nd Newest)
+          // 1. Build Left Side Image
           const imgLeft = document.createElement("img");
-          imgLeft.src = imgFolder + recentImages[1].file;
           imgLeft.className = "gt-side gt-left";
           imgLeft.alt = "Recent Image 1";
+          imgLeft.loading = "lazy";
+          imgLeft.decoding = "async";
           applyErrorFallback(imgLeft);
+          // Set src LAST to avoid cached-race conditions
+          imgLeft.src = imgFolder + recentImages[1].file;
 
-          // Build Right Side Image (3rd Newest)
+          // 2. Build Right Side Image
           const imgRight = document.createElement("img");
-          imgRight.src = imgFolder + recentImages[2].file;
           imgRight.className = "gt-side gt-right";
           imgRight.alt = "Recent Image 2";
+          imgRight.loading = "lazy";
+          imgRight.decoding = "async";
           applyErrorFallback(imgRight);
+          imgRight.src = imgFolder + recentImages[2].file;
 
-          // Build Main Center Image (Newest)
+          // 3. Build Main Center Image
           const divMain = document.createElement("div");
           divMain.className = "gt-main";
 
           const imgMain = document.createElement("img");
-          imgMain.src = imgFolder + recentImages[0].file;
           imgMain.alt = "Most Recent Gallery Addition";
-          applyErrorFallback(imgMain);
+          imgMain.loading = "lazy";
+          imgMain.decoding = "async";
 
+          // ENHANCED FIX: Force the browser to wait before applying the fade class
+          imgMain.onload = function () {
+            setTimeout(() => {
+              imgMain.classList.add("image-loaded");
+            }, 50); // 50ms is enough for the CSS DOM to register opacity:0
+          };
+
+          applyErrorFallback(imgMain);
+          // Set src LAST so onload has time to attach!
+          imgMain.src = imgFolder + recentImages[0].file;
+
+          // Add the text overlay
           const divOverlay = document.createElement("div");
           divOverlay.className = "gt-overlay";
           const spanText = document.createElement("span");

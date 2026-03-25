@@ -274,8 +274,10 @@
       <p>&copy; 2026 Myron Paes. All rights reserved.</p>
     </footer>
 
+    <script src="gallery-data.js"></script>
+
     <script>
-      // 1. SCROLL ANIMATION
+      // SCROLL ANIMATION
       document.addEventListener("DOMContentLoaded", function () {
         const revealElements = document.querySelectorAll(".reveal");
         const revealObserver = new IntersectionObserver(
@@ -293,76 +295,59 @@
           revealObserver.observe(el);
         });
 
-        // 2. DYNAMIC GALLERY WITH CAPTIONS
+        // DYNAMIC GALLERY POPULATION
         const imgFolder = "pics/";
-        const galleryData = [
-          {
-            file: "pic1.jpg",
-            text: "Winning 3rd prize with Tapyoca at UPitch NJ 2025",
-          },
-          {
-            file: "pic2.jpeg",
-            text: "Presenting at NJIT's Spring 2024 Honors Interdisciplinary Research Forum",
-          },
-          {
-            file: "pic3.jpeg",
-            text: "Exhibiting Sensory Stress at Cherokee High School's Project Lead the Way CAPSTONE conference",
-          },
-          {
-            file: "pic4.jpeg",
-            text: "My 2024 research on Standardized Testing Results and Primary School Expenditure",
-          },
-          { file: "pic5.jpeg", text: "Speaking at my Eagle Scout Ceremony" },
-          {
-            file: "pic6.jpeg",
-            text: "Moving into NJIT with my brother Keith (pictured right)",
-          },
-          {
-            file: "pic7.jpg",
-            text: "Displaying menstrual care startup Crimson Care at NJIT's Fall 2024 Honors Interdisciplinary Research Forum",
-          },
-        ];
-
         const galleryContainer = document.getElementById("gallery-container");
 
-        galleryData.forEach((data, index) => {
-          // Create the card div
-          const item = document.createElement("div");
-          item.className = "gallery-item reveal";
-          item.style.transitionDelay = index * 0.1 + "s";
+        // THE SILVER BULLET:
+        // This completely empties the HTML container before building the gallery.
+        // If your script accidentally fires twice, this prevents any duplicates from stacking!
+        galleryContainer.innerHTML = "";
 
-          // Create the image element
-          const img = document.createElement("img");
-          img.src = imgFolder + data.file;
-          img.className = "gallery-img";
-          img.alt = data.text;
+        // galleryData is pulled seamlessly from gallery-data.js
+        galleryData
+          .slice()
+          .reverse()
+          .forEach((data, index) => {
+            const item = document.createElement("div");
+            item.className = "gallery-item reveal";
 
-          // Create the caption overlay
-          const caption = document.createElement("div");
-          caption.className = "caption-overlay";
+            const img = document.createElement("img");
+            img.src = imgFolder + data.file;
+            img.className = "gallery-img";
+            img.alt = data.text;
 
-          const captionText = document.createElement("p");
-          captionText.className = "caption-text";
-          captionText.innerText = data.text;
+            // Lazy Loading optimizations
+            img.loading = "lazy";
+            img.decoding = "async";
 
-          caption.appendChild(captionText);
+            const caption = document.createElement("div");
+            caption.className = "caption-overlay";
 
-          // *** SELF-HEALING LOGIC with Fallback ***
-          img.onerror = function () {
-            if (img.src.endsWith(".jpg")) {
-              img.src = img.src.replace(".jpg", ".jpeg");
-            } else {
-              item.style.display = "none";
-            }
-          };
+            const captionText = document.createElement("p");
+            captionText.className = "caption-text";
+            captionText.innerText = data.text;
 
-          // Assemble
-          item.appendChild(img);
-          item.appendChild(caption);
-          galleryContainer.appendChild(item);
+            caption.appendChild(captionText);
 
-          revealObserver.observe(item);
-        });
+            // UPDATED: WebP Self-Healing Logic
+            // If the .webp file is missing, it will try to find a .jpg backup.
+            img.onerror = function () {
+              if (img.src.endsWith(".webp")) {
+                img.src = img.src.replace(".webp", ".jpg");
+              } else if (img.src.endsWith(".jpg")) {
+                img.src = img.src.replace(".jpg", ".jpeg");
+              } else {
+                item.style.display = "none";
+              }
+            };
+
+            item.appendChild(img);
+            item.appendChild(caption);
+            galleryContainer.appendChild(item);
+
+            revealObserver.observe(item);
+          });
       });
     </script>
   </body>
