@@ -280,7 +280,7 @@
         font-size: 1.05rem;
       }
 
-      /* Timeline */
+      /* --- TIMELINE WITH LOGOS --- */
       .timeline {
         position: relative;
         padding-left: 2rem;
@@ -301,20 +301,24 @@
         margin-bottom: 2.5rem;
       }
 
-      .timeline-item::before {
-        content: "";
+      /* UPDATED: Replaced the pseudo-element dot with styling for an actual image */
+      .timeline-logo {
         position: absolute;
-        left: -2.35rem;
-        top: 0.4rem;
-        width: 10px;
-        height: 10px;
+        left: -3.15rem; /* Centered over the line */
+        top: 0;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
-        background: var(--accent);
+        background: #fff; /* White background for transparent logos */
+        border: 2px solid var(--accent); /* Optional: keeps the green accent theme */
+        object-fit: contain;
+        padding: 2px;
         transition: transform 0.3s ease;
+        z-index: 2;
       }
 
-      .timeline-item:hover::before {
-        transform: scale(1.4);
+      .timeline-item:hover .timeline-logo {
+        transform: scale(1.2);
       }
 
       .timeline-title {
@@ -408,7 +412,7 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         opacity: 1;
-        aspect-ratio: 4 / 3; /* UPDATED: Skeletons properly scale & maintain shape */
+        aspect-ratio: 4 / 3;
         background-color: #f0f0f0;
         display: flex;
         align-items: center;
@@ -417,8 +421,8 @@
 
       .gt-main img {
         width: 100%;
-        height: 100%; /* UPDATED: Fill container */
-        object-fit: cover; /* UPDATED: Uniform crop without stretching */
+        height: 100%;
+        object-fit: cover;
         display: block;
         opacity: 0;
         transition: opacity 0.8s ease;
@@ -430,7 +434,7 @@
       }
 
       .gallery-img.image-loaded {
-        opacity: 1; /* Triggers when the image finishes downloading */
+        opacity: 1;
       }
 
       .gt-overlay {
@@ -465,8 +469,8 @@
         position: absolute;
         top: 50%;
         width: 70%;
-        aspect-ratio: 4 / 3; /* UPDATED: Matches main image ratio */
-        object-fit: cover; /* UPDATED: Uniform crop without stretching */
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
         border-radius: 12px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         z-index: 1;
@@ -516,7 +520,7 @@
       .typing-text {
         overflow: hidden;
         white-space: nowrap;
-        border-right: 3px solid var(--accent); /* The Cursor */
+        border-right: 3px solid var(--accent);
         width: 0;
         margin: 0 auto 1rem;
         font-weight: 800;
@@ -524,12 +528,11 @@
         max-width: fit-content;
       }
 
-      /* The animation triggers when the parent .reveal has the .active class */
       .reveal.active .typing-text {
         animation:
           typing 2.5s steps(22, end) forwards,
           blink-caret 0.75s step-end infinite;
-        animation-delay: 0.3s; /* Brief pause before typing starts */
+        animation-delay: 0.3s;
       }
 
       @keyframes typing {
@@ -605,7 +608,7 @@
 
       @media (max-width: 500px) {
         .skills-grid {
-          grid-template-columns: 1fr; /* Stack on mobile */
+          grid-template-columns: 1fr;
         }
       }
 
@@ -727,10 +730,9 @@
           >
             Hi! My name is Myron Paes, and I am a sophomore undergraduate
             student studying Data Science and Business at New Jersey Institute
-            of Technology. Presently, I'm leading product development at Tapyoca
-            Music in Newark, New Jersey, where I'm managing the development of
-            innovative financial tracking software solutions for independent
-            music artists.
+            of Technology. Presently, I am leading product development at
+            Tapyoca Music, managing the development of innovative financial
+            tracking software solutions for independent music artists.
           </p>
           <p
             style="
@@ -817,6 +819,28 @@
         <h2 class="section-title reveal">03 — Professional Experience</h2>
         <div class="timeline">
           <div class="timeline-item reveal">
+            <img
+              src="pics/logos/fivebelow.webp"
+              alt="Five Below Logo"
+              class="timeline-logo"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'block';
+              "
+            />
+            <div
+              style="
+                display: none;
+                position: absolute;
+                left: -2.35rem;
+                top: 0.4rem;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--accent);
+              "
+            ></div>
+
             <div class="timeline-title">
               Digital Product Manager at Five Below
             </div>
@@ -828,7 +852,30 @@
               the Five Below app, impacting over 2 million application users!
             </div>
           </div>
+
           <div class="timeline-item reveal">
+            <img
+              src="pics/logos/tapyoca.webp"
+              alt="Tapyoca Music Logo"
+              class="timeline-logo"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'block';
+              "
+            />
+            <div
+              style="
+                display: none;
+                position: absolute;
+                left: -2.35rem;
+                top: 0.4rem;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--accent);
+              "
+            ></div>
+
             <div class="timeline-title">
               Lead Product Marketing Manager at Tapyoca Music
             </div>
@@ -843,7 +890,30 @@
               framework, augmenting work efficiency for a startup team of 25.
             </div>
           </div>
+
           <div class="timeline-item reveal">
+            <img
+              src="pics/logos/virtua.webp"
+              alt="Virtua Health Logo"
+              class="timeline-logo"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'block';
+              "
+            />
+            <div
+              style="
+                display: none;
+                position: absolute;
+                left: -2.35rem;
+                top: 0.4rem;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--accent);
+              "
+            ></div>
+
             <div class="timeline-title">IT Intern at Virtua Health</div>
             <div class="timeline-meta">May 2025 - Sept 2025 · Marlton, NJ</div>
             <div class="timeline-description">
@@ -853,7 +923,30 @@
               resolving ID creation bottleneck.
             </div>
           </div>
+
           <div class="timeline-item reveal">
+            <img
+              src="pics/logos/njcourts.webp"
+              alt="NJ Courts Logo"
+              class="timeline-logo"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'block';
+              "
+            />
+            <div
+              style="
+                display: none;
+                position: absolute;
+                left: -2.35rem;
+                top: 0.4rem;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--accent);
+              "
+            ></div>
+
             <div class="timeline-title">Operations Intern at NJ Courts</div>
             <div class="timeline-meta">May 2025 - Sept 2025 · Marlton, NJ</div>
             <div class="timeline-description">
@@ -942,7 +1035,7 @@
         <div class="timeline">
           <div class="timeline-item reveal">
             <div class="timeline-title">
-              Secretary & Peer Entrepreneur-In-Residence
+              President & Peer Entrepreneur-In-Residence
             </div>
             <div class="timeline-meta">
               Apr 2025 - Present · Entrepreneurs Society, NJIT
@@ -1049,21 +1142,18 @@
         // DYNAMIC GALLERY TEASER POPULATION
         const imgFolder = "pics/";
 
-        // Notice we no longer define galleryData here.
-        // It is automatically pulled from gallery-data.js!
-
-        // Grab the last 3 elements and reverse them so index 0 = newest
         const recentImages = galleryData.slice(-3).reverse();
 
         const teaserContainer = document.getElementById("teaser-container");
 
-        // Helper function for self-healing images
         function applyErrorFallback(imgEl) {
           imgEl.onerror = function () {
-            if (imgEl.src.endsWith(".jpg")) {
+            if (imgEl.src.endsWith(".webp")) {
+              imgEl.src = imgEl.src.replace(".webp", ".jpg");
+            } else if (imgEl.src.endsWith(".jpg")) {
               imgEl.src = imgEl.src.replace(".jpg", ".jpeg");
             } else if (imgEl.src.endsWith(".jpeg")) {
-              imgEl.src = imgEl.src.replace(".jpeg", ".jpg");
+              imgEl.src = imgEl.src.replace(".jpeg", ".png");
             } else {
               imgEl.style.display = "none";
             }
@@ -1073,38 +1163,39 @@
         if (recentImages.length >= 3) {
           // Build Left Side Image (2nd Newest)
           const imgLeft = document.createElement("img");
-          imgLeft.src = imgFolder + recentImages[1].file;
           imgLeft.className = "gt-side gt-left";
           imgLeft.alt = "Recent Image 1";
-          imgLeft.loading = "lazy"; // NEW
-          imgLeft.decoding = "async"; // NEW
+          imgLeft.loading = "lazy";
+          imgLeft.decoding = "async";
           applyErrorFallback(imgLeft);
+          imgLeft.src = imgFolder + recentImages[1].file;
 
           // Build Right Side Image (3rd Newest)
           const imgRight = document.createElement("img");
-          imgRight.src = imgFolder + recentImages[2].file;
           imgRight.className = "gt-side gt-right";
           imgRight.alt = "Recent Image 2";
-          imgRight.loading = "lazy"; // NEW
-          imgRight.decoding = "async"; // NEW
+          imgRight.loading = "lazy";
+          imgRight.decoding = "async";
           applyErrorFallback(imgRight);
+          imgRight.src = imgFolder + recentImages[2].file;
 
           // Build Main Center Image (Newest)
           const divMain = document.createElement("div");
           divMain.className = "gt-main";
 
           const imgMain = document.createElement("img");
-          imgMain.src = imgFolder + recentImages[0].file;
           imgMain.alt = "Most Recent Gallery Addition";
-          imgMain.loading = "lazy"; // NEW
-          imgMain.decoding = "async"; // NEW
+          imgMain.loading = "lazy";
+          imgMain.decoding = "async";
 
-          // NEW: Wait for the main image to download, then apply the fade-in class
           imgMain.onload = function () {
-            imgMain.classList.add("image-loaded");
+            setTimeout(() => {
+              imgMain.classList.add("image-loaded");
+            }, 50);
           };
 
           applyErrorFallback(imgMain);
+          imgMain.src = imgFolder + recentImages[0].file;
 
           const divOverlay = document.createElement("div");
           divOverlay.className = "gt-overlay";
@@ -1116,7 +1207,6 @@
           divMain.appendChild(imgMain);
           divMain.appendChild(divOverlay);
 
-          // Append all to container
           teaserContainer.appendChild(imgLeft);
           teaserContainer.appendChild(imgRight);
           teaserContainer.appendChild(divMain);
