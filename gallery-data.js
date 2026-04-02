@@ -1,34 +1,42 @@
 const galleryData = [
   {
-    file: "pic1.webp",
+    file: "Competitions/pic1.webp",
+    filter: "Competitions",
     text: "Winning 3rd prize with Tapyoca at UPitch NJ 2025",
   },
   {
-    file: "pic2.webp",
+    file: "Research/pic2.webp",
+    filter: "Research",
     text: "Presenting at NJIT's Spring 2024 Honors Interdisciplinary Research Forum",
   },
   {
-    file: "pic3.webp",
+    file: "Research/pic3.webp",
+    filter: "Research",
     text: "Exhibiting Sensory Stress at Cherokee High School's Project Lead the Way CAPSTONE conference",
   },
   {
-    file: "pic4.webp",
+    file: "Research/pic4.webp",
+    filter: "Research",
     text: "My 2024 research on Standardized Testing Results and Primary School Expenditure",
   },
   { 
-    file: "pic5.webp", 
+    file: "Miscellaneous/pic5.webp", 
+    filter: "Miscellaneous",
     text: "Speaking at my Eagle Scout Ceremony" 
   },
   {
-    file: "pic6.webp",
+    file: "Miscellaneous/pic6.webp",
+    filter: "Miscellaneous",
     text: "Moving into NJIT with my brother Keith (pictured right)",
   },
   {
-    file: "pic7.webp",
+    file: "Research/pic7.webp",
+    filter: "Research",
     text: "Displaying menstrual care startup Crimson Care at NJIT's Fall 2024 Honors Interdisciplinary Research Forum",
   },
   {
-    file: "pic8.webp",
+    file: "Hackathons/pic8.webp",
+    filter: "Hackathons",
     text: 'Won 1st prize at Rowan University\'s ProfHacks 2026 for Frontier Scout, an asteroid "bounty hunter" project',
-  },
+  }
 ];

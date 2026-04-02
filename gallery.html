@@ -108,7 +108,7 @@
 
       /* Content Section */
       .content {
-        max-width: 1100px; /* Slightly wider for the masonry grid */
+        max-width: 1100px;
         margin: 0 auto;
         padding: 2rem;
       }
@@ -118,11 +118,45 @@
         padding-bottom: 2rem;
       }
 
+      /* --- NEW: GALLERY FILTER FOLDERS --- */
+      .filter-menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+      }
+
+      .filter-btn {
+        padding: 0.6rem 1.5rem;
+        border: 2px solid var(--text-main);
+        background: transparent;
+        color: var(--text-main);
+        border-radius: 50px;
+        font-family: var(--font-main);
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--text-main);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Class applied via JS to hide non-matching items */
+      .gallery-item.hide {
+        display: none;
+      }
+
       /* --- GALLERY STYLES --- */
       .gallery-grid {
         column-count: 3;
         column-gap: 1.5rem;
-        margin-top: 2rem;
       }
 
       .gallery-item {
@@ -141,7 +175,14 @@
         width: 100%;
         height: auto;
         display: block;
-        transition: transform 0.5s ease;
+        opacity: 0; /* Prevents pop-in */
+        transition:
+          opacity 0.6s ease,
+          transform 0.5s ease;
+      }
+
+      .gallery-img.image-loaded {
+        opacity: 1; /* Smoothly fades in */
       }
 
       .caption-overlay {
@@ -213,6 +254,13 @@
         .gallery-grid {
           column-count: 1;
         }
+        .filter-menu {
+          gap: 0.5rem;
+        }
+        .filter-btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.85rem;
+        }
       }
 
       /* Animations */
@@ -258,13 +306,25 @@
     </nav>
 
     <section class="hero">
-      <h1>Image Gallery</h1>
-      <p class="subtitle">
+      <h1 class="reveal">Image Gallery</h1>
+      <p class="subtitle reveal delay-100">
         A visual journey of my projects, leadership, and experiences.
       </p>
     </section>
 
     <div class="content">
+      <div class="filter-menu reveal delay-200">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Hackathons">Hackathons</button>
+        <button class="filter-btn" data-filter="Research">Research</button>
+        <button class="filter-btn" data-filter="Competitions">
+          Competitions
+        </button>
+        <button class="filter-btn" data-filter="Miscellaneous">
+          Miscellaneous
+        </button>
+      </div>
+
       <section id="gallery" class="section">
         <div class="gallery-grid" id="gallery-container"></div>
       </section>
@@ -299,10 +359,7 @@
         const imgFolder = "pics/";
         const galleryContainer = document.getElementById("gallery-container");
 
-        // THE SILVER BULLET:
-        // This completely empties the HTML container before building the gallery.
-        // If your script accidentally fires twice, this prevents any duplicates from stacking!
-        galleryContainer.innerHTML = "";
+        galleryContainer.innerHTML = ""; // Prevents duplicates
 
         // galleryData is pulled seamlessly from gallery-data.js
         galleryData
@@ -312,14 +369,20 @@
             const item = document.createElement("div");
             item.className = "gallery-item reveal";
 
+            // UPDATED: Now uses 'data.filter' from gallery-data.js
+            item.setAttribute("data-filter", data.filter || "Miscellaneous");
+
             const img = document.createElement("img");
             img.src = imgFolder + data.file;
             img.className = "gallery-img";
             img.alt = data.text;
 
-            // Lazy Loading optimizations
+            // Lazy Loading & smooth fade-in
             img.loading = "lazy";
             img.decoding = "async";
+            img.onload = function () {
+              img.classList.add("image-loaded");
+            };
 
             const caption = document.createElement("div");
             caption.className = "caption-overlay";
@@ -330,13 +393,14 @@
 
             caption.appendChild(captionText);
 
-            // UPDATED: WebP Self-Healing Logic
-            // If the .webp file is missing, it will try to find a .jpg backup.
+            // UPDATED: WebP Self-Healing Logic (now cycles through png too)
             img.onerror = function () {
               if (img.src.endsWith(".webp")) {
                 img.src = img.src.replace(".webp", ".jpg");
               } else if (img.src.endsWith(".jpg")) {
                 img.src = img.src.replace(".jpg", ".jpeg");
+              } else if (img.src.endsWith(".jpeg")) {
+                img.src = img.src.replace(".jpeg", ".png");
               } else {
                 item.style.display = "none";
               }
@@ -348,6 +412,32 @@
 
             revealObserver.observe(item);
           });
+
+        // --- FILTER LOGIC ---
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // Remove active styling from all buttons, add to clicked button
+            filterBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const filterValue = btn.getAttribute("data-filter");
+
+            // Hide or show items based on category
+            galleryItems.forEach((item) => {
+              if (
+                filterValue === "all" ||
+                item.getAttribute("data-filter") === filterValue // UPDATED: Checks data-filter
+              ) {
+                item.classList.remove("hide");
+              } else {
+                item.classList.add("hide");
+              }
+            });
+          });
+        });
       });
     </script>
   </body>
