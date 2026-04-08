@@ -8,20 +8,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
       rel="stylesheet"
     />
 
     <style>
       /* --- VARIABLES & RESET --- */
       :root {
-        --font-main: "Merriweather", Georgia, "Times New Roman", serif;
-        --accent: #558b2f; /* Olive Green */
-        --text-main: #1a1a1a;
-        --text-secondary: #555;
+        --font-main: "Inter", sans-serif;
+        --font-heading: "Merriweather", Georgia, serif;
+        --accent: #558b2f;
+        --bg-main: #fcfcfc;
+        --text-main: #2d3748;
+        --text-secondary: #4a5568;
       }
 
-      /* Smooth Scroll & Fixed Header Offset */
       html {
         scroll-behavior: smooth;
         scroll-padding-top: 100px;
@@ -37,9 +38,20 @@
         font-family: var(--font-main);
         line-height: 1.8;
         color: var(--text-main);
-        background: #fff;
+        background: var(--bg-main);
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      .logo,
+      .section-title,
+      .page-title,
+      .typing-text {
+        font-family: var(--font-heading);
+        color: #1a202c;
       }
 
       /* Navigation */
@@ -47,21 +59,20 @@
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(240, 240, 240, 0.95); /* Light Gray */
+        background: rgba(252, 252, 252, 0.95);
         backdrop-filter: blur(10px);
         padding: 1rem 2rem;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         z-index: 1000;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        animation: fadeDown 0.8s ease-out forwards;
+        animation: fadeDown 0.5s ease-out forwards;
       }
 
       .logo {
         font-size: 1.3rem;
         font-weight: 900;
-        color: #000;
         text-decoration: none;
         letter-spacing: -0.5px;
       }
@@ -75,79 +86,144 @@
       .nav-links a {
         color: var(--text-secondary);
         text-decoration: none;
-        font-size: 1rem;
-        font-weight: 400;
-        transition: color 0.3s;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s;
       }
 
       .nav-links a:hover {
         color: var(--accent);
       }
 
-      /* Hero Section */
+      /* Two-Column Hero Section */
       .hero {
-        padding: 120px 2rem 60px;
-        max-width: 900px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        gap: 4rem;
+        padding: 160px 2rem 80px;
+        max-width: 1050px;
         margin: 0 auto;
-        text-align: center;
       }
 
+      .hero-content {
+        flex: 1;
+      }
+
+      .hero-image-container {
+        flex-shrink: 0;
+      }
+
+      /* --- NEW TYPOGRAPHY ANIMATION --- */
+      .name-anim {
+        opacity: 0;
+        /* Sped up to 1.5 seconds, perfectly stationary */
+        animation: flashCycle 1.5s ease-in forwards;
+        animation-delay: 0.1s;
+      }
+
+      /* Rapid-fire font cycling in place */
+      @keyframes flashCycle {
+        0% {
+          opacity: 0;
+          font-family: "Courier New", monospace;
+        }
+        7% {
+          opacity: 1;
+          font-family: "Impact", sans-serif;
+        }
+        14% {
+          font-family: "Brush Script MT", cursive;
+        }
+        21% {
+          font-family: "Arial Black", sans-serif;
+        }
+        28% {
+          font-family: "Times New Roman", serif;
+        }
+        35% {
+          font-family: "Trebuchet MS", sans-serif;
+        }
+        42% {
+          font-family: "Lucida Console", monospace;
+        }
+        49% {
+          font-family: "Georgia", serif;
+        }
+        56% {
+          font-family: "Verdana", sans-serif;
+        }
+        63% {
+          font-family: "Comic Sans MS", cursive;
+        }
+        70% {
+          font-family: "Palatino", serif;
+        }
+        77% {
+          font-family: "Tahoma", sans-serif;
+        }
+        84% {
+          font-family: "Garamond", serif;
+        }
+        92% {
+          font-family: "Courier New", monospace;
+        }
+        100% {
+          opacity: 1;
+          font-family: var(--font-heading);
+        }
+      }
+
+      /* Standard fade-up for other hero elements */
       .hero-anim {
         opacity: 0;
         transform: translateY(20px);
-        animation: fadeUp 0.8s ease-out forwards;
+        animation: fadeUp 0.6s ease-out forwards;
       }
 
-      .hero-anim:nth-child(1) {
+      .hero-anim:nth-child(2) {
         animation-delay: 0.2s;
       }
-      .hero-anim:nth-child(2) {
+      .hero-anim:nth-child(3) {
         animation-delay: 0.3s;
       }
-      .hero-anim:nth-child(3) {
+      .hero-anim:nth-child(4) {
         animation-delay: 0.4s;
       }
-      .hero-anim:nth-child(4) {
+      .hero-anim:nth-child(5) {
         animation-delay: 0.5s;
       }
-      .hero-anim:nth-child(5) {
-        animation-delay: 0.6s;
-      }
       .hero-anim:nth-child(6) {
-        animation-delay: 0.7s;
-      }
-      .hero-anim:nth-child(7) {
-        animation-delay: 0.8s;
+        animation-delay: 0.6s;
       }
 
       .profile-img {
-        width: 180px;
-        height: 180px;
+        width: 220px;
+        height: 220px;
         border-radius: 50%;
         object-fit: cover;
-        margin: 0 auto 2rem;
         display: block;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 40px rgba(85, 139, 47, 0.2);
         background: linear-gradient(135deg, #558b2f 0%, #33691e 100%);
       }
 
       h1 {
-        font-size: 3rem;
+        font-size: 3.2rem;
         margin-bottom: 0.5rem;
         font-weight: 900;
         letter-spacing: -1px;
       }
 
       .subtitle {
-        font-size: 1.4rem;
-        color: var(--text-secondary);
+        font-size: 1.25rem;
+        color: var(--accent);
         margin-bottom: 1.5rem;
-        font-weight: 300;
-        font-style: italic;
+        font-weight: 600;
       }
 
       .bio {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         color: var(--text-secondary);
         line-height: 1.8;
         margin-bottom: 2rem;
@@ -156,52 +232,52 @@
       .location {
         color: #888;
         margin-bottom: 2rem;
-        font-weight: 400;
-        font-style: italic;
+        font-weight: 500;
       }
 
-      /* Tags */
+      /* Sleek Pill Tags */
       .tags {
         display: flex;
         flex-wrap: wrap;
         gap: 0.8rem;
-        justify-content: center;
+        justify-content: flex-start;
         margin-bottom: 2rem;
       }
 
       .tag {
-        background: #f0f0f0;
-        padding: 0.5rem 1rem;
+        background: rgba(85, 139, 47, 0.1);
+        padding: 0.4rem 1.2rem;
         border-radius: 50px;
-        font-size: 0.9rem;
-        color: var(--text-main);
+        font-size: 0.85rem;
+        color: var(--accent);
         text-decoration: none;
-        transition: all 0.3s;
-        font-weight: 400;
+        transition: all 0.2s ease-out;
+        font-weight: 600;
       }
 
       .tag:hover {
         background: var(--accent);
         color: white;
-        transform: scale(1.05);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(85, 139, 47, 0.2);
       }
 
       /* CTA Buttons */
       .cta-buttons {
         display: flex;
         gap: 1rem;
-        justify-content: center;
+        justify-content: flex-start;
         flex-wrap: wrap;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
       }
 
       .btn {
         padding: 0.8rem 1.8rem;
-        border-radius: 4px;
+        border-radius: 8px;
         text-decoration: none;
-        font-weight: 700;
-        transition: all 0.3s;
-        font-size: 1rem;
+        font-weight: 600;
+        transition: all 0.2s ease-out;
+        font-size: 0.95rem;
       }
 
       .btn-primary {
@@ -210,10 +286,9 @@
       }
 
       .btn-primary:hover {
-        background: var(--text-main);
-        opacity: 0.9;
+        background: #1a202c;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       }
 
       .btn-secondary {
@@ -226,7 +301,7 @@
         background: var(--text-main);
         color: #fff;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       }
 
       /* Content Section */
@@ -238,17 +313,10 @@
 
       .section {
         margin-bottom: 5rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid #e0e0e0;
-      }
-
-      .section:last-child {
-        border-bottom: none;
       }
 
       .section-title {
         font-size: 1.8rem;
-        color: var(--text-main);
         margin-bottom: 2rem;
         font-weight: 900;
         display: inline-block;
@@ -257,7 +325,7 @@
       /* Accomplishments */
       .accomplishment {
         margin-bottom: 2rem;
-        padding-left: 2rem;
+        padding-left: 2.5rem;
         position: relative;
       }
 
@@ -265,11 +333,12 @@
         content: "🏆";
         position: absolute;
         left: 0;
-        font-size: 1.5rem;
+        top: 2px;
+        font-size: 1.4rem;
       }
 
       .accomplishment h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         margin-bottom: 0.5rem;
         font-weight: 700;
       }
@@ -277,7 +346,7 @@
       .accomplishment p {
         color: var(--text-secondary);
         line-height: 1.8;
-        font-size: 1.05rem;
+        font-size: 1rem;
       }
 
       /* --- TIMELINE WITH LOGOS --- */
@@ -293,12 +362,12 @@
         top: 0;
         bottom: 0;
         width: 2px;
-        background: #e0e0e0;
+        background: #e2e8f0;
       }
 
       .timeline-item {
         position: relative;
-        margin-bottom: 2.5rem;
+        margin-bottom: 3rem;
       }
 
       .timeline-item::before {
@@ -310,7 +379,7 @@
         height: 10px;
         border-radius: 50%;
         background: var(--accent);
-        transition: transform 0.3s ease;
+        transition: transform 0.2s ease;
       }
 
       .timeline-item:hover::before {
@@ -328,39 +397,56 @@
         border: 2px solid var(--accent);
         object-fit: contain;
         padding: 2px;
-        transition: transform 0.3s ease;
+        transition: transform 0.2s ease;
         z-index: 2;
       }
 
       .timeline-item:hover .timeline-logo {
         transform: scale(1.2);
+        box-shadow: 0 4px 12px rgba(85, 139, 47, 0.2);
       }
 
       .timeline-title {
         font-weight: 700;
         margin-bottom: 0.3rem;
-        font-size: 1.2rem;
+        font-size: 1.15rem;
+        color: #1a202c;
       }
 
       .timeline-meta {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        margin-bottom: 0.5rem;
-        font-style: italic;
+        color: var(--accent);
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
       }
 
       .timeline-description {
         color: var(--text-secondary);
-        font-size: 1.05rem;
+        font-size: 1rem;
+        line-height: 1.7;
       }
 
-      /* Projects Teaser Card */
-      .project-teaser {
-        background: #f9f9f9;
-        border-left: 4px solid var(--accent);
+      /* Soft UI Cards */
+      .project-teaser,
+      .skill-category {
+        background: #ffffff;
         padding: 2rem;
-        border-radius: 4px;
-        margin-bottom: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        margin-bottom: 1.5rem;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .project-teaser {
+        border-left: 4px solid var(--accent);
+      }
+
+      .project-teaser:hover,
+      .skill-category:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
       }
 
       /* Skills Section */
@@ -370,24 +456,8 @@
         gap: 1.5rem;
       }
 
-      .skill-category {
-        padding: 1.5rem;
-        background: #fdfdfd;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
-      }
-
-      .skill-category:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        border-color: var(--accent);
-      }
-
       .skill-category h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin-bottom: 1rem;
         color: var(--accent);
         font-weight: 700;
@@ -400,7 +470,7 @@
       .skill-category li {
         padding: 0.4rem 0;
         color: var(--text-secondary);
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
 
       .skill-category li::before {
@@ -422,9 +492,9 @@
       .gt-main {
         position: relative;
         z-index: 3;
-        border-radius: 12px;
+        border-radius: 16px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         opacity: 1;
         aspect-ratio: 4 / 3;
@@ -440,7 +510,7 @@
         object-fit: cover;
         display: block;
         opacity: 0;
-        transition: opacity 0.8s ease;
+        transition: opacity 0.5s ease;
         color: transparent;
       }
 
@@ -458,22 +528,22 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background 0.4s ease;
+        transition: background 0.3s ease;
       }
 
       .gt-text {
         color: #fff;
         background: rgba(26, 26, 26, 0.9);
         padding: 0.8rem 1.5rem;
-        border-radius: 8px;
-        font-size: 1.15rem;
-        font-weight: 700;
+        border-radius: 50px; /* Pill shape for modern look */
+        font-size: 1.05rem;
+        font-weight: 600;
         opacity: 0;
         transform: translateY(20px);
-        transition: all 0.4s ease;
+        transition: all 0.3s ease;
         text-align: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        font-family: var(--font-main);
       }
 
       .gt-side {
@@ -482,8 +552,8 @@
         width: 70%;
         aspect-ratio: 4 / 3;
         object-fit: cover;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         z-index: 1;
         opacity: 0;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -497,18 +567,16 @@
         left: 0;
         transform: translateY(-50%) scale(0.8) translateX(20%);
       }
-
       .gt-right {
         right: 0;
         transform: translateY(-50%) scale(0.8) translateX(-20%);
       }
 
-      /* Hover Effects */
       .gallery-teaser-container:hover .gt-main {
         transform: scale(1.05);
       }
       .gallery-teaser-container:hover .gt-overlay {
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.4);
       }
       .gallery-teaser-container:hover .gt-text {
         opacity: 1;
@@ -535,15 +603,15 @@
         width: 0;
         margin: 0 auto 1rem;
         font-weight: 800;
-        font-size: 2rem;
+        font-size: 2.2rem;
         max-width: fit-content;
       }
 
       .reveal.active .typing-text {
         animation:
-          typing 2.5s steps(22, end) forwards,
+          typing 2s steps(22, end) forwards,
           blink-caret 0.75s step-end infinite;
-        animation-delay: 0.3s;
+        animation-delay: 0.2s;
       }
 
       @keyframes typing {
@@ -565,7 +633,6 @@
         }
       }
 
-      /* Mobile fix */
       @media (max-width: 480px) {
         .typing-text {
           white-space: normal;
@@ -577,16 +644,29 @@
 
       /* Footer */
       footer {
-        background: #fdfdfd;
-        border-top: 1px solid #e0e0e0;
+        background: var(--bg-main);
         padding: 4rem 0;
         text-align: center;
-        margin-top: 4rem;
         color: var(--text-secondary);
+        font-size: 0.9rem;
       }
 
       /* Responsive */
       @media (max-width: 768px) {
+        .hero {
+          flex-direction: column-reverse;
+          text-align: center;
+          gap: 2rem;
+          padding: 130px 1.5rem 40px;
+        }
+        .cta-buttons,
+        .tags {
+          justify-content: center;
+        }
+        .profile-img {
+          width: 160px;
+          height: 160px;
+        }
         nav {
           flex-direction: column;
           gap: 1rem;
@@ -597,23 +677,8 @@
         h1 {
           font-size: 2.5rem;
         }
-        .hero {
-          padding: 100px 1rem 40px;
-        }
-        .projects-grid {
-          grid-template-columns: 1fr;
-        }
         .timeline {
           padding-left: 1.5rem;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .gallery-teaser-container:hover .gt-left {
-          transform: translateY(-50%) scale(0.85) translateX(-20%) rotate(-6deg);
-        }
-        .gallery-teaser-container:hover .gt-right {
-          transform: translateY(-50%) scale(0.85) translateX(20%) rotate(6deg);
         }
       }
 
@@ -644,19 +709,11 @@
           transform: translateY(0);
         }
       }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
 
       .reveal {
         opacity: 0;
         transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
       .reveal.active {
         opacity: 1;
@@ -686,44 +743,44 @@
     </nav>
 
     <section class="hero">
-      <img
-        src="pics/headshot.jpg"
-        alt="Myron Paes"
-        class="profile-img hero-anim"
-      />
-      <h1 class="hero-anim">Myron Paes</h1>
-      <p class="subtitle hero-anim">Product Manager | Data Scientist</p>
-      <p class="bio hero-anim">
-        Pursuing a dual undergraduate degree in Data Science and Business at
-        NJIT, I aim to develop proficiency in Product Management methodologies
-        while acting upon my lifelong passions in business, analytics, and
-        communication. I dream of an endeavor that marries critical analysis
-        with technical communication prowess.
-      </p>
-      <p class="location hero-anim">📍 Marlton, NJ</p>
-      <div class="tags hero-anim">
-        <a href="#" class="tag">Product Management</a>
-        <a href="#" class="tag">Data Science</a>
-        <a href="#" class="tag">Research Writing</a>
-        <a href="#" class="tag">Marketing</a>
-        <a href="#" class="tag">Business Intelligence</a>
+      <div class="hero-content">
+        <h1 class="name-anim">Myron Paes</h1>
+        <p class="subtitle hero-anim">Product Manager | Data Scientist</p>
+        <p class="bio hero-anim">
+          Pursuing a dual undergraduate degree in Data Science and Business at
+          NJIT, I aim to develop proficiency in Product Management methodologies
+          while acting upon my lifelong passions in business, analytics, and
+          communication. I dream of an endeavor that marries critical analysis
+          with technical communication prowess.
+        </p>
+        <p class="location hero-anim">📍 Marlton, NJ</p>
+        <div class="tags hero-anim">
+          <span class="tag">Product Management</span>
+          <span class="tag">Data Science</span>
+          <span class="tag">Research Writing</span>
+          <span class="tag">Marketing</span>
+          <span class="tag">Business Intelligence</span>
+        </div>
+        <div class="cta-buttons hero-anim">
+          <a href="mailto:myronpaes@gmail.com" class="btn btn-primary"
+            >Contact Me</a
+          >
+          <a
+            href="https://linkedin.com/in/myron-paes/"
+            target="_blank"
+            class="btn btn-secondary"
+            >View LinkedIn</a
+          >
+          <a
+            href="Myron Paes Professional Resume.pdf"
+            target="_blank"
+            class="btn btn-secondary"
+            >View Resume</a
+          >
+        </div>
       </div>
-      <div class="cta-buttons hero-anim">
-        <a href="mailto:myronpaes@gmail.com" class="btn btn-primary"
-          >Contact Me</a
-        >
-        <a
-          href="https://linkedin.com/in/myron-paes/"
-          target="_blank"
-          class="btn btn-secondary"
-          >View LinkedIn</a
-        >
-        <a
-          href="Myron Paes Professional Resume.pdf"
-          target="_blank"
-          class="btn btn-secondary"
-          >View Resume</a
-        >
+      <div class="hero-image-container hero-anim">
+        <img src="pics/headshot.jpg" alt="Myron Paes" class="profile-img" />
       </div>
     </section>
 
@@ -899,10 +956,10 @@
         class="section reveal"
         style="
           text-align: center;
-          padding: 3rem 2rem;
-          background: #fdfdfd;
-          border-radius: 12px;
-          border: 1px solid #e0e0e0;
+          padding: 4rem 2rem;
+          background: #ffffff;
+          border-radius: 16px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
         "
       >
         <div class="typing-wrapper">
@@ -923,7 +980,7 @@
           to contact me to discuss potential collaborations or to learn more
           about my skills and experience!
         </p>
-        <div class="cta-buttons">
+        <div class="cta-buttons" style="justify-content: center">
           <a href="mailto:myronpaes@gmail.com" class="btn btn-primary"
             >Email Me</a
           >
@@ -945,7 +1002,6 @@
     <script src="portfolio-data.js"></script>
 
     <script>
-      // SCROLL ANIMATION
       document.addEventListener("DOMContentLoaded", function () {
         const revealElements = document.querySelectorAll(".reveal");
         const revealObserver = new IntersectionObserver(
@@ -963,7 +1019,7 @@
           revealObserver.observe(el);
         });
 
-        // --- NEW: DYNAMIC TIMELINE GENERATOR ---
+        // DYNAMIC TIMELINE GENERATOR
         function buildTimeline(dataArray, containerId, hasLogos) {
           const container = document.getElementById(containerId);
           if (!container) return;
@@ -1010,7 +1066,6 @@
           });
         }
 
-        // Fire the builder function using your new portfolio-data.js database!
         if (typeof portfolioData !== "undefined") {
           buildTimeline(portfolioData.experience, "experience-container", true);
           buildTimeline(portfolioData.education, "education-container", false);

@@ -8,17 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
       rel="stylesheet"
     />
 
     <style>
       /* --- VARIABLES & RESET --- */
       :root {
-        --font-main: "Merriweather", Georgia, "Times New Roman", serif;
-        --accent: #558b2f; /* Olive Green */
-        --text-main: #1a1a1a;
-        --text-secondary: #555;
+        --font-main: "Inter", sans-serif;
+        --font-heading: "Merriweather", Georgia, serif;
+        --accent: #558b2f;
+        --bg-main: #fcfcfc;
+        --text-main: #2d3748;
+        --text-secondary: #4a5568;
       }
 
       html {
@@ -36,9 +38,17 @@
         font-family: var(--font-main);
         line-height: 1.8;
         color: var(--text-main);
-        background: #fff;
+        background: var(--bg-main);
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      .logo {
+        font-family: var(--font-heading);
+        color: #1a202c;
       }
 
       /* Navigation */
@@ -46,21 +56,20 @@
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(240, 240, 240, 0.95);
+        background: rgba(252, 252, 252, 0.95);
         backdrop-filter: blur(10px);
         padding: 1rem 2rem;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         z-index: 1000;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        animation: fadeDown 0.8s ease-out forwards;
+        animation: fadeDown 0.5s ease-out forwards;
       }
 
       .logo {
         font-size: 1.3rem;
         font-weight: 900;
-        color: #000;
         text-decoration: none;
         letter-spacing: -0.5px;
       }
@@ -74,18 +83,18 @@
       .nav-links a {
         color: var(--text-secondary);
         text-decoration: none;
-        font-size: 1rem;
-        font-weight: 400;
-        transition: color 0.3s;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s;
       }
 
       .nav-links a:hover {
         color: var(--accent);
       }
 
-      /* Hero Section - Mini Version for Subpage */
+      /* Hero Section */
       .hero {
-        padding: 150px 2rem 60px;
+        padding: 160px 2rem 60px;
         max-width: 900px;
         margin: 0 auto;
         text-align: center;
@@ -99,18 +108,16 @@
       }
 
       .hero .subtitle {
-        font-size: 1.4rem;
+        font-size: 1.25rem;
         color: var(--text-secondary);
         margin-bottom: 1.5rem;
-        font-weight: 300;
-        font-style: italic;
       }
 
       /* Content Section */
       .content {
         max-width: 1100px;
         margin: 0 auto;
-        padding: 2rem;
+        padding: 0 2rem 2rem;
       }
 
       .section {
@@ -118,7 +125,7 @@
         padding-bottom: 2rem;
       }
 
-      /* --- NEW: GALLERY FILTER FOLDERS --- */
+      /* --- NEW: SLEEK FILTER MENU --- */
       .filter-menu {
         display: flex;
         flex-wrap: wrap;
@@ -128,16 +135,17 @@
       }
 
       .filter-btn {
-        padding: 0.6rem 1.5rem;
-        border: 2px solid var(--text-main);
-        background: transparent;
+        padding: 0.6rem 1.6rem;
+        background: #ffffff;
         color: var(--text-main);
         border-radius: 50px;
+        border: none;
         font-family: var(--font-main);
-        font-weight: 700;
+        font-weight: 600;
         font-size: 0.95rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
       }
 
       .filter-btn:hover,
@@ -145,10 +153,9 @@
         background: var(--text-main);
         color: #fff;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       }
 
-      /* Class applied via JS to hide non-matching items */
       .gallery-item.hide {
         display: none;
       }
@@ -162,27 +169,33 @@
       .gallery-item {
         break-inside: avoid;
         margin-bottom: 1.5rem;
-        border-radius: 8px;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
         cursor: pointer;
-        background: #eee;
+        background: #fff;
         position: relative;
         animation: fadeIn 0.5s ease;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
       }
 
       .gallery-img {
         width: 100%;
         height: auto;
         display: block;
-        opacity: 0; /* Prevents pop-in */
-        transition:
-          opacity 0.6s ease,
-          transform 0.5s ease;
+        opacity: 0;
+        transition: opacity 0.5s ease;
       }
 
       .gallery-img.image-loaded {
-        opacity: 1; /* Smoothly fades in */
+        opacity: 1;
       }
 
       .caption-overlay {
@@ -203,17 +216,13 @@
         pointer-events: none;
       }
 
-      /* Hover Effect for Caption */
       .gallery-item:hover .caption-overlay {
         opacity: 1;
       }
 
-      .gallery-item:hover .gallery-img {
-        transform: scale(1.05);
-      }
-
       .caption-text {
-        font-size: 1rem;
+        font-family: var(--font-main);
+        font-size: 1.05rem;
         font-weight: 500;
         transform: translateY(20px);
         transition: transform 0.3s ease;
@@ -225,11 +234,10 @@
 
       /* Footer */
       footer {
-        background: #fdfdfd;
-        border-top: 1px solid #e0e0e0;
+        background: var(--bg-main);
         padding: 4rem 0;
         text-align: center;
-        margin-top: 4rem;
+        font-size: 0.9rem;
         color: var(--text-secondary);
       }
 
@@ -249,7 +257,7 @@
           gap: 1rem;
         }
         .hero {
-          padding: 120px 1rem 20px;
+          padding: 130px 1rem 20px;
         }
         .gallery-grid {
           column-count: 1;
@@ -258,8 +266,8 @@
           gap: 0.5rem;
         }
         .filter-btn {
-          padding: 0.5rem 1rem;
-          font-size: 0.85rem;
+          padding: 0.5rem 1.2rem;
+          font-size: 0.9rem;
         }
       }
 
@@ -285,11 +293,17 @@
       .reveal {
         opacity: 0;
         transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
       .reveal.active {
         opacity: 1;
         transform: translateY(0);
+      }
+      .delay-100 {
+        transition-delay: 0.1s;
+      }
+      .delay-200 {
+        transition-delay: 0.2s;
       }
     </style>
   </head>
@@ -337,7 +351,6 @@
     <script src="gallery-data.js"></script>
 
     <script>
-      // SCROLL ANIMATION
       document.addEventListener("DOMContentLoaded", function () {
         const revealElements = document.querySelectorAll(".reveal");
         const revealObserver = new IntersectionObserver(
@@ -355,13 +368,11 @@
           revealObserver.observe(el);
         });
 
-        // DYNAMIC GALLERY POPULATION
         const imgFolder = "pics/";
         const galleryContainer = document.getElementById("gallery-container");
 
-        galleryContainer.innerHTML = ""; // Prevents duplicates
+        galleryContainer.innerHTML = "";
 
-        // galleryData is pulled seamlessly from gallery-data.js
         galleryData
           .slice()
           .reverse()
@@ -369,7 +380,6 @@
             const item = document.createElement("div");
             item.className = "gallery-item reveal";
 
-            // UPDATED: Now uses 'data.filter' from gallery-data.js
             item.setAttribute("data-filter", data.filter || "Miscellaneous");
 
             const img = document.createElement("img");
@@ -377,7 +387,6 @@
             img.className = "gallery-img";
             img.alt = data.text;
 
-            // Lazy Loading & smooth fade-in
             img.loading = "lazy";
             img.decoding = "async";
             img.onload = function () {
@@ -393,7 +402,6 @@
 
             caption.appendChild(captionText);
 
-            // UPDATED: WebP Self-Healing Logic (now cycles through png too)
             img.onerror = function () {
               if (img.src.endsWith(".webp")) {
                 img.src = img.src.replace(".webp", ".jpg");
@@ -413,23 +421,20 @@
             revealObserver.observe(item);
           });
 
-        // --- FILTER LOGIC ---
         const filterBtns = document.querySelectorAll(".filter-btn");
         const galleryItems = document.querySelectorAll(".gallery-item");
 
         filterBtns.forEach((btn) => {
           btn.addEventListener("click", () => {
-            // Remove active styling from all buttons, add to clicked button
             filterBtns.forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
 
             const filterValue = btn.getAttribute("data-filter");
 
-            // Hide or show items based on category
             galleryItems.forEach((item) => {
               if (
                 filterValue === "all" ||
-                item.getAttribute("data-filter") === filterValue // UPDATED: Checks data-filter
+                item.getAttribute("data-filter") === filterValue
               ) {
                 item.classList.remove("hide");
               } else {

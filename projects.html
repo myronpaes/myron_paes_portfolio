@@ -8,17 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
       rel="stylesheet"
     />
 
     <style>
-      /* --- VARIABLES & RESET (Same as Home Page) --- */
+      /* --- VARIABLES & RESET --- */
       :root {
-        --font-main: "Merriweather", Georgia, "Times New Roman", serif;
-        --accent: #558b2f; /* Olive Green */
-        --text-main: #1a1a1a;
-        --text-secondary: #555;
+        --font-main: "Inter", sans-serif;
+        --font-heading: "Merriweather", Georgia, serif;
+        --accent: #558b2f;
+        --bg-main: #fcfcfc;
+        --text-main: #2d3748;
+        --text-secondary: #4a5568;
       }
 
       html {
@@ -36,9 +38,18 @@
         font-family: var(--font-main);
         line-height: 1.8;
         color: var(--text-main);
-        background: #fff;
+        background: var(--bg-main);
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      .logo,
+      .page-title {
+        font-family: var(--font-heading);
+        color: #1a202c;
       }
 
       /* Navigation */
@@ -46,21 +57,20 @@
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(240, 240, 240, 0.95);
+        background: rgba(252, 252, 252, 0.95);
         backdrop-filter: blur(10px);
         padding: 1rem 2rem;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         z-index: 1000;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        animation: fadeDown 0.8s ease-out forwards;
+        animation: fadeDown 0.5s ease-out forwards;
       }
 
       .logo {
         font-size: 1.3rem;
         font-weight: 900;
-        color: #000;
         text-decoration: none;
         letter-spacing: -0.5px;
       }
@@ -74,9 +84,9 @@
       .nav-links a {
         color: var(--text-secondary);
         text-decoration: none;
-        font-size: 1rem;
-        font-weight: 400;
-        transition: color 0.3s;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s;
       }
 
       .nav-links a:hover {
@@ -85,14 +95,14 @@
 
       /* Page Header */
       .page-header {
-        padding: 140px 2rem 40px;
+        padding: 160px 2rem 60px;
         max-width: 900px;
         margin: 0 auto;
         text-align: center;
       }
 
       .page-title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         font-weight: 900;
         margin-bottom: 1rem;
       }
@@ -109,20 +119,26 @@
       }
 
       select {
-        padding: 0.6rem 1rem;
+        padding: 0.6rem 1.2rem;
         font-family: var(--font-main);
         font-size: 0.95rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
+        font-weight: 500;
+        border: none;
+        border-radius: 8px;
         color: var(--text-main);
-        background-color: #fdfdfd;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
         cursor: pointer;
-        transition: border-color 0.3s;
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s;
       }
 
+      select:hover,
       select:focus {
         outline: none;
-        border-color: var(--accent);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        transform: translateY(-1px);
       }
 
       /* Timeline Container */
@@ -133,25 +149,23 @@
         position: relative;
       }
 
-      /* The Vertical Line */
       .timeline-container::before {
         content: "";
         position: absolute;
-        left: 3.5rem; /* Adjusted for larger project cards */
+        left: 3.5rem;
         top: 0;
         bottom: 0;
         width: 2px;
-        background: #e0e0e0;
+        background: #e2e8f0;
       }
 
-      /* Timeline Item Wrapper */
       .timeline-block {
         position: relative;
         padding-left: 3.5rem;
-        margin-bottom: 3rem;
-        opacity: 0; /* Hidden initially for animation */
+        margin-bottom: 3.5rem;
+        opacity: 0;
         transform: translateY(20px);
-        transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
 
       .timeline-block.visible {
@@ -159,19 +173,18 @@
         transform: translateY(0);
       }
 
-      /* The Dot */
       .timeline-block::before {
         content: "";
         position: absolute;
         left: 0.94rem;
         top: 2rem;
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         border-radius: 50%;
         background: var(--accent);
-        border: 2px solid #fff;
+        border: 3px solid #fff;
         box-shadow: 0 0 0 2px var(--accent);
-        transition: transform 0.3s ease;
+        transition: transform 0.2s ease;
         z-index: 2;
       }
 
@@ -180,13 +193,13 @@
         background: #fff;
       }
 
-      /* Project Card Styling (Adapted for Full Width) */
+      /* Sleek Project Cards */
       .project-card-full {
-        background: #fff;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 2rem;
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 2.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        transition: all 0.2s ease-out;
         display: block;
         text-decoration: none;
         color: inherit;
@@ -194,9 +207,8 @@
       }
 
       .project-card-full:hover {
-        border-color: var(--accent);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        transform: translateY(-3px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        transform: translateY(-4px);
       }
 
       .project-header {
@@ -204,19 +216,19 @@
         justify-content: space-between;
         align-items: baseline;
         flex-wrap: wrap;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
       }
 
       .project-title {
+        font-family: var(--font-heading);
         font-size: 1.4rem;
         font-weight: 700;
-        color: var(--text-main);
+        color: #1a202c;
       }
 
       .project-date {
         color: var(--accent);
-        font-weight: 700;
-        font-style: italic;
+        font-weight: 600;
         font-size: 0.9rem;
       }
 
@@ -228,31 +240,31 @@
 
       .link-hint {
         display: inline-block;
-        margin-top: 1rem;
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: var(--text-main);
+        margin-top: 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--accent);
         border-bottom: 1px solid transparent;
-        transition: border-bottom 0.3s;
+        transition: border-bottom 0.2s;
       }
 
       .project-card-full:hover .link-hint {
-        border-bottom: 1px solid var(--text-main);
+        border-bottom: 1px solid var(--accent);
       }
 
       /* Footer */
       footer {
-        background: #fdfdfd;
-        border-top: 1px solid #e0e0e0;
+        background: var(--bg-main);
         padding: 4rem 0;
         text-align: center;
         color: var(--text-secondary);
+        font-size: 0.9rem;
       }
 
       /* Responsive */
       @media (max-width: 768px) {
         .page-header {
-          padding: 100px 1rem 20px;
+          padding: 130px 1rem 30px;
         }
         .timeline-container {
           padding-left: 1.5rem;
@@ -262,20 +274,20 @@
           left: 1.5rem;
         }
         .timeline-block {
-          padding-left: 2rem;
+          padding-left: 2.5rem;
         }
         .timeline-block::before {
           left: -0.4rem;
         }
         .project-header {
           flex-direction: column;
+          gap: 0.5rem;
         }
         .controls-container {
           justify-content: center;
         }
       }
 
-      /* Animations */
       @keyframes fadeDown {
         from {
           opacity: 0;
@@ -304,7 +316,7 @@
 
     <header class="page-header">
       <h1 class="page-title">Project Portfolio</h1>
-      <p style="color: var(--text-secondary); font-style: italic">
+      <p style="color: var(--text-secondary); font-size: 1.15rem">
         A timeline of my technical and entrepreneurial endeavors!
       </p>
     </header>
@@ -312,7 +324,7 @@
     <div class="controls-container">
       <label
         for="sortSelect"
-        style="color: var(--text-secondary); font-weight: bold"
+        style="color: var(--text-secondary); font-weight: 600"
         >Sort by:</label
       >
       <select id="sortSelect">
@@ -329,7 +341,6 @@
     </footer>
 
     <script>
-      // 1. DATA SOURCE
       const projectsData = [
         {
           title: "Catan Data Analysis",
@@ -348,7 +359,7 @@
           relevanceOrder: 2,
           description:
             "Comprehensive Sentiment Analysis (via X) Presentation on Robinhood operations during the 2020 Gamestop controversy. Conveyed actionable insights from RAKE Analysis and Topic Model interpretation to present to Robinhood management.",
-          link: "robinhood_presentation.pdf", // Ensure this file exists in your folder!
+          link: "robinhood_presentation.pdf",
           linkText: "View Presentation",
         },
         {
@@ -406,15 +417,10 @@
       const container = document.getElementById("projects-container");
       const sortSelect = document.getElementById("sortSelect");
 
-      // 2. RENDER FUNCTION
       function renderProjects(sortMethod) {
-        // Clear current list
         container.innerHTML = "";
-
-        // Create a copy of data to sort
         let sortedData = [...projectsData];
 
-        // Apply Sorting Logic
         if (sortMethod === "relevant") {
           sortedData.sort((a, b) => a.relevanceOrder - b.relevanceOrder);
         } else if (sortMethod === "newest") {
@@ -423,19 +429,14 @@
           sortedData.sort((a, b) => a.dateObj - b.dateObj);
         }
 
-        // Generate HTML
         sortedData.forEach((project, index) => {
-          // Create wrapper (timeline block)
           const block = document.createElement("div");
           block.className = "timeline-block";
-          // Stagger animation delay slightly
-          block.style.transitionDelay = `${index * 100}ms`;
+          block.style.transitionDelay = `${index * 50}ms`;
 
-          // Check if it's a link or just a div
           let cardHtml = "";
 
           if (project.link && project.link !== "#") {
-            // It's a clickable link
             cardHtml = `
               <a href="${project.link}" target="_blank" class="project-card-full">
                 <div class="project-header">
@@ -447,7 +448,6 @@
               </a>
             `;
           } else {
-            // It's just a display card (or link is placeholder)
             cardHtml = `
               <div class="project-card-full">
                 <div class="project-header">
@@ -457,7 +457,7 @@
                 <p class="project-desc">${project.description}</p>
                 ${
                   project.linkText
-                    ? `<span style="font-size:0.9rem; color:var(--text-secondary); margin-top:1rem; display:block; font-style:italic;">(${project.linkText})</span>`
+                    ? `<span style="font-size:0.95rem; color:var(--accent); font-weight:600; margin-top:1.5rem; display:block;">(${project.linkText})</span>`
                     : ""
                 }
               </div>
@@ -467,24 +467,21 @@
           block.innerHTML = cardHtml;
           container.appendChild(block);
 
-          // Trigger animation after a brief timeout so CSS transition catches it
           setTimeout(
             () => {
               block.classList.add("visible");
             },
-            50 + index * 100,
+            50 + index * 50,
           );
         });
       }
 
-      // 3. EVENT LISTENER
       sortSelect.addEventListener("change", (e) => {
         renderProjects(e.target.value);
       });
 
-      // 4. INITIAL LOAD
       document.addEventListener("DOMContentLoaded", () => {
-        renderProjects("relevant"); // Default view
+        renderProjects("relevant");
       });
     </script>
   </body>
