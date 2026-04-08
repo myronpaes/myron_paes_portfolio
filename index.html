@@ -301,16 +301,31 @@
         margin-bottom: 2.5rem;
       }
 
-      /* UPDATED: Replaced the pseudo-element dot with styling for an actual image */
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -2.35rem;
+        top: 0.4rem;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        transition: transform 0.3s ease;
+      }
+
+      .timeline-item:hover::before {
+        transform: scale(1.4);
+      }
+
       .timeline-logo {
         position: absolute;
-        left: -3.15rem; /* Centered over the line */
+        left: -3.15rem;
         top: 0;
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        background: #fff; /* White background for transparent logos */
-        border: 2px solid var(--accent); /* Optional: keeps the green accent theme */
+        background: #fff;
+        border: 2px solid var(--accent);
         object-fit: contain;
         padding: 2px;
         transition: transform 0.3s ease;
@@ -430,10 +445,6 @@
       }
 
       .gt-main img.image-loaded {
-        opacity: 1;
-      }
-
-      .gallery-img.image-loaded {
         opacity: 1;
       }
 
@@ -817,146 +828,7 @@
 
       <section id="experience" class="section">
         <h2 class="section-title reveal">03 — Professional Experience</h2>
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <img
-              src="pics/logos/fivebelow.webp"
-              alt="Five Below Logo"
-              class="timeline-logo"
-              onerror="
-                this.style.display = 'none';
-                this.nextElementSibling.style.display = 'block';
-              "
-            />
-            <div
-              style="
-                display: none;
-                position: absolute;
-                left: -2.35rem;
-                top: 0.4rem;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: var(--accent);
-              "
-            ></div>
-
-            <div class="timeline-title">
-              Digital Product Manager at Five Below
-            </div>
-            <div class="timeline-meta">
-              June 2026 - August 2026 · Philadephia, PA
-            </div>
-            <div class="timeline-description">
-              Driving GtM for mobile "treasure hunt" gamification initiative on
-              the Five Below app, impacting over 2 million application users!
-            </div>
-          </div>
-
-          <div class="timeline-item reveal">
-            <img
-              src="pics/logos/tapyoca.webp"
-              alt="Tapyoca Music Logo"
-              class="timeline-logo"
-              onerror="
-                this.style.display = 'none';
-                this.nextElementSibling.style.display = 'block';
-              "
-            />
-            <div
-              style="
-                display: none;
-                position: absolute;
-                left: -2.35rem;
-                top: 0.4rem;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: var(--accent);
-              "
-            ></div>
-
-            <div class="timeline-title">
-              Lead Product Marketing Manager at Tapyoca Music
-            </div>
-            <div class="timeline-meta">March 2025 - Present · Newark, NJ</div>
-            <div class="timeline-description">
-              Entrepreneurial lead on novel subsidiary product: Creator Copilot
-              (independent filmmaker accounting software suite). Graduate of
-              Summer 2025 Northeastern NSF I-Corps cohort, conducting 40
-              customer discovery sessions. Spearheaded client outreach
-              initiatives to maximize conversion and retention for hundreds of
-              potential customers. Established intuitive Jira task delegation
-              framework, augmenting work efficiency for a startup team of 25.
-            </div>
-          </div>
-
-          <div class="timeline-item reveal">
-            <img
-              src="pics/logos/virtua.webp"
-              alt="Virtua Health Logo"
-              class="timeline-logo"
-              onerror="
-                this.style.display = 'none';
-                this.nextElementSibling.style.display = 'block';
-              "
-            />
-            <div
-              style="
-                display: none;
-                position: absolute;
-                left: -2.35rem;
-                top: 0.4rem;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: var(--accent);
-              "
-            ></div>
-
-            <div class="timeline-title">IT Intern at Virtua Health</div>
-            <div class="timeline-meta">May 2025 - Sept 2025 · Marlton, NJ</div>
-            <div class="timeline-description">
-              Analyzed over 1000 client tickets to identify key pain points in
-              Oracle ERP system, informing future IT reforms. Optimized ID
-              database, vacating 9000 previously null/invalid cells and
-              resolving ID creation bottleneck.
-            </div>
-          </div>
-
-          <div class="timeline-item reveal">
-            <img
-              src="pics/logos/njcourts.webp"
-              alt="NJ Courts Logo"
-              class="timeline-logo"
-              onerror="
-                this.style.display = 'none';
-                this.nextElementSibling.style.display = 'block';
-              "
-            />
-            <div
-              style="
-                display: none;
-                position: absolute;
-                left: -2.35rem;
-                top: 0.4rem;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: var(--accent);
-              "
-            ></div>
-
-            <div class="timeline-title">Operations Intern at NJ Courts</div>
-            <div class="timeline-meta">May 2025 - Sept 2025 · Marlton, NJ</div>
-            <div class="timeline-description">
-              Efficiently digitized over 5000 legal cases (the entirety of NJ
-              Vicinage 15's inventory) utilizing proprietary vicinage software.
-              Classified over 1000 legal portfolios, determining disposal status
-              based on categorical statute of limitations.
-            </div>
-          </div>
-        </div>
+        <div class="timeline" id="experience-container"></div>
       </section>
 
       <section id="skills" class="section">
@@ -1003,61 +875,12 @@
 
       <section class="section">
         <span class="section-title reveal">05 — Education</span>
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <div class="timeline-title">
-              B.S. in Data Science & B.S. in Business (Marketing)
-            </div>
-            <div class="timeline-meta">
-              Expected 2028 · New Jersey Institute of Technology
-            </div>
-            <div class="timeline-description">
-              Dual Degree Program. Full-ride Merit Scholarship via Albert Dorman
-              Honors College. Enrolled in accelerated BS/MS program. Focusing on
-              the intersection of business strategy and technical
-              implementation.
-            </div>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-title">High School Diploma</div>
-            <div class="timeline-meta">2020 - 2024 · Cherokee High School</div>
-            <div class="timeline-description">
-              Varsity Cross Country/Track, Varsity Chess Team Member, Project
-              Lead the Way, Aeronautics Club President, Future Business Leaders
-              of America.
-            </div>
-          </div>
-        </div>
+        <div class="timeline" id="education-container"></div>
       </section>
 
       <section class="section">
         <span class="section-title reveal">06 — Leadership</span>
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <div class="timeline-title">
-              President & Peer Entrepreneur-In-Residence
-            </div>
-            <div class="timeline-meta">
-              Apr 2025 - Present · Entrepreneurs Society, NJIT
-            </div>
-            <div class="timeline-description">
-              Leading networking initiatives and event organization. Lead
-              bookkeeper tracking attendance and student outreach for 400+
-              members.
-            </div>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-title">Eagle Scout, Senior Patrol Leader</div>
-            <div class="timeline-meta">
-              Oct 2016 - Oct 2024 · Boy Scouts of America
-            </div>
-            <div class="timeline-description">
-              Earned Eagle Scout Rank with 36 merit badges and 1 Eagle Palm. Led
-              camping trips and mentored younger scouts. Final Eagle project
-              involved building a storage shed for local church.
-            </div>
-          </div>
-        </div>
+        <div class="timeline" id="leadership-container"></div>
       </section>
 
       <section id="gallery" class="section">
@@ -1119,6 +942,7 @@
     </footer>
 
     <script src="gallery-data.js"></script>
+    <script src="portfolio-data.js"></script>
 
     <script>
       // SCROLL ANIMATION
@@ -1139,11 +963,67 @@
           revealObserver.observe(el);
         });
 
+        // --- NEW: DYNAMIC TIMELINE GENERATOR ---
+        function buildTimeline(dataArray, containerId, hasLogos) {
+          const container = document.getElementById(containerId);
+          if (!container) return;
+
+          dataArray.forEach((data) => {
+            const item = document.createElement("div");
+            item.className = "timeline-item reveal";
+
+            if (hasLogos && data.logo) {
+              const img = document.createElement("img");
+              img.src = data.logo;
+              img.alt = data.title + " Logo";
+              img.className = "timeline-logo";
+              img.onerror = function () {
+                this.style.display = "none";
+                this.nextElementSibling.style.display = "block";
+              };
+              item.appendChild(img);
+
+              const fallbackDot = document.createElement("div");
+              fallbackDot.style.cssText =
+                "display: none; position: absolute; left: -2.35rem; top: 0.4rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent);";
+              item.appendChild(fallbackDot);
+            }
+
+            const title = document.createElement("div");
+            title.className = "timeline-title";
+            title.innerText = data.title;
+
+            const meta = document.createElement("div");
+            meta.className = "timeline-meta";
+            meta.innerText = data.meta;
+
+            const desc = document.createElement("div");
+            desc.className = "timeline-description";
+            desc.innerHTML = data.description;
+
+            item.appendChild(title);
+            item.appendChild(meta);
+            item.appendChild(desc);
+
+            container.appendChild(item);
+            revealObserver.observe(item);
+          });
+        }
+
+        // Fire the builder function using your new portfolio-data.js database!
+        if (typeof portfolioData !== "undefined") {
+          buildTimeline(portfolioData.experience, "experience-container", true);
+          buildTimeline(portfolioData.education, "education-container", false);
+          buildTimeline(
+            portfolioData.leadership,
+            "leadership-container",
+            false,
+          );
+        }
+
         // DYNAMIC GALLERY TEASER POPULATION
         const imgFolder = "pics/";
-
         const recentImages = galleryData.slice(-3).reverse();
-
         const teaserContainer = document.getElementById("teaser-container");
 
         function applyErrorFallback(imgEl) {
@@ -1161,7 +1041,6 @@
         }
 
         if (recentImages.length >= 3) {
-          // Build Left Side Image (2nd Newest)
           const imgLeft = document.createElement("img");
           imgLeft.className = "gt-side gt-left";
           imgLeft.alt = "Recent Image 1";
@@ -1170,7 +1049,6 @@
           applyErrorFallback(imgLeft);
           imgLeft.src = imgFolder + recentImages[1].file;
 
-          // Build Right Side Image (3rd Newest)
           const imgRight = document.createElement("img");
           imgRight.className = "gt-side gt-right";
           imgRight.alt = "Recent Image 2";
@@ -1179,7 +1057,6 @@
           applyErrorFallback(imgRight);
           imgRight.src = imgFolder + recentImages[2].file;
 
-          // Build Main Center Image (Newest)
           const divMain = document.createElement("div");
           divMain.className = "gt-main";
 
