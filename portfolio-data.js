@@ -29,7 +29,7 @@ const portfolioData = {
     {
       title: "B.S. in Data Science & B.S. in Business (Marketing)",
       meta: "Expected 2028 · New Jersey Institute of Technology",
-      description: "Dual Degree Program. Full-ride Merit Scholarship via Albert Dorman Honors College. Enrolled in accelerated BS/MS program. Focusing on the intersection of business strategy and technical implementation."
+      description: "Full-ride Merit Scholarship via Albert Dorman Honors College. Enrolled in accelerated BS/MS and Dual Degree programs. Prioritizing the intersection of business strategy and technical implementation."
     },
     {
       title: "High School Diploma",
