@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Oswald:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -18,7 +18,7 @@
         --text-dark: #1a202c;
         --text-mid: #4a5568;
         --font-display: "Oswald", sans-serif;
-        --font-body: "Merriweather", Georgia, serif;
+        --font-body: "Inter", system-ui, sans-serif;
         --font-cond: "Barlow Condensed", sans-serif;
       }
       * {
@@ -320,7 +320,7 @@
       /* MAIN LAYOUT — wider sidebar */
       .main-layout {
         display: grid;
-        grid-template-columns: 1fr 415px;
+        grid-template-columns: 1fr 390px;
         min-height: calc(100vh - 158px);
       }
 
@@ -335,12 +335,7 @@
         min-height: 640px;
       }
       .map-controls {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.38rem;
+        display: none;
       }
       .map-btn {
         width: 35px;
@@ -361,10 +356,10 @@
         background: #eef2f7;
       }
 
-      /* Larger map */
+      /* Larger map — enlarged default view */
       .venue-svg-wrap {
         width: 100%;
-        max-width: 660px;
+        max-width: 820px;
       }
       .venue-svg-wrap svg {
         width: 100%;
@@ -495,6 +490,7 @@
         font-size: 0.78rem;
         line-height: 1.75;
         color: var(--text-mid);
+        font-family: var(--font-body);
       }
 
       .cred-header {
@@ -543,14 +539,7 @@
         box-shadow: 0 4px 14px rgba(58, 71, 213, 0.1);
       }
       .cred-check {
-        width: 20px;
-        height: 20px;
-        border-radius: 4px;
-        background: var(--tm-blue);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
+        display: none;
       }
       .cred-check svg {
         width: 11px;
@@ -689,7 +678,7 @@
   <body>
     <!-- ══════════════════════════════════════════ LOADER ══════════════════════════════════════════ -->
     <div id="loader">
-      <div class="loader-logo">ticketmaster<sup>®</sup></div>
+      <div class="loader-logo">Myron Paes</div>
 
       <div class="slogan-track">
         <div class="slogan large" id="s0">Product Manager.</div>
@@ -712,7 +701,7 @@
     <div id="site">
       <!-- TOP BAR -->
       <div class="top-bar">
-        <a href="#" class="logo-tm">ticketmaster<sup>®</sup></a>
+        <a href="#" class="logo-tm">Myron Paes</a>
         <span class="breadcrumb"
           >&nbsp;Home / <a href="#">Portfolio Tickets</a> /
           <a href="#">Product Management</a> /
@@ -984,20 +973,7 @@
                 </text>
               </g>
 
-              <!-- CONTACT cluster: right (319,320) + stage area -->
-              <g
-                class="seat-section"
-                onclick="go('contact')"
-                data-label="Contact"
-              >
-                <path
-                  d="M 452 415 A 268 233 0 0 0 480 390 L 453 373 A 200 170 0 0 1 427 400 Z"
-                  fill="#5c9ad4"
-                />
-                <text x="460" y="405" font-size="10" letter-spacing="0.2">
-                  CONTACT
-                </text>
-              </g>
+              <!-- CONTACT removed from seating chart (accessible via sidebar button) -->
 
               <!-- ═══════════════════ MID RING ═══════════════════ -->
 
@@ -1146,32 +1122,7 @@
                 </text>
               </g>
 
-              <!-- Mid CONTACT -->
-              <g
-                class="seat-section"
-                onclick="go('contact')"
-                data-label="Contact"
-              >
-                <path
-                  d="M 348 132 A 200 170 0 0 1 380 156 L 366 172 A 154 126 0 0 0 337 151 Z"
-                  fill="#2e7dd6"
-                />
-                <path
-                  d="M 260 91 A 200 170 0 0 1 295 88 L 295 117 A 154 126 0 0 0 268 119 Z"
-                  fill="#2e7dd6"
-                />
-                <path
-                  d="M 295 88 A 200 170 0 0 1 330 91 L 322 119 A 154 126 0 0 0 295 117 Z"
-                  fill="#2e7dd6"
-                />
-                <path
-                  d="M 330 91 A 200 170 0 0 1 348 103 L 337 123 A 154 126 0 0 0 322 119 Z"
-                  fill="#2e7dd6"
-                />
-                <text x="340" y="142" font-size="10" letter-spacing="0.2">
-                  CONTACT
-                </text>
-              </g>
+              <!-- Mid CONTACT removed from seating chart -->
 
               <!-- ═══════════════════ INNER RING (100s) ═══════════════════ -->
 
@@ -1301,8 +1252,8 @@
               <!-- STAGE -->
               <g
                 class="seat-section"
-                onclick="go('contact')"
-                data-label="Contact · Stage"
+                onclick="go('about')"
+                data-label="About Me · Stage"
               >
                 <rect
                   x="368"
@@ -1341,26 +1292,7 @@
                 <text x="252" y="279" font-size="8.5">MIX</text>
               </g>
 
-              <!-- Compass -->
-              <circle
-                cx="552"
-                cy="46"
-                r="17"
-                fill="#fff"
-                stroke="#b8c6d4"
-                stroke-width="1.2"
-              />
-              <text
-                x="552"
-                y="51"
-                font-family="Barlow Condensed"
-                font-size="12"
-                font-weight="700"
-                text-anchor="middle"
-                fill="#2d3748"
-              >
-                N
-              </text>
+              <!-- Compass removed -->
             </svg>
           </div>
 
@@ -1417,6 +1349,15 @@
                 <span class="cred-label">Credential Type</span>
                 <span class="cred-links">Select All | Clear All</span>
               </div>
+              <a class="credential-row" href="sections/about.html">
+                <div class="cred-check">
+                  <svg viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <span class="cred-name">About Me</span
+                ><span class="cred-badge b-blue">FEATURED</span>
+              </a>
               <a class="credential-row" href="sections/experience.html">
                 <div class="cred-check">
                   <svg viewBox="0 0 12 12" fill="none">
@@ -1429,8 +1370,7 @@
                     />
                   </svg>
                 </div>
-                <span class="cred-icon">💼</span
-                ><span class="cred-name">Professional Experience</span
+                <span class="cred-name">Professional Experience</span
                 ><span class="cred-badge b-green">4 ROLES</span>
               </a>
               <a class="credential-row" href="sections/projects.html">
@@ -1445,8 +1385,7 @@
                     />
                   </svg>
                 </div>
-                <span class="cred-icon">⭐</span
-                ><span class="cred-name">Projects &amp; Startups</span
+                <span class="cred-name">Projects &amp; Startups</span
                 ><span class="cred-badge b-star">VIP PACKAGE</span>
               </a>
               <a class="credential-row" href="sections/skills.html">
@@ -1461,8 +1400,7 @@
                     />
                   </svg>
                 </div>
-                <span class="cred-icon">🛠️</span
-                ><span class="cred-name">Technical Skills</span
+                <span class="cred-name">Technical Skills</span
                 ><span class="cred-badge b-green">STANDARD</span>
               </a>
               <a class="credential-row" href="sections/education.html">
@@ -1477,8 +1415,7 @@
                     />
                   </svg>
                 </div>
-                <span class="cred-icon">🎓</span
-                ><span class="cred-name">Education</span
+                <span class="cred-name">Education</span
                 ><span class="cred-badge b-blue">FULL RIDE</span>
               </a>
               <a class="credential-row" href="sections/leadership.html">
@@ -1493,8 +1430,7 @@
                     />
                   </svg>
                 </div>
-                <span class="cred-icon">🏆</span
-                ><span class="cred-name">Leadership &amp; Awards</span
+                <span class="cred-name">Leadership &amp; Awards</span
                 ><span class="cred-badge b-star">EAGLE SCOUT</span>
               </a>
               <a class="credential-row" href="sections/gallery.html">
@@ -1509,8 +1445,7 @@
                     />
                   </svg>
                 </div>
-                <span class="cred-icon">📸</span
-                ><span class="cred-name">Gallery &amp; Portfolio</span
+                <span class="cred-name">Gallery &amp; Portfolio</span
                 ><span class="cred-badge b-red">VERIFIED</span>
               </a>
             </div>
@@ -1535,43 +1470,53 @@
     <div class="section-tooltip" id="tt"></div>
 
     <script>
-      // ── Loader ──
-      const slogans = ["s0", "s1", "s2", "s3", "s4", "s5"];
-      const timings = [0, 800, 1700, 2600, 3500, 4400]; // ms each slogan starts
-      const totalDuration = 5600; // ms before loader dismisses
-      const bar = document.getElementById("prog-bar");
-      let current = -1;
+      // ── Loader — runs only ONCE per session ──
+      const hasSeenIntro = sessionStorage.getItem('mp_intro_seen');
 
-      function showSlogan(i) {
-        if (current >= 0) {
-          const prev = document.getElementById(slogans[current]);
-          prev.classList.remove("active");
-          prev.classList.add("exit");
-          setTimeout(() => {
-            prev.classList.remove("exit");
-            prev.style.opacity = "0";
-          }, 400);
+      if (hasSeenIntro) {
+        // Skip animation entirely
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('site').classList.add('visible');
+      } else {
+        sessionStorage.setItem('mp_intro_seen', '1');
+
+        const slogans = ["s0", "s1", "s2", "s3", "s4", "s5"];
+        const timings = [0, 800, 1700, 2600, 3500, 4400];
+        const totalDuration = 5600;
+        const bar = document.getElementById("prog-bar");
+        let current = -1;
+
+        function showSlogan(i) {
+          if (current >= 0) {
+            const prev = document.getElementById(slogans[current]);
+            prev.classList.remove("active");
+            prev.classList.add("exit");
+            setTimeout(() => {
+              prev.classList.remove("exit");
+              prev.style.opacity = "0";
+            }, 400);
+          }
+          current = i;
+          const el = document.getElementById(slogans[i]);
+          el.classList.add("active");
         }
-        current = i;
-        const el = document.getElementById(slogans[i]);
-        el.classList.add("active");
+
+        timings.forEach((t, i) => {
+          setTimeout(() => {
+            showSlogan(i);
+            bar.style.width = ((i + 1) / slogans.length) * 100 + "%";
+          }, t);
+        });
+
+        setTimeout(() => {
+          const loader = document.getElementById("loader");
+          loader.classList.add("fade-out");
+          setTimeout(() => {
+            loader.style.display = "none";
+            document.getElementById("site").classList.add("visible");
+          }, 700);
+        }, totalDuration);
       }
-
-      timings.forEach((t, i) => {
-        setTimeout(() => {
-          showSlogan(i);
-          bar.style.width = ((i + 1) / slogans.length) * 100 + "%";
-        }, t);
-      });
-
-      setTimeout(() => {
-        const loader = document.getElementById("loader");
-        loader.classList.add("fade-out");
-        setTimeout(() => {
-          loader.style.display = "none";
-          document.getElementById("site").classList.add("visible");
-        }, 700);
-      }, totalDuration);
 
       // ── Map section tooltip ──
       function go(s) {
