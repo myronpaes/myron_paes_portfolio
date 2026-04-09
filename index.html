@@ -1352,7 +1352,13 @@
               <a class="credential-row" href="sections/about.html">
                 <div class="cred-check">
                   <svg viewBox="0 0 12 12" fill="none">
-                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path
+                      d="M2 6l3 3 5-5"
+                      stroke="#fff"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
                   </svg>
                 </div>
                 <span class="cred-name">About Me</span
@@ -1471,14 +1477,14 @@
 
     <script>
       // ── Loader — runs only ONCE per session ──
-      const hasSeenIntro = sessionStorage.getItem('mp_intro_seen');
+      const hasSeenIntro = sessionStorage.getItem("mp_intro_seen");
 
       if (hasSeenIntro) {
         // Skip animation entirely
-        document.getElementById('loader').style.display = 'none';
-        document.getElementById('site').classList.add('visible');
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("site").classList.add("visible");
       } else {
-        sessionStorage.setItem('mp_intro_seen', '1');
+        sessionStorage.setItem("mp_intro_seen", "1");
 
         const slogans = ["s0", "s1", "s2", "s3", "s4", "s5"];
         const timings = [0, 800, 1700, 2600, 3500, 4400];
