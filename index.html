@@ -3,1147 +3,1582 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Myron Paes | Product Management & Data Science</title>
-
+    <title>Myron Paes | Product Manager & Data Scientist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Oswald:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
     <style>
-      /* --- VARIABLES & RESET --- */
       :root {
-        --font-main: "Inter", sans-serif;
-        --font-heading: "Merriweather", Georgia, serif;
-        --accent: #558b2f;
-        --bg-main: #fcfcfc;
-        --text-main: #2d3748;
-        --text-secondary: #4a5568;
+        --tm-blue: #3a47d5;
+        --tm-blue-dark: #2a35b0;
+        --bg-main: #dce3ec;
+        --text-dark: #1a202c;
+        --text-mid: #4a5568;
+        --font-display: "Oswald", sans-serif;
+        --font-body: "Barlow", sans-serif;
+        --font-cond: "Barlow Condensed", sans-serif;
       }
-
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 100px;
-      }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
-        font-family: var(--font-main);
-        line-height: 1.8;
-        color: var(--text-main);
+        font-family: var(--font-body);
         background: var(--bg-main);
+        color: var(--text-dark);
         overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
       }
 
-      h1,
-      h2,
-      h3,
-      .logo,
-      .section-title,
-      .page-title,
-      .typing-text {
-        font-family: var(--font-heading);
-        color: #1a202c;
-      }
-
-      /* Navigation */
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(252, 252, 252, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 1rem 2rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-        z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        animation: fadeDown 0.5s ease-out forwards;
-      }
-
-      .logo {
-        font-size: 1.3rem;
-        font-weight: 900;
-        text-decoration: none;
-        letter-spacing: -0.5px;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-      }
-
-      .nav-links a {
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-size: 0.95rem;
-        font-weight: 500;
-        transition: color 0.2s;
-      }
-
-      .nav-links a:hover {
-        color: var(--accent);
-      }
-
-      /* Two-Column Hero Section */
-      .hero {
+      .top-bar {
+        background: #000;
+        color: #fff;
+        padding: 0.62rem 1.8rem;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        text-align: left;
-        gap: 4rem;
-        padding: 160px 2rem 80px;
-        max-width: 1050px;
-        margin: 0 auto;
-      }
-
-      .hero-content {
-        flex: 1;
-      }
-
-      .hero-image-container {
-        flex-shrink: 0;
-      }
-
-      /* --- NEW TYPOGRAPHY ANIMATION --- */
-      .name-anim {
-        opacity: 0;
-        /* Sped up to 1.5 seconds, perfectly stationary */
-        animation: flashCycle 1.5s ease-in forwards;
-        animation-delay: 0.1s;
-      }
-
-      /* Rapid-fire font cycling in place */
-      @keyframes flashCycle {
-        0% {
-          opacity: 0;
-          font-family: "Courier New", monospace;
-        }
-        7% {
-          opacity: 1;
-          font-family: "Impact", sans-serif;
-        }
-        14% {
-          font-family: "Brush Script MT", cursive;
-        }
-        21% {
-          font-family: "Arial Black", sans-serif;
-        }
-        28% {
-          font-family: "Times New Roman", serif;
-        }
-        35% {
-          font-family: "Trebuchet MS", sans-serif;
-        }
-        42% {
-          font-family: "Lucida Console", monospace;
-        }
-        49% {
-          font-family: "Georgia", serif;
-        }
-        56% {
-          font-family: "Verdana", sans-serif;
-        }
-        63% {
-          font-family: "Comic Sans MS", cursive;
-        }
-        70% {
-          font-family: "Palatino", serif;
-        }
-        77% {
-          font-family: "Tahoma", sans-serif;
-        }
-        84% {
-          font-family: "Garamond", serif;
-        }
-        92% {
-          font-family: "Courier New", monospace;
-        }
-        100% {
-          opacity: 1;
-          font-family: var(--font-heading);
-        }
-      }
-
-      /* Standard fade-up for other hero elements */
-      .hero-anim {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeUp 0.6s ease-out forwards;
-      }
-
-      .hero-anim:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .hero-anim:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      .hero-anim:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-      .hero-anim:nth-child(5) {
-        animation-delay: 0.5s;
-      }
-      .hero-anim:nth-child(6) {
-        animation-delay: 0.6s;
-      }
-
-      .profile-img {
-        width: 220px;
-        height: 220px;
-        border-radius: 50%;
-        object-fit: cover;
-        display: block;
-        box-shadow: 0 10px 40px rgba(85, 139, 47, 0.2);
-        background: linear-gradient(135deg, #558b2f 0%, #33691e 100%);
-      }
-
-      h1 {
-        font-size: 3.2rem;
-        margin-bottom: 0.5rem;
-        font-weight: 900;
-        letter-spacing: -1px;
-      }
-
-      .subtitle {
-        font-size: 1.25rem;
-        color: var(--accent);
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-      }
-
-      .bio {
-        font-size: 1.1rem;
-        color: var(--text-secondary);
-        line-height: 1.8;
-        margin-bottom: 2rem;
-      }
-
-      .location {
-        color: #888;
-        margin-bottom: 2rem;
-        font-weight: 500;
-      }
-
-      /* Sleek Pill Tags */
-      .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-        justify-content: flex-start;
-        margin-bottom: 2rem;
-      }
-
-      .tag {
-        background: rgba(85, 139, 47, 0.1);
-        padding: 0.4rem 1.2rem;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        color: var(--accent);
-        text-decoration: none;
-        transition: all 0.2s ease-out;
-        font-weight: 600;
-      }
-
-      .tag:hover {
-        background: var(--accent);
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(85, 139, 47, 0.2);
-      }
-
-      /* CTA Buttons */
-      .cta-buttons {
-        display: flex;
         gap: 1rem;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        margin-bottom: 2rem;
+        font-family: var(--font-cond);
+        font-size: 0.84rem;
       }
-
-      .btn {
-        padding: 0.8rem 1.8rem;
-        border-radius: 8px;
+      .logo-tm {
+        font-family: var(--font-display);
+        font-size: 1.32rem;
+        font-weight: 700;
+        color: #fff;
         text-decoration: none;
-        font-weight: 600;
-        transition: all 0.2s ease-out;
-        font-size: 0.95rem;
+        letter-spacing: -0.4px;
       }
-
-      .btn-primary {
-        background: var(--text-main);
+      .logo-tm sup {
+        font-size: 0.52rem;
+        vertical-align: super;
+      }
+      .breadcrumb {
+        color: #777;
+      }
+      .breadcrumb a {
+        color: #777;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .breadcrumb a:hover {
         color: #fff;
       }
-
-      .btn-primary:hover {
-        background: #1a202c;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      }
-
-      .btn-secondary {
-        border: 2px solid var(--text-main);
-        color: var(--text-main);
-        background: transparent;
-      }
-
-      .btn-secondary:hover {
-        background: var(--text-main);
+      .breadcrumb .cur {
         color: #fff;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Content Section */
-      .content {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 2rem;
-      }
-
-      .section {
-        margin-bottom: 5rem;
-      }
-
-      .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-        font-weight: 900;
-        display: inline-block;
-      }
-
-      /* Accomplishments */
-      .accomplishment {
-        margin-bottom: 2rem;
-        padding-left: 2.5rem;
-        position: relative;
-      }
-
-      .accomplishment::before {
-        content: "🏆";
-        position: absolute;
-        left: 0;
-        top: 2px;
-        font-size: 1.4rem;
-      }
-
-      .accomplishment h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-        font-weight: 700;
-      }
-
-      .accomplishment p {
-        color: var(--text-secondary);
-        line-height: 1.8;
-        font-size: 1rem;
-      }
-
-      /* --- TIMELINE WITH LOGOS --- */
-      .timeline {
-        position: relative;
-        padding-left: 2rem;
-      }
-
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: #e2e8f0;
-      }
-
-      .timeline-item {
-        position: relative;
-        margin-bottom: 3rem;
-      }
-
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: -2.35rem;
-        top: 0.4rem;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--accent);
-        transition: transform 0.2s ease;
-      }
-
-      .timeline-item:hover::before {
-        transform: scale(1.4);
-      }
-
-      .timeline-logo {
-        position: absolute;
-        left: -3.15rem;
-        top: 0;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: #fff;
-        border: 2px solid var(--accent);
-        object-fit: contain;
-        padding: 2px;
-        transition: transform 0.2s ease;
-        z-index: 2;
-      }
-
-      .timeline-item:hover .timeline-logo {
-        transform: scale(1.2);
-        box-shadow: 0 4px 12px rgba(85, 139, 47, 0.2);
-      }
-
-      .timeline-title {
-        font-weight: 700;
-        margin-bottom: 0.3rem;
-        font-size: 1.15rem;
-        color: #1a202c;
-      }
-
-      .timeline-meta {
-        color: var(--accent);
-        font-size: 0.9rem;
         font-weight: 600;
-        margin-bottom: 0.8rem;
       }
-
-      .timeline-description {
-        color: var(--text-secondary);
-        font-size: 1rem;
-        line-height: 1.7;
+      .top-bar-right {
+        margin-left: auto;
       }
-
-      /* Soft UI Cards */
-      .project-teaser,
-      .skill-category {
-        background: #ffffff;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-        margin-bottom: 1.5rem;
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
-      }
-
-      .project-teaser {
-        border-left: 4px solid var(--accent);
-      }
-
-      .project-teaser:hover,
-      .skill-category:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      }
-
-      /* Skills Section */
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-
-      .skill-category h3 {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-        color: var(--accent);
-        font-weight: 700;
-      }
-
-      .skill-category ul {
-        list-style: none;
-      }
-
-      .skill-category li {
-        padding: 0.4rem 0;
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-      }
-
-      .skill-category li::before {
-        content: "• ";
-        color: var(--accent);
-        font-weight: bold;
-      }
-
-      /* --- GALLERY TEASER STYLES --- */
-      .gallery-teaser-container {
-        position: relative;
-        max-width: 500px;
-        margin: 2rem auto;
-        display: block;
+      .btn-signin {
+        background: none;
+        border: 1.5px solid #555;
+        color: #fff;
+        padding: 0.36rem 1.1rem;
+        border-radius: 4px;
+        font-family: var(--font-cond);
+        font-size: 0.86rem;
+        font-weight: 600;
         cursor: pointer;
-        text-decoration: none;
+        transition: border-color 0.18s;
+        letter-spacing: 0.3px;
+      }
+      .btn-signin:hover {
+        border-color: #fff;
       }
 
-      .gt-main {
-        position: relative;
-        z-index: 3;
-        border-radius: 16px;
+      .event-banner {
+        background: linear-gradient(
+          135deg,
+          #04041a 0%,
+          #001650 55%,
+          #082470 100%
+        );
+        color: #fff;
+        padding: 1.25rem 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+      }
+      .event-thumb {
+        width: 74px;
+        height: 74px;
+        border-radius: 10px;
         overflow: hidden;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        opacity: 1;
-        aspect-ratio: 4 / 3;
-        background-color: #f0f0f0;
+        flex-shrink: 0;
+        background: linear-gradient(135deg, #3a47d5, #7b1fa2);
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 2rem;
       }
-
-      .gt-main img {
+      .event-thumb img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        display: block;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        color: transparent;
+      }
+      .event-info h1 {
+        font-family: var(--font-display);
+        font-size: 1.42rem;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+      .more-info-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        color: #fff;
+        padding: 0.28rem 0.85rem;
+        border-radius: 18px;
+        font-size: 0.76rem;
+        cursor: pointer;
+        font-family: var(--font-cond);
+        font-weight: 600;
+        letter-spacing: 0.4px;
+        transition: background 0.18s;
+      }
+      .more-info-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .event-meta {
+        color: #94aece;
+        font-size: 0.86rem;
+        margin-top: 0.4rem;
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        font-family: var(--font-cond);
+        font-weight: 500;
+        letter-spacing: 0.2px;
       }
 
-      .gt-main img.image-loaded {
-        opacity: 1;
+      .info-bar {
+        background: #fff;
+        border-bottom: 1px solid #dde4ed;
+        padding: 0.52rem 1.8rem;
+        font-size: 0.81rem;
+        color: #555;
+      }
+      .info-bar strong {
+        color: var(--text-dark);
       }
 
-      .gt-overlay {
+      .main-layout {
+        display: grid;
+        grid-template-columns: 1fr 368px;
+        min-height: calc(100vh - 158px);
+      }
+
+      /* MAP */
+      .map-panel {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 2rem 4rem;
+        min-height: 600px;
+      }
+      .map-controls {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0);
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.38rem;
+      }
+      .map-btn {
+        width: 35px;
+        height: 35px;
+        background: #fff;
+        border: 1px solid #bcc6d4;
+        border-radius: 4px;
+        font-size: 0.95rem;
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        color: #333;
+        transition: background 0.14s;
+      }
+      .map-btn:hover {
+        background: #eef2f7;
       }
 
-      .gt-text {
-        color: #fff;
-        background: rgba(26, 26, 26, 0.9);
-        padding: 0.8rem 1.5rem;
-        border-radius: 50px; /* Pill shape for modern look */
-        font-size: 1.05rem;
-        font-weight: 600;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.3s ease;
-        text-align: center;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        font-family: var(--font-main);
+      .venue-svg-wrap {
+        width: 100%;
+        max-width: 590px;
+      }
+      .venue-svg-wrap svg {
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 10px 32px rgba(0, 0, 0, 0.15));
       }
 
-      .gt-side {
+      .seat-section {
+        cursor: pointer;
+        transition: filter 0.17s;
+      }
+      .seat-section:hover {
+        filter: brightness(1.22) saturate(1.18);
+      }
+      .seat-section text {
+        fill: #fff;
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 700;
+        text-anchor: middle;
+        dominant-baseline: middle;
+        pointer-events: none;
+        letter-spacing: 0.2px;
+      }
+
+      .legend-bar {
         position: absolute;
-        top: 50%;
-        width: 70%;
-        aspect-ratio: 4 / 3;
-        object-fit: cover;
-        border-radius: 16px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        z-index: 1;
-        opacity: 0;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-
-      .gt-side.image-loaded {
-        opacity: 1;
-      }
-
-      .gt-left {
-        left: 0;
-        transform: translateY(-50%) scale(0.8) translateX(20%);
-      }
-      .gt-right {
-        right: 0;
-        transform: translateY(-50%) scale(0.8) translateX(-20%);
-      }
-
-      .gallery-teaser-container:hover .gt-main {
-        transform: scale(1.05);
-      }
-      .gallery-teaser-container:hover .gt-overlay {
-        background: rgba(0, 0, 0, 0.4);
-      }
-      .gallery-teaser-container:hover .gt-text {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .gallery-teaser-container:hover .gt-left {
-        opacity: 0.8;
-        transform: translateY(-50%) scale(0.85) translateX(-35%) rotate(-6deg);
-      }
-      .gallery-teaser-container:hover .gt-right {
-        opacity: 0.8;
-        transform: translateY(-50%) scale(0.85) translateX(35%) rotate(6deg);
-      }
-
-      /* --- TYPING ANIMATION STYLES --- */
-      .typing-wrapper {
-        display: inline-block;
-      }
-
-      .typing-text {
-        overflow: hidden;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #fff;
+        border: 1px solid #cdd5e0;
+        border-radius: 8px;
+        padding: 0.52rem 1.15rem;
+        display: flex;
+        gap: 1.1rem;
+        align-items: center;
+        font-size: 0.74rem;
+        font-family: var(--font-cond);
+        font-weight: 600;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+        letter-spacing: 0.3px;
         white-space: nowrap;
-        border-right: 3px solid var(--accent);
-        width: 0;
-        margin: 0 auto 1rem;
-        font-weight: 800;
-        font-size: 2.2rem;
-        max-width: fit-content;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.38rem;
+      }
+      .legend-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
       }
 
-      .reveal.active .typing-text {
-        animation:
-          typing 2s steps(22, end) forwards,
-          blink-caret 0.75s step-end infinite;
-        animation-delay: 0.2s;
+      /* RIGHT PANEL */
+      .right-panel {
+        background: #fff;
+        border-left: 1px solid #d8e0ea;
+        display: flex;
+        flex-direction: column;
+      }
+      .panel-header {
+        border-bottom: 1px solid #e6ecf4;
+        padding: 1rem 1.5rem;
+      }
+      .panel-header h2 {
+        font-family: var(--font-display);
+        font-size: 1.08rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: var(--text-dark);
       }
 
-      @keyframes typing {
-        from {
-          width: 0;
-        }
-        to {
-          width: 100%;
-        }
+      .profile-card {
+        padding: 1.35rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.05rem;
+      }
+      .profile-top {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      .profile-img-wrap {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: linear-gradient(135deg, #3a47d5, #7b1fa2);
+        box-shadow: 0 4px 16px rgba(58, 71, 213, 0.2);
+      }
+      .profile-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .profile-name-block h3 {
+        font-family: var(--font-display);
+        font-size: 1.42rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        letter-spacing: 0.1px;
+        line-height: 1.1;
+      }
+      .profile-role {
+        color: var(--tm-blue);
+        font-size: 0.78rem;
+        font-weight: 700;
+        font-family: var(--font-cond);
+        letter-spacing: 0.9px;
+        margin-top: 0.3rem;
+        text-transform: uppercase;
+      }
+      .profile-loc {
+        color: #888;
+        font-size: 0.78rem;
+        margin-top: 0.2rem;
       }
 
-      @keyframes blink-caret {
-        from,
-        to {
-          border-color: transparent;
-        }
-        50% {
-          border-color: var(--accent);
-        }
+      .divider {
+        border: none;
+        border-top: 1px solid #e6ecf4;
+      }
+      .bio-text {
+        font-size: 0.86rem;
+        line-height: 1.64;
+        color: var(--text-mid);
       }
 
-      @media (max-width: 480px) {
-        .typing-text {
-          white-space: normal;
-          border-right: none;
-          width: auto !important;
-          animation: none !important;
-        }
+      .cred-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.7rem;
+      }
+      .cred-label {
+        font-family: var(--font-cond);
+        font-weight: 700;
+        font-size: 0.78rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--text-dark);
+      }
+      .cred-links {
+        font-size: 0.76rem;
+        color: var(--tm-blue);
+        font-weight: 600;
+        font-family: var(--font-cond);
+        cursor: pointer;
       }
 
-      /* Footer */
-      footer {
-        background: var(--bg-main);
-        padding: 4rem 0;
+      .credential-row {
+        display: flex;
+        align-items: center;
+        gap: 0.72rem;
+        padding: 0.62rem 0.82rem;
+        border: 1.5px solid #e0e8f4;
+        border-radius: 8px;
+        margin-bottom: 0.52rem;
+        cursor: pointer;
+        transition:
+          border-color 0.17s,
+          background 0.17s,
+          box-shadow 0.17s,
+          transform 0.13s;
+        text-decoration: none;
+        color: inherit;
+      }
+      .credential-row:hover {
+        border-color: var(--tm-blue);
+        background: #f1f4ff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(58, 71, 213, 0.1);
+      }
+      .cred-check {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        background: var(--tm-blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .cred-check svg {
+        width: 11px;
+        height: 11px;
+      }
+      .cred-icon {
+        font-size: 0.98rem;
+        flex-shrink: 0;
+      }
+      .cred-name {
+        flex: 1;
+        font-family: var(--font-cond);
+        font-size: 0.91rem;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+      }
+      .cred-badge {
+        font-size: 0.68rem;
+        font-family: var(--font-cond);
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        padding: 0.17rem 0.48rem;
+        border-radius: 10px;
+        white-space: nowrap;
+      }
+      .b-star {
+        background: #fff3e0;
+        color: #bf360c;
+        border: 1px solid #ffcc80;
+      }
+      .b-green {
+        background: #e8f5e9;
+        color: #1b5e20;
+        border: 1px solid #a5d6a7;
+      }
+      .b-blue {
+        background: #e3f2fd;
+        color: #0d47a1;
+        border: 1px solid #90caf9;
+      }
+      .b-red {
+        background: #fce4ec;
+        color: #880e4f;
+        border: 1px solid #f48fb1;
+      }
+
+      .panel-bottom {
+        padding: 1rem 1.5rem 1.35rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        margin-top: auto;
+      }
+      .btn-contact {
+        display: block;
+        width: 100%;
+        background: var(--tm-blue);
+        color: #fff;
+        border: none;
+        padding: 0.88rem;
+        border-radius: 7px;
+        font-family: var(--font-display);
+        font-size: 0.93rem;
+        font-weight: 600;
+        letter-spacing: 1.1px;
+        cursor: pointer;
+        transition:
+          background 0.18s,
+          transform 0.13s,
+          box-shadow 0.18s;
+        text-transform: uppercase;
+        text-decoration: none;
         text-align: center;
-        color: var(--text-secondary);
-        font-size: 0.9rem;
+      }
+      .btn-contact:hover {
+        background: var(--tm-blue-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(58, 71, 213, 0.26);
+      }
+      .btn-resume {
+        display: block;
+        width: 100%;
+        background: #fff;
+        color: var(--text-dark);
+        border: 2px solid #2d3748;
+        padding: 0.76rem;
+        border-radius: 7px;
+        font-family: var(--font-display);
+        font-size: 0.93rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition:
+          background 0.18s,
+          color 0.18s,
+          transform 0.13s;
+        text-transform: uppercase;
+        text-decoration: none;
+        text-align: center;
+      }
+      .btn-resume:hover {
+        background: #2d3748;
+        color: #fff;
+        transform: translateY(-1px);
       }
 
-      /* Responsive */
-      @media (max-width: 768px) {
-        .hero {
-          flex-direction: column-reverse;
-          text-align: center;
-          gap: 2rem;
-          padding: 130px 1.5rem 40px;
-        }
-        .cta-buttons,
-        .tags {
-          justify-content: center;
-        }
-        .profile-img {
-          width: 160px;
-          height: 160px;
-        }
-        nav {
-          flex-direction: column;
-          gap: 1rem;
-        }
-        .nav-links {
-          gap: 1rem;
-        }
-        h1 {
-          font-size: 2.5rem;
-        }
-        .timeline {
-          padding-left: 1.5rem;
-        }
+      .section-tooltip {
+        position: fixed;
+        background: rgba(8, 8, 28, 0.9);
+        color: #fff;
+        padding: 0.36rem 0.78rem;
+        border-radius: 6px;
+        font-family: var(--font-cond);
+        font-size: 0.78rem;
+        font-weight: 600;
+        pointer-events: none;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.11s;
+        z-index: 9999;
+        letter-spacing: 0.3px;
       }
 
-      @media (max-width: 500px) {
-        .skills-grid {
+      @media (max-width: 920px) {
+        .main-layout {
           grid-template-columns: 1fr;
         }
-      }
-
-      /* Global Animations */
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
+        .right-panel {
+          border-left: none;
+          border-top: 1px solid #d8e0ea;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @keyframes fadeDown {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-      }
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .delay-100 {
-        transition-delay: 0.1s;
-      }
-      .delay-200 {
-        transition-delay: 0.2s;
-      }
-      .delay-300 {
-        transition-delay: 0.3s;
       }
     </style>
   </head>
   <body>
-    <nav>
-      <a href="#" class="logo">Myron Paes</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-      </ul>
-    </nav>
+    <div class="top-bar">
+      <a href="#" class="logo-tm">ticketmaster<sup>®</sup></a>
+      <span class="breadcrumb"
+        >&nbsp;Home / <a href="#">Portfolio Tickets</a> /
+        <a href="#">Product Management</a> /
+        <span class="cur">Myron Paes</span></span
+      >
+      <div class="top-bar-right">
+        <button
+          class="btn-signin"
+          onclick="location.href = 'sections/contact.html'"
+        >
+          Sign In
+        </button>
+      </div>
+    </div>
 
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="name-anim">Myron Paes</h1>
-        <p class="subtitle hero-anim">Product Manager | Data Scientist</p>
-        <p class="bio hero-anim">
-          Pursuing a dual undergraduate degree in Data Science and Business at
-          NJIT, I aim to develop proficiency in Product Management methodologies
-          while acting upon my lifelong passions in business, analytics, and
-          communication; I dream of an endeavor that marries critical analysis
-          with technical communication prowess, and I work now to fulfill such a
-          feat!
-        </p>
-        <p class="location hero-anim">📍 Marlton, NJ</p>
-        <div class="tags hero-anim">
-          <span class="tag">Product Management</span>
-          <span class="tag">Data Science</span>
-          <span class="tag">Research Writing</span>
-          <span class="tag">Marketing</span>
-          <span class="tag">Business Intelligence</span>
-        </div>
-        <div class="cta-buttons hero-anim">
-          <a href="mailto:myronpaes@gmail.com" class="btn btn-primary"
-            >Contact Me</a
+    <div class="event-banner">
+      <div class="event-thumb">
+        <img
+          src="pics/headshot.jpg"
+          alt="Myron Paes"
+          onerror="this.parentElement.innerHTML = '🎟️'"
+        />
+      </div>
+      <div class="event-info">
+        <h1>
+          Myron Paes — The Product Manager World Tour
+          <button
+            class="more-info-btn"
+            onclick="location.href = 'sections/about.html'"
           >
-          <a
-            href="https://linkedin.com/in/myron-paes/"
-            target="_blank"
-            class="btn btn-secondary"
-            >View LinkedIn</a
+            ⓘ More Info
+          </button>
+        </h1>
+        <div class="event-meta">
+          <span
+            >📅 June 2026 – August 2026 · Philadelphia, PA (Five Below)</span
+          >
+          <span>🎓 NJIT · Data Science & Business</span>
+          <span>📍 Marlton, NJ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-bar">
+      <strong>Recruiting Info:</strong> Seeking Product Management, Data Science
+      & Marketing internship opportunities for Summer 2027. Click any section on
+      the map to explore credentials — <strong>floor seats go fast!</strong>
+    </div>
+
+    <div class="main-layout">
+      <div class="map-panel">
+        <div class="map-controls">
+          <button class="map-btn">⌂</button>
+          <button class="map-btn">+</button>
+          <button class="map-btn">−</button>
+        </div>
+
+        <div class="venue-svg-wrap">
+          <svg viewBox="0 0 580 520" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="285" cy="258" rx="278" ry="242" fill="#c4cedb" />
+
+            <!-- UPPER DECK 300s -->
+            <g
+              class="seat-section"
+              onclick="go('about')"
+              data-label="ABOUT ME · 313"
+            >
+              <path
+                d="M 178 54 A 262 228 0 0 1 222 38 L 227 90 A 192 162 0 0 0 195 103 Z"
+                fill="#7eb3e8"
+              />
+              <text x="203" y="68" font-size="10.5">313</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('about')"
+              data-label="ABOUT ME · 314"
+            >
+              <path
+                d="M 222 38 A 262 228 0 0 1 285 30 L 285 83 A 192 162 0 0 0 229 86 Z"
+                fill="#7eb3e8"
+              />
+              <text x="254" y="55" font-size="10.5">314</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('projects')"
+              data-label="PROJECTS · 315"
+            >
+              <path
+                d="M 285 30 A 262 228 0 0 1 348 38 L 341 90 A 192 162 0 0 0 285 83 Z"
+                fill="#7eb3e8"
+              />
+              <text x="316" y="55" font-size="10.5">315</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('projects')"
+              data-label="PROJECTS · 316"
+            >
+              <path
+                d="M 348 38 A 262 228 0 0 1 392 55 L 378 103 A 192 162 0 0 0 343 88 Z"
+                fill="#7eb3e8"
+              />
+              <text x="368" y="70" font-size="10.5">316</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 317"
+            >
+              <path
+                d="M 392 55 A 262 228 0 0 1 428 82 L 410 126 A 192 162 0 0 0 380 103 Z"
+                fill="#7eb3e8"
+              />
+              <text x="408" y="93" font-size="10.5">317</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 318"
+            >
+              <path
+                d="M 428 82 A 262 228 0 0 1 458 122 L 435 162 A 192 162 0 0 0 412 126 Z"
+                fill="#7eb3e8"
+              />
+              <text x="438" y="136" font-size="10.5">318</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('leadership')"
+              data-label="LEADERSHIP · 312"
+            >
+              <path
+                d="M 112 124 A 260 226 0 0 1 148 82 L 178 120 A 192 162 0 0 0 150 158 Z"
+                fill="#7eb3e8"
+              />
+              <text x="146" y="115" font-size="10.5">312</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('about')"
+              data-label="ABOUT ME · 311"
+            >
+              <path
+                d="M 148 82 A 262 228 0 0 1 178 55 L 197 102 A 192 162 0 0 0 178 120 Z"
+                fill="#7eb3e8"
+              />
+              <text x="170" y="90" font-size="10.5">311</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('leadership')"
+              data-label="LEADERSHIP · 310"
+            >
+              <path
+                d="M 80 184 A 260 226 0 0 1 112 124 L 150 158 A 192 162 0 0 0 135 202 Z"
+                fill="#5c9ad4"
+              />
+              <text x="107" y="167" font-size="10.5">310</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('gallery')"
+              data-label="GALLERY · 309"
+            >
+              <path
+                d="M 58 234 A 260 226 0 0 1 80 184 L 135 202 A 192 162 0 0 0 118 235 Z"
+                fill="#5c9ad4"
+              />
+              <text x="90" y="213" font-size="10.5">309</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('projects')"
+              data-label="PROJECTS · 308"
+            >
+              <path
+                d="M 52 275 A 260 226 0 0 1 58 234 L 118 235 A 192 162 0 0 0 113 272 Z"
+                fill="#5c9ad4"
+              />
+              <text x="84" y="254" font-size="10.5">308</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('skills')"
+              data-label="SKILLS · 307"
+            >
+              <path
+                d="M 58 318 A 260 226 0 0 1 52 275 L 113 272 A 192 162 0 0 0 117 311 Z"
+                fill="#5c9ad4"
+              />
+              <text x="87" y="293" font-size="10.5">307</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('education')"
+              data-label="EDUCATION · 306"
+            >
+              <path
+                d="M 78 362 A 260 226 0 0 1 58 318 L 117 311 A 192 162 0 0 0 134 348 Z"
+                fill="#5c9ad4"
+              />
+              <text x="97" y="337" font-size="10.5">306</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('education')"
+              data-label="EDUCATION · 305"
+            >
+              <path
+                d="M 108 400 A 260 226 0 0 1 78 362 L 134 348 A 192 162 0 0 0 158 378 Z"
+                fill="#5c9ad4"
+              />
+              <text x="116" y="378" font-size="10.5">305</text>
+            </g>
+            <!-- Right upper -->
+            <g
+              class="seat-section"
+              onclick="go('contact')"
+              data-label="CONTACT · 319"
+            >
+              <path
+                d="M 458 122 A 260 226 0 0 1 478 165 L 453 200 A 192 162 0 0 0 435 162 Z"
+                fill="#7eb3e8"
+              />
+              <text x="460" y="160" font-size="10.5">319</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('contact')"
+              data-label="CONTACT · 320"
+            >
+              <path
+                d="M 478 165 A 260 226 0 0 1 492 210 L 465 235 A 192 162 0 0 0 453 200 Z"
+                fill="#5c9ad4"
+              />
+              <text x="474" y="208" font-size="10.5">320</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('skills')"
+              data-label="SKILLS · 321"
+            >
+              <path
+                d="M 492 210 A 260 226 0 0 1 498 255 L 470 255 A 192 162 0 0 0 465 235 Z"
+                fill="#5c9ad4"
+              />
+              <text x="479" y="246" font-size="10.5">321</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('skills')"
+              data-label="SKILLS · 322"
+            >
+              <path
+                d="M 498 255 A 260 226 0 0 1 490 302 L 462 295 A 192 162 0 0 0 470 255 Z"
+                fill="#5c9ad4"
+              />
+              <text x="479" y="279" font-size="10.5">322</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('leadership')"
+              data-label="LEADERSHIP · 323"
+            >
+              <path
+                d="M 490 302 A 260 226 0 0 1 472 342 L 444 330 A 192 162 0 0 0 462 295 Z"
+                fill="#5c9ad4"
+              />
+              <text x="467" y="320" font-size="10.5">323</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('gallery')"
+              data-label="GALLERY · 324"
+            >
+              <path
+                d="M 472 342 A 260 226 0 0 1 444 378 L 418 362 A 192 162 0 0 0 444 330 Z"
+                fill="#5c9ad4"
+              />
+              <text x="449" y="358" font-size="10.5">324</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 325"
+            >
+              <path
+                d="M 444 378 A 260 226 0 0 1 410 406 L 390 386 A 192 162 0 0 0 418 362 Z"
+                fill="#5c9ad4"
+              />
+              <text x="425" y="390" font-size="10.5">325</text>
+            </g>
+            <!-- Bottom -->
+            <g
+              class="seat-section"
+              onclick="go('about')"
+              data-label="ABOUT ME · 304"
+            >
+              <path
+                d="M 108 400 A 260 226 0 0 0 148 428 L 165 404 A 192 162 0 0 1 132 376 Z"
+                fill="#5c9ad4"
+              />
+              <text x="140" y="410" font-size="10.5">304</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('about')"
+              data-label="ABOUT ME · 303"
+            >
+              <path
+                d="M 148 428 A 260 226 0 0 0 195 448 L 205 423 A 192 162 0 0 1 165 404 Z"
+                fill="#5c9ad4"
+              />
+              <text x="182" y="436" font-size="10.5">303</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('projects')"
+              data-label="PROJECTS · 302"
+            >
+              <path
+                d="M 195 448 A 260 226 0 0 0 248 459 L 250 433 A 192 162 0 0 1 204 422 Z"
+                fill="#5c9ad4"
+              />
+              <text x="224" y="448" font-size="10.5">302</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('skills')"
+              data-label="SKILLS · 301"
+            >
+              <path
+                d="M 248 459 A 260 226 0 0 0 285 462 L 285 436 A 192 162 0 0 1 250 433 Z"
+                fill="#5c9ad4"
+              />
+              <text x="265" y="450" font-size="10.5">301</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('skills')"
+              data-label="SKILLS · 330"
+            >
+              <path
+                d="M 285 462 A 260 226 0 0 0 322 459 L 320 433 A 192 162 0 0 1 285 436 Z"
+                fill="#5c9ad4"
+              />
+              <text x="303" y="450" font-size="10.5">330</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 329"
+            >
+              <path
+                d="M 322 459 A 260 226 0 0 0 365 447 L 358 422 A 192 162 0 0 1 320 433 Z"
+                fill="#5c9ad4"
+              />
+              <text x="343" y="447" font-size="10.5">329</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 328"
+            >
+              <path
+                d="M 365 447 A 260 226 0 0 0 410 428 L 397 403 A 192 162 0 0 1 360 422 Z"
+                fill="#5c9ad4"
+              />
+              <text x="388" y="434" font-size="10.5">328</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('contact')"
+              data-label="CONTACT · 327"
+            >
+              <path
+                d="M 410 428 A 260 226 0 0 0 444 405 L 428 381 A 192 162 0 0 1 397 404 Z"
+                fill="#5c9ad4"
+              />
+              <text x="424" y="416" font-size="10.5">327</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('contact')"
+              data-label="CONTACT · 326"
+            >
+              <path
+                d="M 444 405 A 260 226 0 0 0 472 376 L 452 358 A 192 162 0 0 1 428 380 Z"
+                fill="#5c9ad4"
+              />
+              <text x="452" y="388" font-size="10.5">326</text>
+            </g>
+
+            <!-- MID RING -->
+            <g
+              class="seat-section"
+              onclick="go('skills')"
+              data-label="SKILLS · 9"
+            >
+              <path
+                d="M 152 160 A 192 162 0 0 1 182 122 L 208 150 A 148 120 0 0 0 185 180 Z"
+                fill="#2e7dd6"
+              />
+              <text x="178" y="157" font-size="10">9</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('leadership')"
+              data-label="LEADERSHIP · 8"
+            >
+              <path
+                d="M 134 202 A 192 162 0 0 1 152 160 L 185 180 A 148 120 0 0 0 170 214 Z"
+                fill="#2e7dd6"
+              />
+              <text x="160" y="194" font-size="10">8</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('projects')"
+              data-label="PROJECTS · 7"
+            >
+              <path
+                d="M 116 237 A 192 162 0 0 1 134 202 L 170 214 A 148 120 0 0 0 157 240 Z"
+                fill="#2e7dd6"
+              />
+              <text x="144" y="225" font-size="10">7</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('education')"
+              data-label="EDUCATION · 6"
+            >
+              <path
+                d="M 112 272 A 192 162 0 0 1 116 237 L 157 240 A 148 120 0 0 0 153 268 Z"
+                fill="#2e7dd6"
+              />
+              <text x="138" y="255" font-size="10">6</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 5"
+            >
+              <path
+                d="M 117 312 A 192 162 0 0 1 112 272 L 153 268 A 148 120 0 0 0 156 306 Z"
+                fill="#2e7dd6"
+              />
+              <text x="136" y="290" font-size="10">5</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('about')"
+              data-label="ABOUT ME · 4"
+            >
+              <path
+                d="M 134 346 A 192 162 0 0 1 117 312 L 156 306 A 148 120 0 0 0 168 338 Z"
+                fill="#2e7dd6"
+              />
+              <text x="148" y="327" font-size="10">4</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('about')"
+              data-label="ABOUT ME · 3"
+            >
+              <path
+                d="M 160 376 A 192 162 0 0 1 134 346 L 168 338 A 148 120 0 0 0 188 363 Z"
+                fill="#2e7dd6"
+              />
+              <text x="162" y="358" font-size="10">3</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('contact')"
+              data-label="CONTACT · 2"
+            >
+              <path
+                d="M 193 400 A 192 162 0 0 1 160 376 L 188 363 A 148 120 0 0 0 207 384 Z"
+                fill="#2e7dd6"
+              />
+              <text x="186" y="384" font-size="10">2</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 1"
+            >
+              <path
+                d="M 235 416 A 192 162 0 0 1 193 400 L 207 384 A 148 120 0 0 0 240 398 Z"
+                fill="#2e7dd6"
+              />
+              <text x="218" y="404" font-size="10">1</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 10"
+            >
+              <path
+                d="M 182 122 A 192 162 0 0 1 218 100 L 232 127 A 148 120 0 0 0 208 150 Z"
+                fill="#2e7dd6"
+              />
+              <text x="207" y="121" font-size="10">10</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 11"
+            >
+              <path
+                d="M 218 100 A 192 162 0 0 1 260 88 L 267 116 A 148 120 0 0 0 232 128 Z"
+                fill="#2e7dd6"
+              />
+              <text x="243" y="105" font-size="10">11</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('projects')"
+              data-label="PROJECTS · 12"
+            >
+              <path
+                d="M 260 88 A 192 162 0 0 1 285 85 L 285 113 A 148 120 0 0 0 267 116 Z"
+                fill="#2e7dd6"
+              />
+              <text x="271" y="101" font-size="10">12</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('skills')"
+              data-label="SKILLS · 13"
+            >
+              <path
+                d="M 285 85 A 192 162 0 0 1 310 88 L 303 116 A 148 120 0 0 0 285 113 Z"
+                fill="#2e7dd6"
+              />
+              <text x="298" y="100" font-size="10">13</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('education')"
+              data-label="EDUCATION · 14"
+            >
+              <path
+                d="M 310 88 A 192 162 0 0 1 352 100 L 338 128 A 148 120 0 0 0 303 116 Z"
+                fill="#2e7dd6"
+              />
+              <text x="326" y="106" font-size="10">14</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('gallery')"
+              data-label="GALLERY · 15"
+            >
+              <path
+                d="M 352 100 A 192 162 0 0 1 388 122 L 370 150 A 148 120 0 0 0 338 128 Z"
+                fill="#2e7dd6"
+              />
+              <text x="365" y="123" font-size="10">15</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('gallery')"
+              data-label="GALLERY · 16"
+            >
+              <path
+                d="M 388 122 A 192 162 0 0 1 416 160 L 394 178 A 148 120 0 0 0 370 150 Z"
+                fill="#2e7dd6"
+              />
+              <text x="399" y="158" font-size="10">16</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('gallery')"
+              data-label="GALLERY · 17"
+            >
+              <path
+                d="M 416 160 A 192 162 0 0 1 432 200 L 408 212 A 148 120 0 0 0 394 178 Z"
+                fill="#2e7dd6"
+              />
+              <text x="417" y="196" font-size="10">17</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('contact')"
+              data-label="CONTACT · 18"
+            >
+              <path
+                d="M 432 200 A 192 162 0 0 1 437 238 L 413 238 A 148 120 0 0 0 408 212 Z"
+                fill="#2e7dd6"
+              />
+              <text x="421" y="225" font-size="10">18</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('skills')"
+              data-label="SKILLS · 19"
+            >
+              <path
+                d="M 437 238 A 192 162 0 0 1 430 275 L 407 270 A 148 120 0 0 0 413 238 Z"
+                fill="#2e7dd6"
+              />
+              <text x="420" y="258" font-size="10">19</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('projects')"
+              data-label="PROJECTS · 20"
+            >
+              <path
+                d="M 430 275 A 192 162 0 0 1 414 314 L 392 305 A 148 120 0 0 0 407 270 Z"
+                fill="#2e7dd6"
+              />
+              <text x="416" y="292" font-size="10">20</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('education')"
+              data-label="EDUCATION · 21"
+            >
+              <path
+                d="M 414 314 A 192 162 0 0 1 390 348 L 370 336 A 148 120 0 0 0 392 305 Z"
+                fill="#2e7dd6"
+              />
+              <text x="394" y="330" font-size="10">21</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 107"
+            >
+              <path
+                d="M 280 394 A 148 120 0 0 0 318 388 L 338 408 A 192 162 0 0 1 280 416 Z"
+                fill="#2e7dd6"
+              />
+              <text x="305" y="405" font-size="9.5">107</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('projects')"
+              data-label="PROJECTS · 109"
+            >
+              <path
+                d="M 242 394 A 148 120 0 0 0 280 394 L 280 416 A 192 162 0 0 1 238 415 Z"
+                fill="#2e7dd6"
+              />
+              <text x="258" y="408" font-size="9.5">109</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('skills')"
+              data-label="SKILLS · 111"
+            >
+              <path
+                d="M 207 382 A 148 120 0 0 0 242 394 L 240 415 A 192 162 0 0 1 196 400 Z"
+                fill="#2e7dd6"
+              />
+              <text x="222" y="402" font-size="9.5">111</text>
+            </g>
+
+            <!-- INNER RING 100s -->
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 137"
+            >
+              <path
+                d="M 218 150 A 148 120 0 0 1 244 130 L 251 148 A 114 90 0 0 0 228 164 Z"
+                fill="#1a5fba"
+              />
+              <text x="236" y="148" font-size="9.5">137</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('projects')"
+              data-label="PROJECTS · 139"
+            >
+              <path
+                d="M 244 130 A 148 120 0 0 1 268 124 L 271 143 A 114 90 0 0 0 251 148 Z"
+                fill="#1a5fba"
+              />
+              <text x="258" y="136" font-size="9.5">139</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('skills')"
+              data-label="SKILLS · 141"
+            >
+              <path
+                d="M 268 124 A 148 120 0 0 1 295 124 L 292 143 A 114 90 0 0 0 271 143 Z"
+                fill="#1a5fba"
+              />
+              <text x="281" y="133" font-size="9.5">141</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('education')"
+              data-label="EDUCATION · 143"
+            >
+              <path
+                d="M 295 124 A 148 120 0 0 1 320 132 L 312 150 A 114 90 0 0 0 292 143 Z"
+                fill="#1a5fba"
+              />
+              <text x="305" y="138" font-size="9.5">143</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('leadership')"
+              data-label="LEADERSHIP · 145"
+            >
+              <path
+                d="M 320 132 A 148 120 0 0 1 344 148 L 333 165 A 114 90 0 0 0 312 150 Z"
+                fill="#1a5fba"
+              />
+              <text x="330" y="152" font-size="9.5">145</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('education')"
+              data-label="EDUCATION · 115"
+            >
+              <path
+                d="M 228 336 A 114 90 0 0 0 256 346 L 253 360 A 148 120 0 0 1 206 348 Z"
+                fill="#1a5fba"
+              />
+              <text x="234" y="349" font-size="9.5">115</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('projects')"
+              data-label="PROJECTS · 113"
+            >
+              <path
+                d="M 256 346 A 114 90 0 0 0 285 349 L 285 364 A 148 120 0 0 1 253 360 Z"
+                fill="#1a5fba"
+              />
+              <text x="268" y="357" font-size="9.5">113</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('experience')"
+              data-label="EXPERIENCE · 111"
+            >
+              <path
+                d="M 285 349 A 114 90 0 0 0 314 346 L 317 360 A 148 120 0 0 1 285 364 Z"
+                fill="#1a5fba"
+              />
+              <text x="299" y="357" font-size="9.5">111</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('skills')"
+              data-label="SKILLS · 109"
+            >
+              <path
+                d="M 314 346 A 114 90 0 0 0 340 336 L 350 350 A 148 120 0 0 1 317 360 Z"
+                fill="#1a5fba"
+              />
+              <text x="330" y="349" font-size="9.5">109</text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('leadership')"
+              data-label="LEADERSHIP · 107"
+            >
+              <path
+                d="M 340 336 A 114 90 0 0 0 362 320 L 372 333 A 148 120 0 0 1 350 350 Z"
+                fill="#1a5fba"
+              />
+              <text x="354" y="338" font-size="9.5">107</text>
+            </g>
+
+            <!-- FLOOR -->
+            <g
+              class="seat-section"
+              onclick="go('about')"
+              data-label="ABOUT ME · FLOOR GA"
+            >
+              <rect
+                x="188"
+                y="218"
+                width="190"
+                height="104"
+                rx="8"
+                fill="#0c3d8a"
+              />
+              <text x="283" y="258" font-size="13.5" font-weight="800">
+                FLOOR
+              </text>
+              <text x="283" y="276" font-size="9" font-weight="500">
+                About Me — Click to Enter
+              </text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('contact')"
+              data-label="CONTACT · STAGE"
+            >
+              <rect
+                x="360"
+                y="218"
+                width="68"
+                height="104"
+                rx="6"
+                fill="#0d0d1f"
+              />
+              <text
+                x="394"
+                y="266"
+                transform="rotate(90,394,266)"
+                font-size="11.5"
+                font-weight="800"
+                letter-spacing="1"
+              >
+                STAGE
+              </text>
+            </g>
+            <g
+              class="seat-section"
+              onclick="go('about')"
+              data-label="ABOUT ME · MIX"
+            >
+              <rect
+                x="226"
+                y="257"
+                width="42"
+                height="26"
+                rx="4"
+                fill="#172030"
+              />
+              <text x="247" y="273" font-size="8">MIX</text>
+            </g>
+
+            <!-- Compass -->
+            <circle
+              cx="520"
+              cy="44"
+              r="16"
+              fill="#fff"
+              stroke="#b8c6d4"
+              stroke-width="1.2"
+            />
+            <text
+              x="520"
+              y="49"
+              font-family="Barlow Condensed"
+              font-size="11.5"
+              font-weight="700"
+              text-anchor="middle"
+              fill="#2d3748"
+            >
+              N
+            </text>
+          </svg>
+        </div>
+
+        <div class="legend-bar">
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #0c3d8a"></div>
+            Floor / GA
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #1a5fba"></div>
+            100s — Inner
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #2e7dd6"></div>
+            Mid Ring
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #5c9ad4"></div>
+            Upper Deck
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="right-panel">
+        <div class="panel-header"><h2>Select Credentials</h2></div>
+        <div class="profile-card">
+          <div class="profile-top">
+            <div class="profile-img-wrap">
+              <img
+                src="pics/headshot.jpg"
+                alt="Myron Paes"
+                onerror="this.style.display = 'none'"
+              />
+            </div>
+            <div class="profile-name-block">
+              <h3>Myron Paes</h3>
+              <div class="profile-role">Product Manager · Data Scientist</div>
+              <div class="profile-loc">📍 Marlton, NJ · NJIT '28</div>
+            </div>
+          </div>
+          <hr class="divider" />
+          <p class="bio-text">
+            Pursuing dual undergraduate degrees in
+            <strong>Data Science</strong> and
+            <strong>Business (Marketing)</strong> at NJIT, I aim to develop
+            proficiency in Product Management methodologies while acting on
+            lifelong passions in business, analytics, and communication.
+          </p>
+          <hr class="divider" />
+          <div>
+            <div class="cred-header">
+              <span class="cred-label">Credential Type</span>
+              <span class="cred-links">Select All | Clear All</span>
+            </div>
+            <a class="credential-row" href="sections/experience.html">
+              <div class="cred-check">
+                <svg viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M2 6l3 3 5-5"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="cred-icon">💼</span
+              ><span class="cred-name">Professional Experience</span
+              ><span class="cred-badge b-green">4 ROLES</span>
+            </a>
+            <a class="credential-row" href="sections/projects.html">
+              <div class="cred-check">
+                <svg viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M2 6l3 3 5-5"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="cred-icon">⭐</span
+              ><span class="cred-name">Projects & Startups</span
+              ><span class="cred-badge b-star">VIP PACKAGE</span>
+            </a>
+            <a class="credential-row" href="sections/skills.html">
+              <div class="cred-check">
+                <svg viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M2 6l3 3 5-5"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="cred-icon">🛠️</span
+              ><span class="cred-name">Technical Skills</span
+              ><span class="cred-badge b-green">STANDARD</span>
+            </a>
+            <a class="credential-row" href="sections/education.html">
+              <div class="cred-check">
+                <svg viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M2 6l3 3 5-5"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="cred-icon">🎓</span
+              ><span class="cred-name">Education</span
+              ><span class="cred-badge b-blue">FULL RIDE</span>
+            </a>
+            <a class="credential-row" href="sections/leadership.html">
+              <div class="cred-check">
+                <svg viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M2 6l3 3 5-5"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="cred-icon">🏆</span
+              ><span class="cred-name">Leadership & Awards</span
+              ><span class="cred-badge b-star">EAGLE SCOUT</span>
+            </a>
+            <a class="credential-row" href="sections/gallery.html">
+              <div class="cred-check">
+                <svg viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M2 6l3 3 5-5"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="cred-icon">📸</span
+              ><span class="cred-name">Gallery & Portfolio</span
+              ><span class="cred-badge b-red">VERIFIED</span>
+            </a>
+          </div>
+        </div>
+        <div class="panel-bottom">
+          <a href="sections/contact.html" class="btn-contact"
+            >Find Tickets — Contact Now</a
           >
           <a
             href="Myron Paes Professional Resume.pdf"
             target="_blank"
-            class="btn btn-secondary"
-            >View Resume</a
+            class="btn-resume"
+            >📄 View Resume</a
           >
         </div>
       </div>
-      <div class="hero-image-container hero-anim">
-        <img src="pics/headshot.jpg" alt="Myron Paes" class="profile-img" />
-      </div>
-    </section>
-
-    <div class="content">
-      <section id="about" class="section">
-        <span class="section-title reveal">01 — About Me</span>
-        <div class="reveal">
-          <p
-            style="
-              margin-bottom: 1.5rem;
-              color: var(--text-secondary);
-              line-height: 1.8;
-              font-size: 1.05rem;
-            "
-          >
-            Hi! My name is Myron Paes, and I am a sophomore undergraduate
-            student studying Data Science and Business at New Jersey Institute
-            of Technology. Presently, I am leading product development at
-            Tapyoca Music, managing the development of innovative financial
-            tracking software solutions for independent music artists.
-          </p>
-          <p
-            style="
-              color: var(--text-secondary);
-              line-height: 1.8;
-              margin-bottom: 2rem;
-              font-size: 1.05rem;
-            "
-          >
-            As an aspiring Product Marketing Manager, my studies are focused
-            primarily on product marketing, data analysis methodologies, and
-            technical writing, all facets of my professional repertoire which
-            enable me to work efficiently!
-          </p>
-          <p
-            style="
-              color: var(--text-secondary);
-              line-height: 1.8;
-              margin-bottom: 2rem;
-              font-size: 1.05rem;
-            "
-          >
-            I am committed to sustained excellence and improvement, whether that
-            be in the classroom, the office, or the home. Delivering
-            high-quality results through data-driven decision making and agile
-            management methodologies is critical to a manager, and my studies
-            (both technical and entrepreneurial) at NJIT foster my ability to
-            fulfill such an objective! Here are some of my key accomplishments:
-          </p>
-        </div>
-        <div class="accomplishment reveal">
-          <h3>
-            Creator Copilot (Financial Tracking Platform at Tapyoca Music)
-          </h3>
-          <p>
-            Leading product development for a novel subsidiary focused on
-            financial tracking for creatives. Graduated from NSF I-Corps cohort,
-            conducting 40 customer discovery sessions and establishing intuitive
-            Trello frameworks to augment work efficiency for a startup team of
-            25.
-          </p>
-        </div>
-        <div class="accomplishment reveal">
-          <h3>ReMatter Energy (Waste-to-Energy Software Suite)</h3>
-          <p>
-            Co-Founder of a startup dedicated to optimizing waste-to-energy
-            process output by over 30% with modern AI methodologies.
-            Spearheading market research and cross-displinary collaboration to
-            drive product development and strategic growth during early stage
-            development.
-          </p>
-        </div>
-        <div class="accomplishment reveal">
-          <h3>Oracle ERP System Optimization at Virtua Health</h3>
-          <p>
-            Analyzed over 1000 client tickets to identify key pain points in
-            Oracle ERP system, informing future IT reforms. Optimized ID
-            database, vacating 9000 previously null/invalid cells and resolving
-            ID creation bottleneck.
-          </p>
-        </div>
-      </section>
-
-      <section id="projects" class="section">
-        <h2 class="section-title reveal">02 — Selected Works</h2>
-        <div class="reveal">
-          <div class="project-teaser">
-            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem">
-              Full Project Timeline
-            </h3>
-            <p style="margin-bottom: 1.5rem; color: var(--text-secondary)">
-              I maintain a robust portfolio of engineered solutions and business
-              concepts, ranging all the way from machine learning models for
-              Catan to my very own startup ventures!
-            </p>
-            <a href="projects.html" class="btn btn-primary"
-              >View Project Portfolio &rarr;</a
-            >
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" class="section">
-        <h2 class="section-title reveal">03 — Professional Experience</h2>
-        <div class="timeline" id="experience-container"></div>
-      </section>
-
-      <section id="skills" class="section">
-        <span class="section-title reveal">04 — Skills</span>
-        <div class="skills-grid">
-          <div class="skill-category reveal">
-            <h3>Product Tools & Methodologies</h3>
-            <ul>
-              <li>Agile & Scrum</li>
-              <li>Waterfall</li>
-              <li>Asana & Jira</li>
-              <li>Figma Design</li>
-              <li>Google Keywords</li>
-            </ul>
-          </div>
-          <div class="skill-category reveal delay-100">
-            <h3>Advanced Marketing Practices</h3>
-            <ul>
-              <li>A/B Testing</li>
-              <li>Positioning</li>
-              <li>User Segmentation</li>
-              <li>Sentiment Analysis</li>
-            </ul>
-          </div>
-          <div class="skill-category reveal delay-200">
-            <h3>Technical Skills</h3>
-            <ul>
-              <li>Python (NumPy, Pandas, Scikit, PyTorch)</li>
-              <li>Java & C++</li>
-              <li>Excel & Data Visualization</li>
-            </ul>
-          </div>
-          <div class="skill-category reveal delay-300">
-            <h3>Advanced Statistical Methods</h3>
-            <ul>
-              <li>Applied Statistics</li>
-              <li>ANOVA</li>
-              <li>Neyman-Pearson Lemma Test</li>
-              <li>Chi-Squared Test</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <span class="section-title reveal">05 — Education</span>
-        <div class="timeline" id="education-container"></div>
-      </section>
-
-      <section class="section">
-        <span class="section-title reveal">06 — Leadership</span>
-        <div class="timeline" id="leadership-container"></div>
-      </section>
-
-      <section id="gallery" class="section">
-        <span class="section-title reveal">07 — Gallery</span>
-        <div class="reveal">
-          <a
-            href="gallery.html"
-            class="gallery-teaser-container"
-            id="teaser-container"
-          >
-          </a>
-        </div>
-      </section>
-
-      <section
-        class="section reveal"
-        style="
-          text-align: center;
-          padding: 4rem 2rem;
-          background: #ffffff;
-          border-radius: 16px;
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-        "
-      >
-        <div class="typing-wrapper">
-          <h2 class="typing-text">Let's Thrive Together!</h2>
-        </div>
-
-        <p
-          style="
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 1.05rem;
-          "
-        >
-          Explore my projects and experience to see my work in action; feel free
-          to contact me to discuss potential collaborations or to learn more
-          about my skills and experience!
-        </p>
-        <div class="cta-buttons" style="justify-content: center">
-          <a href="mailto:myronpaes@gmail.com" class="btn btn-primary"
-            >Email Me</a
-          >
-          <a
-            href="https://linkedin.com/in/myron-paes/"
-            target="_blank"
-            class="btn btn-secondary"
-            >LinkedIn</a
-          >
-        </div>
-      </section>
     </div>
 
-    <footer>
-      <p>&copy; 2026 Myron Paes. All rights reserved.</p>
-    </footer>
-
-    <script src="gallery-data.js"></script>
-    <script src="portfolio-data.js"></script>
-
+    <div class="section-tooltip" id="tt"></div>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const revealElements = document.querySelectorAll(".reveal");
-        const revealObserver = new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("active");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { root: null, threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
-        );
-        revealElements.forEach((el) => {
-          revealObserver.observe(el);
+      function go(s) {
+        location.href = "sections/" + s + ".html";
+      }
+      const tt = document.getElementById("tt");
+      document.querySelectorAll(".seat-section").forEach((s) => {
+        s.addEventListener("mouseenter", () => {
+          const l = s.dataset.label;
+          if (l) {
+            tt.textContent = l;
+            tt.style.opacity = "1";
+          }
         });
-
-        // DYNAMIC TIMELINE GENERATOR
-        function buildTimeline(dataArray, containerId, hasLogos) {
-          const container = document.getElementById(containerId);
-          if (!container) return;
-
-          dataArray.forEach((data) => {
-            const item = document.createElement("div");
-            item.className = "timeline-item reveal";
-
-            if (hasLogos && data.logo) {
-              const img = document.createElement("img");
-              img.src = data.logo;
-              img.alt = data.title + " Logo";
-              img.className = "timeline-logo";
-              img.onerror = function () {
-                this.style.display = "none";
-                this.nextElementSibling.style.display = "block";
-              };
-              item.appendChild(img);
-
-              const fallbackDot = document.createElement("div");
-              fallbackDot.style.cssText =
-                "display: none; position: absolute; left: -2.35rem; top: 0.4rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent);";
-              item.appendChild(fallbackDot);
-            }
-
-            const title = document.createElement("div");
-            title.className = "timeline-title";
-            title.innerText = data.title;
-
-            const meta = document.createElement("div");
-            meta.className = "timeline-meta";
-            meta.innerText = data.meta;
-
-            const desc = document.createElement("div");
-            desc.className = "timeline-description";
-            desc.innerHTML = data.description;
-
-            item.appendChild(title);
-            item.appendChild(meta);
-            item.appendChild(desc);
-
-            container.appendChild(item);
-            revealObserver.observe(item);
-          });
-        }
-
-        if (typeof portfolioData !== "undefined") {
-          buildTimeline(portfolioData.experience, "experience-container", true);
-          buildTimeline(portfolioData.education, "education-container", false);
-          buildTimeline(
-            portfolioData.leadership,
-            "leadership-container",
-            false,
-          );
-        }
-
-        // DYNAMIC GALLERY TEASER POPULATION
-        const imgFolder = "pics/";
-        const recentImages = galleryData.slice(-3).reverse();
-        const teaserContainer = document.getElementById("teaser-container");
-
-        function applyErrorFallback(imgEl) {
-          imgEl.onerror = function () {
-            if (imgEl.src.endsWith(".webp")) {
-              imgEl.src = imgEl.src.replace(".webp", ".jpg");
-            } else if (imgEl.src.endsWith(".jpg")) {
-              imgEl.src = imgEl.src.replace(".jpg", ".jpeg");
-            } else if (imgEl.src.endsWith(".jpeg")) {
-              imgEl.src = imgEl.src.replace(".jpeg", ".png");
-            } else {
-              imgEl.style.display = "none";
-            }
-          };
-        }
-
-        if (recentImages.length >= 3) {
-          const imgLeft = document.createElement("img");
-          imgLeft.className = "gt-side gt-left";
-          imgLeft.alt = "Recent Image 1";
-          imgLeft.loading = "lazy";
-          imgLeft.decoding = "async";
-          applyErrorFallback(imgLeft);
-          imgLeft.src = imgFolder + recentImages[1].file;
-
-          const imgRight = document.createElement("img");
-          imgRight.className = "gt-side gt-right";
-          imgRight.alt = "Recent Image 2";
-          imgRight.loading = "lazy";
-          imgRight.decoding = "async";
-          applyErrorFallback(imgRight);
-          imgRight.src = imgFolder + recentImages[2].file;
-
-          const divMain = document.createElement("div");
-          divMain.className = "gt-main";
-
-          const imgMain = document.createElement("img");
-          imgMain.alt = "Most Recent Gallery Addition";
-          imgMain.loading = "lazy";
-          imgMain.decoding = "async";
-
-          imgMain.onload = function () {
-            setTimeout(() => {
-              imgMain.classList.add("image-loaded");
-            }, 50);
-          };
-
-          applyErrorFallback(imgMain);
-          imgMain.src = imgFolder + recentImages[0].file;
-
-          const divOverlay = document.createElement("div");
-          divOverlay.className = "gt-overlay";
-          const spanText = document.createElement("span");
-          spanText.className = "gt-text";
-          spanText.innerText = "View Photo Gallery!";
-
-          divOverlay.appendChild(spanText);
-          divMain.appendChild(imgMain);
-          divMain.appendChild(divOverlay);
-
-          teaserContainer.appendChild(imgLeft);
-          teaserContainer.appendChild(imgRight);
-          teaserContainer.appendChild(divMain);
-        }
+        s.addEventListener("mousemove", (e) => {
+          tt.style.left = e.clientX + 14 + "px";
+          tt.style.top = e.clientY - 34 + "px";
+        });
+        s.addEventListener("mouseleave", () => (tt.style.opacity = "0"));
       });
     </script>
   </body>
