@@ -38,5 +38,10 @@ const galleryData = [
     file: "Hackathons/pic8.webp",
     filter: "Hackathons",
     text: 'Won 1st prize at Rowan University\'s ProfHacks 2026 for Frontier Scout, an asteroid "bounty hunter" project',
-  }
+  },
+  {
+    file: "Research/pic9.webp",
+    filter: "Research",
+    text: "Winning Best Undergraduate Research Poster at the 2026 Northeastern Decision Sciences Institute in Philadelphia for my research on the impact of primary school expenditure on standardized testing outcomes!",
+  },
 ];
