@@ -44,4 +44,9 @@ const galleryData = [
     filter: "Research",
     text: "Winning Best Undergraduate Research Poster at the 2026 Northeastern Decision Sciences Institute in Philadelphia for my research on the impact of primary school expenditure on standardized testing outcomes!",
   },
+  {
+    file: "Competitions/pic10.webp",
+    filter: "Competitions",
+    text: "Winning Abercrombie Sophomore Product Design Challenge for our \"Playground Kids\" clothing line concept!",
+  },
 ];
