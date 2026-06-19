@@ -3,7 +3,7 @@ const portfolioData = {
     {
       title: "Digital Product Manager at Five Below",
       meta: "June 2026 - August 2026 · Philadephia, PA",
-      description: "Driving GtM for mobile \"treasure hunt\" gamification initiative on the Five Below app, impacting over 2 million application users!",
+      description: "Driving NPD and GtM strategy for mobile \"treasure hunt\" gamification initiative, engaging over 2 million application users. Independently directing product ideation and revisions to augment digital consumer conversion by 20%. Collaborating with 25 stakeholders to facilitate technical execution and sustain an estimated ~15% MAU increase on launch.",
       logo: "pics/logos/fivebelow.webp"
     },
     {
@@ -39,14 +39,14 @@ const portfolioData = {
   ],
   leadership: [
     {
-      title: "Secretary & Peer Entrepreneur-In-Residence",
+      title: "President",
       meta: "Apr 2025 - Present · Entrepreneurs Society, NJIT",
-      description: "Leading networking initiatives and event organization. Lead bookkeeper tracking attendance and student outreach for 400+ members."
+      description: "Executing critical student entrepreneurial initiatives and coalescing faculty as part of comprehensive event organization efforts. Primary stakeholder governing ~$10,000 of executive funding towards engagement of over 600 multidisciplinary students."
     },
     {
       title: "Eagle Scout, Senior Patrol Leader",
       meta: "Oct 2016 - Oct 2024 · Boy Scouts of America",
-      description: "Earned Eagle Scout Rank with 36 merit badges and 1 Eagle Palm. Led camping trips and mentored younger scouts. Final Eagle project involved building a storage shed for local church."
+      description: "Earned Eagle Scout Rank through completion of all scouting requirements, tallying 36 merit badges, 1 Eagle Palm, a 2 year tenure as Senior Patrol Leader, and the holistic construction of a storage facility for my local Catholic parish."
     }
   ]
 };
