@@ -3,13 +3,13 @@ const portfolioData = {
     {
       title: "Digital Product Manager at Five Below",
       meta: "June 2026 - August 2026 · Philadephia, PA",
-      description: "Driving NPD and GtM strategy for mobile \"treasure hunt\" gamification initiative, engaging over 2 million application users. Independently directing product ideation and revisions to augment digital consumer conversion by 20%. Collaborating with 25 stakeholders to facilitate technical execution and sustain an estimated ~15% MAU increase on launch.",
+      description: "Driving NPD and GtM strategy for a mobile Treasure Hunt gamification initiative, engaging over 2 million application users. Independently directing product ideation and revisions to augment digital consumer conversion by 8%. Facilitating technical execution via direct interdisciplinary collaboration to sustain a ~10% MAU increase on launch.",
       logo: "pics/logos/fivebelow.webp"
     },
     {
       title: "Lead Product Marketing Manager at Tapyoca Music",
       meta: "March 2025 - Present · Newark, NJ",
-      description: "Entrepreneurial lead on novel subsidiary product: Creator Copilot (independent filmmaker accounting software suite). Graduate of Summer 2025 Northeastern NSF I-Corps cohort, conducting 40 customer discovery sessions. Spearheaded client outreach initiatives to maximize conversion and retention for hundreds of potential customers. Established intuitive Jira task delegation framework, augmenting work efficiency for a startup team of 25.",
+      description: "Spearheaded marketing campaigns to maximize retention for hundreds of clients, including Grammy-nominated Money B. Architected inventory allocation for a comprehensive $250,000 2026 World Cup music distribution rollout. Augmented work efficiency for a startup team of 25 via an automated Trello task management framework and active delegation.",
       logo: "pics/logos/tapyoca.webp"
     },
     {
@@ -29,7 +29,7 @@ const portfolioData = {
     {
       title: "B.S. in Data Science & B.S. in Business (Marketing)",
       meta: "Expected 2028 · New Jersey Institute of Technology",
-      description: "Full-ride Merit Scholarship via Albert Dorman Honors College. Enrolled in accelerated BS/MS and Dual Degree programs. Prioritizing the intersection of business strategy and technical implementation."
+      description: "Full-ride Merit Scholarship via Albert Dorman Honors College. Enrolled in accelerated Data Science BS/MS and Dual Degree programs."
     },
     {
       title: "High School Diploma",
