@@ -9,7 +9,7 @@ const portfolioData = {
     {
       title: "Lead Product Marketing Manager at Tapyoca Music",
       meta: "March 2025 - Present · Newark, NJ",
-      description: "Spearheaded marketing campaigns to maximize retention for hundreds of clients, including Grammy-nominated Money B. Architected inventory allocation for a comprehensive $250,000 2026 World Cup music distribution rollout. Augmented work efficiency for a startup team of 25 via an automated Trello task management framework and active delegation.",
+      description: "Spearheaded marketing campaigns to maximize retention for hundreds of clients, including Grammy-nominated rapper Money B. Architected inventory allocation for a comprehensive $250,000 2026 World Cup music distribution rollout. Augmented work efficiency for a startup team of 25 via an automated Trello task management framework and active delegation.",
       logo: "pics/logos/tapyoca.webp"
     },
     {
