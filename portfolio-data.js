@@ -3,13 +3,13 @@ const portfolioData = {
     {
       title: "Digital Product Manager at Five Below",
       meta: "June 2026 - August 2026 · Philadephia, PA",
-      description: "Driving NPD and GtM strategy for a mobile Treasure Hunt gamification initiative, engaging over 2 million application users. Independently directing product ideation and revisions to augment digital consumer conversion by 8%. Facilitating technical execution via direct interdisciplinary collaboration to sustain a ~10% MAU increase on launch.",
+      description: "Driving NPD and GtM strategy for a mobile Treasure Hunt gamification initiative, engaging over 2 million application users. Independently directing product ideation and revisions to augment digital consumer conversion by a projected 8%. Facilitating technical execution via direct interdisciplinary collaboration to sustain an estimated ~10% MAU increase on launch.",
       logo: "pics/logos/fivebelow.webp"
     },
     {
       title: "Lead Product Marketing Manager at Tapyoca Music",
       meta: "March 2025 - Present · Newark, NJ",
-      description: "Spearheaded marketing campaigns to maximize retention for hundreds of clients, including Grammy-nominated rapper Money B. Architected inventory allocation for a comprehensive $250,000 2026 World Cup music distribution rollout. Augmented work efficiency for a startup team of 25 via an automated Trello task management framework and active delegation.",
+      description: "Spearheaded marketing campaigns to maximize retention for hundreds of clients, including Grammy-nominated rapper Money B. Architected inventory allocation for a comprehensive $250,000 2026 World Cup music distribution rollout. Augmented work efficiency for a startup team of 25 via an automated Jira task management framework and active delegation.",
       logo: "pics/logos/tapyoca.webp"
     },
     {
