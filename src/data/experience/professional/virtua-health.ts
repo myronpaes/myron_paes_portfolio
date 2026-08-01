@@ -11,7 +11,7 @@ const virtuaHealth: ExpItem = {
     'Analyzed over 1,000 client tickets to identify key pain points in the Oracle ERP system, informing future IT reforms.',
   ],
   gallery: [
-    '/assets/gallery/virtua/virtua.webp',
+    '/assets/gallery/Virtua/virtua.webp',
   ],
 }
 
