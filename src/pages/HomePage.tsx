@@ -54,7 +54,7 @@ export default function HomePage({ navigate, onProjectSelect }: HomePageProps) {
                 Contact
               </a>
               <a
-                href="/assets/Myron_Paes_Professional_Resume.pdf"
+                href="/assets/myron_paes_resume.pdf"
                 target="_blank"
                 rel="noreferrer"
                 className="text-sm text-[#8A877F] hover:text-[#0C0C0C] transition-colors"

@@ -22,7 +22,7 @@ export default function Footer() {
             LinkedIn
           </a>
           <a
-            href="/assets/Myron_Paes_Professional_Resume.pdf"
+            href="/assets/myron_paes_resume.pdf"
             target="_blank"
             rel="noreferrer"
             className="text-xs tracking-widest uppercase text-[#8A877F] hover:text-[#0C0C0C] transition-colors"

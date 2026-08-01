@@ -70,7 +70,7 @@ export default function ExperiencePage({ navigate }: ExperiencePageProps) {
       <div className="pt-32 pb-4 px-8 max-w-5xl mx-auto">
         <p className="text-xs tracking-widest uppercase text-[#8A877F] mb-4">Experience</p>
         <h1 className="font-display text-5xl md:text-7xl leading-tight text-[#0C0C0C]">
-          Where I've worked,
+          Where I've worked
           <br />
           <span className="italic font-light">and what I built there.</span>
         </h1>

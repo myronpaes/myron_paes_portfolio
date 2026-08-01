@@ -105,7 +105,7 @@ export const hobbies = [
       "There's a discipline to the intricasy of photography; one picture can capture an entire experience.",
     image:
       'https://images.unsplash.com/photo-1495121553079-4c61bcce1894?w=400&h=480&fit=crop&auto=format',
-    link: 'https://www.instagram.com',
+    link: 'https://www.instagram.com/myron_flicks',
     linkLabel: 'View my Collection',
     rotation: -2.2,
   },
