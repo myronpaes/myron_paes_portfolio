@@ -11,9 +11,7 @@ const virtuaHealth: ExpItem = {
     'Analyzed over 1,000 client tickets to identify key pain points in the Oracle ERP system, informing future IT reforms.',
   ],
   gallery: [
-    'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=280&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400&h=280&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=400&h=280&fit=crop&auto=format',
+    '/assets/gallery/virtua/virtua.webp',
   ],
 }
 

@@ -11,10 +11,10 @@ const njitEntrepreneursSociety: ExpItem = {
     'Executing large-scale student event organization, hosting prestigious speakers from The New York Times, AT&T, and Workday.',
   ],
   gallery: [
-    'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=280&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=400&h=280&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1559223607-a43c990c692c?w=400&h=280&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=280&fit=crop&auto=format',
+    '/assets/gallery/es/NJIT_entrepreneur.webp',
+    '/assets/gallery/es/nbmc.webp',
+    '/assets/gallery/es/open_hours.webp',
+    '/assets/gallery/es/capstone.webp',
   ],
 }
 

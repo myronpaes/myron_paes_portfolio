@@ -12,10 +12,10 @@ const fiveBelow: ExpItem = {
     'Facilitating technical execution via direct cross-functional collaboration to push an estimated ~10% MAU increase.',
   ],
   gallery: [
-    'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&h=280&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=400&h=280&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=400&h=280&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=280&fit=crop&auto=format',
+    '/assets/gallery/5B/5b_logo.webp',
+    '/assets/gallery/5B/welcome.webp',
+    '/assets/gallery/5B/session.webp',
+    '/assets/gallery/5B/shipcenter.webp',
   ],
 }
 

@@ -11,10 +11,9 @@ const tapyocaMusic: ExpItem = {
     'Allocated inventory and coordinated distribution for a comprehensive $250,000 World Cup music activation in New York.',
   ],
   gallery: [
-    'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=280&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=280&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=280&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?w=400&h=280&fit=crop&auto=format',
+    '/assets/gallery/tapyoca/tapyoca_logo.webp',
+    '/assets/gallery/tapyoca/UPitch.webp',
+    '/assets/gallery/tapyoca/copilot.webp',
   ],
 }
 
