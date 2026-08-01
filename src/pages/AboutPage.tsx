@@ -23,9 +23,9 @@ export default function AboutPage({ navigate }: AboutPageProps) {
       <div className="pt-32 pb-4 px-8 max-w-5xl mx-auto">
         <p className="text-xs tracking-widest uppercase text-[#8A877F] mb-4">About</p>
         <h1 className="font-display text-5xl md:text-7xl leading-tight text-[#0C0C0C]">
-          A thinker who builds,
+          Setting the bar high,
           <br />
-          <span className="italic font-light">and a builder who thinks.</span>
+          <span className="italic font-light">and dreaming higher.</span>
         </h1>
       </div>
 
