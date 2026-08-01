@@ -67,24 +67,21 @@ export const projects = [
 
 // ── Hero Bio ──────────────────────────────────────────────────────────────────
 export const heroBio =
-  "Hi! My name is Myron, and I am a rising Junior pursuing a dual undergraduate degree in Data Science and Business at NJIT. As a lifelong thinker and dreamer, I aim to further develop proficiency in marketing methodologies while embracing my passions for technology, gaming, media, and entertainment; my professional skillset marries holistic ideation with technical analytics, and I work now to secure a role in which I can best drive immediate impact!"
+  "As a lifelong thinker and dreamer, I aim to further develop proficiency in Product Management methodologies while embracing my passions for technology, gaming, media, and entertainment; my professional skillset marries holistic ideation with technical analytics, and I work now to secure a role in which I can best drive immediate impact!"
 
 export const heroTagline = 'Product, Marketing, and Data'
 
 // ── About ─────────────────────────────────────────────────────────────────────
 export const aboutParagraphs: string[] = [
-  "As an aspiring Product Marketing Manager, my studies are focused primarily on product marketing, data analysis methodologies, and technical writing — all facets which enable me to work efficiently.",
-  "I am committed to sustained excellence and improvement, whether that be in the classroom, the office, or the home. My studies (both technical and entrepreneurial) at NJIT foster my ability to effectively manage high-stake projects.",
-  "I am currently working as the lead product manager for a gamified mobile application designed to enhance mobile user conversion, engagement, and retention amongst Generation Alpha consumers — implementing agile methodologies and comprehensive cross-functional collaboration to streamline development.",
-  "As Lead Product Manager at Tapyoca Music, I led product development for a unique subsidiary focused on financial tracking for creatives; I concurrently graduated from the NSF I-Corps Regional cohort, conducting 40 customer discovery sessions to better validate market fit for the product.",
-  "The most effective change stems from home, and I am proud to contribute towards developing NJIT's student body as President of the Entrepreneurs Society. Through accessible student workshops and collaborative networking events, we aim to spread entrepreneurship one student at a time.",
-  "My skillset spans Agile/Scrum, Figma, A/B testing, Python (NumPy, Pandas), statistical analysis (ANOVA, Chi-Squared), and technical writing. I'm most effective in environments where the problem isn't clearly defined yet.",
+  "As an aspiring Product Manager, my studies are focused primarily on management, product marketing, data analysis methodologies, and research writing, all facets which enable me to work efficiently.",
+  "I hold a lifelong commitment to sustained excellence and improvement, whether that be in the classroom, the office, or the home. My studies at NJIT (both managerial and technical) foster my ability to engage in critical development, and my professional experience validates my effective management of high-fidelity projects.",
+  "My most prominent traits are my critical thinking and creativity, aspects of my life applicable beyond my work life; I'm a habitual reader and photographer in my spare time, observing beauty in both abstractions and visuals.",
 ]
 
 export const skillGroups = [
   {
     title: 'Product Tools & Methodologies',
-    skills: ['Agile & Scrum', 'Waterfall', 'Asana & Jira', 'Figma Design', 'Google Keywords'],
+    skills: ['Agile & Scrum', 'Jira', 'Figma', 'Google Analytics', 'AI Literacy'],
   },
   {
     title: 'Advanced Marketing Practices',
@@ -95,51 +92,51 @@ export const skillGroups = [
     skills: ['Python (NumPy, Pandas, Scikit, PyTorch)', 'Java & C++', 'Excel & Data Visualization'],
   },
   {
-    title: 'Advanced Statistical Methods',
-    skills: ['Applied Statistics', 'ANOVA', 'Neyman-Pearson Lemma Test', 'Chi-Squared Test'],
+    title: 'Data Science Methods',
+    skills: ['Neural Networks', 'Regression', 'NLP', 'KNN', 'Random Forest', 'Feature Engineering'],
   },
 ]
 
 // ── Hobbies ───────────────────────────────────────────────────────────────────
 export const hobbies = [
   {
-    title: 'Film Photography',
+    title: 'Photography',
     description:
-      "There's a discipline to 35mm that digital removes entirely. You get 36 frames. You think before you shoot.",
+      "There's a discipline to the intricasy of photography; one picture can capture an entire experience.",
     image:
       'https://images.unsplash.com/photo-1495121553079-4c61bcce1894?w=400&h=480&fit=crop&auto=format',
     link: 'https://www.instagram.com',
-    linkLabel: 'See some shots',
+    linkLabel: 'View my Collection',
     rotation: -2.2,
   },
   {
     title: 'Literature',
     description:
-      "Fiction, essays, whatever grabs me. Reading is how I slow down and think sideways.",
+      "For the hours of engagement that a movie provides, a quality book provides weeks!",
     image:
       'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=480&fit=crop&auto=format',
     link: 'https://www.goodreads.com',
-    linkLabel: 'See my shelf',
+    linkLabel: 'GoodReads Profile Coming Soon!',
     rotation: 1.5,
   },
   {
     title: 'Running',
     description:
-      "Early mornings, bad weather, no headphones. The best thinking I've done has happened mid-run.",
+      "Tempered due to concussion recovery, but I still savor the mental clarity of a long walk!",
     image:
       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=480&fit=crop&auto=format',
     link: 'https://www.strava.com',
-    linkLabel: 'Find me on Strava',
+    linkLabel: 'Strava Account Lost... :(',
     rotation: -1,
   },
   {
     title: 'Media',
     description:
-      "Games, TV, movies — I track everything I watch and play. Ratings are opinions made permanent.",
+      "I love media capturing nuance and leveraging all sensory inputs, further augmenting the beauty of books!",
     image:
       'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=480&fit=crop&auto=format',
     link: 'https://letterboxd.com',
-    linkLabel: 'See my ratings',
+    linkLabel: 'Letterboxd Profile Coming Soon!',
     rotation: 2,
   },
 ]

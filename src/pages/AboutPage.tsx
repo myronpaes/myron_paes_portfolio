@@ -95,25 +95,6 @@ export default function AboutPage({ navigate }: AboutPageProps) {
                 ))}
               </ul>
             </div>
-
-            <div style={{ borderTop: '1px solid #E0DBD3', paddingTop: '2rem' }}>
-              <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-                <h3 className="font-display text-2xl text-[#0C0C0C]">Cherokee High School</h3>
-                <span className="text-xs tracking-widest uppercase text-[#B0AB9F]">2020 – 2024</span>
-              </div>
-              <p className="text-sm text-[#4A4845] mb-3">High School Diploma</p>
-              <ul className="space-y-2">
-                {[
-                  'Varsity Cross Country & Track, Varsity Chess Team.',
-                  'Project Lead the Way, Aeronautics Club President, Future Business Leaders of America.',
-                ].map((b, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-[#4A4845] leading-relaxed font-light">
-                    <span className="text-[#D4CFC8] flex-shrink-0 mt-[3px]">—</span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </div>
       </section>

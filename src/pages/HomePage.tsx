@@ -40,10 +40,9 @@ export default function HomePage({ navigate, onProjectSelect }: HomePageProps) {
             </h1>
 
             <p className="text-[14px] text-[#4A4845] leading-relaxed max-w-lg font-light mb-5">
-              Rising Junior at NJIT pursuing dual degrees in Data Science &amp;
-              Business. My skillset marries holistic ideation with technical
-              analytics — building things that matter for people who haven't
-              been thought of yet.
+              I'm a rising Junior at NJIT pursuing dual degrees in Data Science &amp;
+              Marketing. My skillset marries holistic ideation with technical
+              execution, developing with purpose to exploit the market gaps I identify.
             </p>
 
             {/* Contact strip */}
