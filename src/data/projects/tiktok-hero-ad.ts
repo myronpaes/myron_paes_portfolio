@@ -8,8 +8,8 @@ const tiktokHeroAd: Project = {
   category: 'Product · Advertising · Strategy',
   year: '2026',
   kind: 'narrative',
-  heroImage: '/assets/tiktok-hero.webp',
-  screenshot: '/assets/tiktok-screenshot.png',
+  heroImage: '/assets/TikTokHero/tiktok-hero.webp',
+  screenshot: '/assets/TikTokHero/tiktok-screenshot.png',
   screenshotPosition: 'center top',
   excerpt:
     'Developed a novel TikTok "Hero" Ad display to augment CVRs and drive TikTok Shop adoption amongst small businesses. Executive-ready pitch deck included.',

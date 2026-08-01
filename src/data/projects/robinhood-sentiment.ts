@@ -9,12 +9,12 @@ const robinhoodSentiment: Project = {
   category: 'Data Science · Analytics · Finance',
   year: '2025',
   kind: 'narrative',
-  heroImage: '/assets/robinhood-preview.png',
-  screenshot: '/assets/robinhood-screenshot.png',
+  heroImage: '/assets/Robinhood/robinhood-preview.png',
+  screenshot: '/assets/Robinhood/robinhood-screenshot.png',
   excerpt:
     'Comprehensive Sentiment Analysis on Robinhood operations during the 2020 Gamestop stock bull run via RAKE Analysis and Topic Modelling.',
   projectLinks: [
-    { label: 'View Presentation ↗', url: '/assets/robinhood_presentation.pdf' },
+    { label: 'View Presentation ↗', url: '/assets/Robinhood/robinhood_presentation.pdf' },
   ],
   content: [
     {

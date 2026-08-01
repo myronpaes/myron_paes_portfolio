@@ -11,12 +11,12 @@ const openInnovationResearch: Project = {
   kind: 'narrative',
   heroImage:
     'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&h=700&fit=crop&auto=format',
-  screenshot: '/assets/nedsi-conference.jpg',
+  screenshot: '/assets/Research/nedsi-conference.jpg',
   screenshotPosition: 'center 30%',
   excerpt:
     'Conducted comprehensive statistical analyses defining ethical urgency marketing and optimizing corporate Open Innovation initiatives.',
   projectLinks: [
-    { label: 'View Education Research ↗', url: '/assets/NEDSI_poster.pdf' },
+    { label: 'View Education Research ↗', url: '/assets/Research/NEDSI_poster.pdf' },
   ],
   content: [
     {

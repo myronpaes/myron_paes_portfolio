@@ -8,12 +8,12 @@ const afPlayground: Project = {
   category: 'Marketing · Brand · Retail',
   year: '2026',
   kind: 'narrative',
-  heroImage: '/assets/af-playground.webp',
-  screenshot: '/assets/af-playground-screenshot.png',
+  heroImage: '/assets/A&F/af-playground.webp',
+  screenshot: '/assets/A&F/af-playground-screenshot.png',
   excerpt:
     'Bold modular streetwear clothing line for boys, winning the A&F Sophomore Summit Design Challenge. Engineered omni-channel marketing via AI outfit curation.',
   projectLinks: [
-    { label: 'View Presentation ↗', url: '/assets/A&F_Playground_Presentation.pdf' },
+    { label: 'View Presentation ↗', url: '/assets/A&F/A&F_Playground_Presentation.pdf' },
   ],
   content: [
     {

@@ -8,12 +8,12 @@ const creatorCopilot: Project = {
   category: 'Product · Fintech · Music',
   year: '2025–2026',
   kind: 'narrative',
-  heroImage: '/assets/creator-copilot-preview.png',
-  screenshot: '/assets/creator-copilot.webp',
+  heroImage: '/assets/CreatorCopilot/creator-copilot-preview.png',
+  screenshot: '/assets/CreatorCopilot/creator-copilot.webp',
   excerpt:
     'A financial tracking tool built for independent music creatives — born out of 40 customer discovery conversations and an NSF I-Corps cohort.',
   projectLinks: [
-    { label: 'View on LinkedIn ↗', url: 'https://linkedin.com/in/myron-paes' },
+    { label: 'View on LinkedIn ↗', url: 'https://www.linkedin.com/feed/update/urn:li:activity:7461154205320454144/' },
   ],
   content: [
     {

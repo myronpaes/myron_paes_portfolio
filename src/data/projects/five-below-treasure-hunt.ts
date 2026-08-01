@@ -9,8 +9,8 @@ const fiveBelowTreasureHunt: Project = {
   category: 'Product · Retail · Gaming',
   year: '2026',
   kind: 'narrative',
-  heroImage: '/assets/five-below.webp',
-  screenshot: '/assets/five-below-article.png',
+  heroImage: '/assets/FiveBelow/five-below.webp',
+  screenshot: '/assets/FiveBelow/five-below-article.png',
   screenshotPosition: 'center 35%',
   excerpt:
     'Leading PM work on a gamified mobile Treasure Hunt experience for a generation that has never known a world without touchscreens.',

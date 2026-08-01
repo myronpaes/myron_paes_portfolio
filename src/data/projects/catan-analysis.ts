@@ -9,13 +9,13 @@ const catanAnalysis: Project = {
   category: 'Data Science · Machine Learning',
   year: '2025',
   kind: 'narrative',
-  heroImage: '/assets/catan.webp',
-  screenshot: '/assets/catan-screenshot.png',
+  heroImage: '/assets/Catan/catan.webp',
+  screenshot: '/assets/Catan/catan-screenshot.png',
   screenshotPosition: 'center top',
   excerpt:
     'Analyzing statistically-optimal Catan settlement placements using Logistic Regression, KNN, Random Forests, and Feature Engineering.',
   projectLinks: [
-    { label: 'View Report ↗', url: '/assets/catan_report.pdf' },
+    { label: 'View Report ↗', url: '/assets/Catan/catan_report.pdf' },
   ],
   content: [
     {
