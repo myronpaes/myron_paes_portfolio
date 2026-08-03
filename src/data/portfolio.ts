@@ -135,7 +135,7 @@ export const hobbies = [
       "I love media capturing nuance and leveraging all sensory inputs, further augmenting the beauty of books!",
     image:
       'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=480&fit=crop&auto=format',
-    link: 'https://letterboxd.com',
+    link: 'https://boxd.it/W7Mcw',
     linkLabel: 'Letterboxd Profile Coming Soon!',
     rotation: 2,
   },
